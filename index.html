@@ -443,6 +443,7 @@
   .labelkey code{background:var(--paper-3); font-size:11px}
 
 </style>
+<link rel="stylesheet" href="game/game.css">
 </head>
 <body>
 
@@ -456,6 +457,7 @@
       <a href="#/comp1531" role="menuitem">COMP1531 <span class="tag">15 lectures</span></a>
     </div>
   </div>
+  <a class="game-nav-link" href="#/game">STACKRAID</a>
   <div class="spacer"></div>
   <div class="crumbs" id="crumbs">Home</div>
 </div>
@@ -464,6 +466,7 @@
   <aside class="sidebar" id="sidebar">
     <h3>Subjects</h3>
     <nav class="tree">
+      <a class="game-tree-link" href="#/game" data-nav="game">&#9656; StackRaid study game</a>
       <details open>
         <summary>COMP1521</summary>
         <div class="sub">
@@ -557,6 +560,11 @@
         <div class="sc-name">Software Engineering Fundamentals</div>
         <div class="sc-meta">Weeks 1&ndash;10 &middot; 17 lectures + Iteration 1</div>
       </a>
+      <a class="subject-card" href="#/game">
+        <div class="sc-code">STACKRAID</div>
+        <div class="sc-name">The CS notes roguelite</div>
+        <div class="sc-meta">12 encounters &middot; adaptive mastery &middot; daily run</div>
+      </a>
       <div class="subject-card ghost">
         <div class="sc-code">+</div>
         <div class="sc-name">More subjects</div>
@@ -564,6 +572,10 @@
       </div>
     </div>
   </div></section>
+
+  <section class="route" data-route="game">
+    <div id="stackraid-root" aria-label="StackRaid study game"></div>
+  </section>
 
   <section class="route" data-route="comp1521"><div class="wrap">
     <div class="page-head">
@@ -39915,8 +39927,8 @@ main:
 
 /* ============ SITE ROUTER + NAV ============ */
 (function(){
-  const ROUTES=['home','comp1521','comp1531','w1l1','w1l2','w2l1','w2l2','w3l1','w3l2','w4l1','w4l2','w5l1','w5l2','w7l1','w7l2','w8l1','w8l2','w9l1','w9l2','w10l1','w10l2','c31w1l1','c31w1l2','c31w2tw','c31w2l1','c31w2l2','c31w3l1','c31w3l2','c31it1','c31w4l1','c31w4l2','c31w5l1','c31w5l2','c31w7l1','c31w7l2','c31w8l1','c31w8l2','c31w9l1','c31w10l1'];
-  const CRUMB={home:'Home',comp1521:'COMP1521',comp1531:'COMP1531',
+  const ROUTES=['home','game','comp1521','comp1531','w1l1','w1l2','w2l1','w2l2','w3l1','w3l2','w4l1','w4l2','w5l1','w5l2','w7l1','w7l2','w8l1','w8l2','w9l1','w9l2','w10l1','w10l2','c31w1l1','c31w1l2','c31w2tw','c31w2l1','c31w2l2','c31w3l1','c31w3l2','c31it1','c31w4l1','c31w4l2','c31w5l1','c31w5l2','c31w7l1','c31w7l2','c31w8l1','c31w8l2','c31w9l1','c31w10l1'];
+  const CRUMB={home:'Home',game:'StackRaid',comp1521:'COMP1521',comp1531:'COMP1531',
                w1l1:'COMP1521 · Week 1 · Lecture 1',w1l2:'COMP1521 · Week 1 · Lecture 2',
                w2l1:'COMP1521 · Week 2 · Lecture 1',w2l2:'COMP1521 · Week 2 · Lecture 2',
                w3l1:'COMP1521 · Week 3 · Lecture 1',
@@ -68710,6 +68722,7 @@ $ ./explain_float_representation <span class="n">39.3</span>`,
 
 </script>
 
+<script type="module" src="game/main.mjs"></script>
 
 </body>
 </html>
