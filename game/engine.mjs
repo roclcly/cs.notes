@@ -107,6 +107,7 @@ export function selectRunChallenges(pool, { course = 'mixed', seed = 1, mastery 
   const rng = createRng(seed);
   const picked = new Set();
   const result = [];
+  const codeSlots = new Set([1, 5, 10]);
   const firstCourse = rng() < 0.5 ? 'comp1521' : 'comp1531';
   const desiredCourses = Array.from({ length: 12 }, (_, index) => {
     if (course !== 'mixed') return course;
@@ -115,13 +116,14 @@ export function selectRunChallenges(pool, { course = 'mixed', seed = 1, mastery 
 
   for (let index = 0; index < 12; index += 1) {
     const boss = index % 4 === 3;
+    const codeLab = codeSlots.has(index);
     const desired = desiredCourses[index];
-    let candidates = pool.filter((item) => item.type === (boss ? 'boss' : item.type) && (boss ? item.type === 'boss' : item.type !== 'boss'));
-    candidates = candidates.filter((item) => item.course === desired && !picked.has(item.id));
+    const matchesSlot = (item) => boss ? item.type === 'boss' : codeLab ? item.type === 'code' : item.type !== 'boss' && item.type !== 'code';
+    let candidates = pool.filter((item) => matchesSlot(item) && item.course === desired && !picked.has(item.id));
     if (!candidates.length) {
-      candidates = pool.filter((item) => (boss ? item.type === 'boss' : item.type !== 'boss') && !picked.has(item.id));
+      candidates = pool.filter((item) => matchesSlot(item) && !picked.has(item.id));
     }
-    if (!candidates.length) throw new Error(`Not enough ${boss ? 'boss' : 'regular'} challenges for a 12-encounter run.`);
+    if (!candidates.length) throw new Error(`Not enough ${boss ? 'boss' : codeLab ? 'code' : 'regular'} challenges for a 12-encounter run.`);
     const selected = weightedPick(candidates, mastery, rng);
     picked.add(selected.id);
     result.push(selected);
@@ -290,6 +292,15 @@ export function isValidChallenge(challenge) {
   if (challenge.type === 'input') {
     return typeof challenge.answer === 'string' || Array.isArray(challenge.answer);
   }
+  if (challenge.type === 'code') {
+    if (!['javascript', 'c', 'mips'].includes(challenge.language) || typeof challenge.starter !== 'string') return false;
+    if (!Array.isArray(challenge.tests) || challenge.tests.length < 2) return false;
+    if (challenge.language === 'javascript') {
+      return /^[A-Za-z_$][\w$]*$/.test(challenge.functionName || '')
+        && challenge.tests.every((test) => test?.label && Array.isArray(test.args) && Object.prototype.hasOwnProperty.call(test, 'expected'));
+    }
+    return challenge.tests.every((test) => test?.label && isValidPattern(test.pattern));
+  }
   return false;
 }
 
@@ -297,6 +308,16 @@ function isValidStep(step) {
   if (!step?.prompt || !['choice', 'input'].includes(step.type)) return false;
   if (step.type === 'choice') return Array.isArray(step.choices) && Number.isInteger(step.answer) && step.answer >= 0 && step.answer < step.choices.length;
   return typeof step.answer === 'string' || Array.isArray(step.answer);
+}
+
+function isValidPattern(pattern) {
+  if (typeof pattern !== 'string' || pattern.includes('\u0008')) return false;
+  try {
+    new RegExp(pattern, 'im');
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function otherCourse(course) {

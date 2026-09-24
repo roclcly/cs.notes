@@ -15,6 +15,7 @@ import {
   updateSaveAfterRun,
 } from './engine.mjs';
 import { TOPICS, createChallengePool } from './content.mjs';
+import { runCodeChallenge } from './code-runner.mjs';
 
 const root = document.getElementById('stackraid-root');
 if (!root) throw new Error('StackRaid root was not found.');
@@ -98,9 +99,9 @@ function renderStart() {
       <div class="sr-scanlines" aria-hidden="true"></div>
       <header class="sr-titlebar">
         <div>
-          <span class="sr-kicker">cs.notes // exam simulator</span>
+          <span class="sr-kicker">cs.notes // coding roguelite</span>
           <h1>STACK<span>RAID</span></h1>
-          <p>Build a streak. Patch your weak spots. Survive the stack.</p>
+          <p>Write code. Run tests. Patch your weak spots. Survive the stack.</p>
         </div>
         ${soundButton()}
       </header>
@@ -127,7 +128,7 @@ function renderStart() {
           <button class="sr-button sr-button--launch" data-action="start-run">
             <span>Start ${selectedMode === 'daily' ? 'daily breach' : '12-encounter run'}</span><span aria-hidden="true">→</span>
           </button>
-          <p class="sr-launch-note">Three integrity points · bosses at 04, 08 and 12 · progress saves on this device</p>
+          <p class="sr-launch-note">Three Code Labs every run · bosses at 04, 08 and 12 · progress saves on this device</p>
         </section>
         <aside class="sr-panel sr-record-panel">
           <div class="sr-panel-number">PB</div>
@@ -216,6 +217,17 @@ function renderChallenge(challenge) {
         <button class="sr-button sr-button--primary" type="submit">Lock answer</button></div>
       </form>`;
   }
+  if (challenge.type === 'code') {
+    const source = encounter.codeSource ?? challenge.starter;
+    const report = encounter.codeReport ? renderCodeReport(encounter.codeReport) : '';
+    return `${title}<div class="sr-type-label">Code lab // ${escapeHtml(challenge.language)}</div>
+      <form class="sr-code-form" data-form="code">
+        <div class="sr-code-toolbar"><label for="sr-code">Solution editor</label><span>${challenge.tests.length} tests</span></div>
+        <textarea class="sr-code-editor sr-answer-input" id="sr-code" name="answer" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="sr-code-help">${escapeHtml(source)}</textarea>
+        <div class="sr-code-actions"><small id="sr-code-help">Run tests as often as you like. Ctrl/⌘ + Enter also runs them.</small><button class="sr-button sr-button--primary" type="submit">Run tests <span aria-hidden="true">▶</span></button></div>
+        ${report}
+      </form>`;
+  }
   const remaining = challenge.choices.filter((option) => !encounter.order.includes(option));
   return `${title}<div class="sr-type-label">Sequence builder</div>
     <div class="sr-order-selected" aria-label="Current sequence">
@@ -223,6 +235,14 @@ function renderChallenge(challenge) {
     </div>
     <div class="sr-order-pool">${remaining.map((option) => `<button data-action="add-order" data-value="${escapeAttr(option)}">${formatRich(option)}</button>`).join('')}</div>
     <button class="sr-button sr-button--primary" data-action="submit-order" ${encounter.order.length !== challenge.answer.length ? 'disabled' : ''}>Lock sequence</button>`;
+}
+
+function renderCodeReport(codeReport) {
+  const passed = codeReport.results.filter((item) => item.passed).length;
+  return `<section class="sr-test-report ${codeReport.passed ? 'is-passed' : ''}" aria-label="Code test results">
+    <div><strong>${codeReport.passed ? 'All tests passed' : `${passed}/${codeReport.results.length} tests passed`}</strong><span>${codeReport.passed ? 'Solution accepted' : 'Keep debugging—the timer is still running'}</span></div>
+    <ul>${codeReport.results.map((item) => `<li class="${item.passed ? 'is-passed' : 'is-failed'}"><span aria-hidden="true">${item.passed ? '✓' : '×'}</span><div><b>${escapeHtml(item.label)}</b><small>${escapeHtml(item.details)}</small></div></li>`).join('')}</ul>
+  </section>`;
 }
 
 function renderBoss(challenge) {
@@ -382,7 +402,7 @@ function handleClick(event) {
   }
 }
 
-function handleSubmit(event) {
+async function handleSubmit(event) {
   const form = event.target.closest('form[data-form]');
   if (!form || !root.contains(form)) return;
   event.preventDefault();
@@ -391,18 +411,42 @@ function handleSubmit(event) {
   if (form.dataset.form === 'boss-input') {
     const step = challenge.steps[encounter.boss.step];
     answerBoss(value, step);
+  } else if (form.dataset.form === 'code') {
+    const challengeId = challenge.id;
+    encounter.codeSource = String(value || '');
+    encounter.codeReport = await runCodeChallenge(challenge, encounter.codeSource);
+    if (encounter.feedback || currentChallenge()?.id !== challengeId) return;
+    if (encounter.codeReport.passed) {
+      resolveCurrent(true);
+    } else {
+      encounter.announcement = `${encounter.codeReport.results.filter((item) => item.passed).length} of ${encounter.codeReport.results.length} code tests passed.`;
+      playSound('wrong');
+      renderPlay();
+      startTimer(false);
+    }
   } else {
     resolveCurrent(matchesAnswer(value, challenge.answer));
   }
 }
 
 function handleKeydown(event) {
+  if (event.target.matches('.sr-code-editor')) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      const field = event.target;
+      field.setRangeText('  ', field.selectionStart, field.selectionEnd, 'end');
+    } else if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault();
+      event.target.form?.requestSubmit();
+    }
+    return;
+  }
   if (screen === 'upgrade' && ['1', '2', '3'].includes(event.key)) {
     const choice = root.querySelectorAll('[data-action="choose-upgrade"]')[Number(event.key) - 1];
     choice?.click();
     return;
   }
-  if (screen !== 'play' || encounter.feedback || event.target.matches('input')) return;
+  if (screen !== 'play' || encounter.feedback || event.target.matches('input, textarea')) return;
   if (['1', '2', '3', '4'].includes(event.key)) {
     const choices = root.querySelectorAll('.sr-option');
     choices[Number(event.key) - 1]?.click();
@@ -496,7 +540,7 @@ function startTimer(reset) {
   const challenge = currentChallenge();
   if (!challenge || encounter.feedback || screen !== 'play' || !isGameRoute()) return;
   if (reset || !deadline || deadline <= Date.now()) {
-    timeLimit = (challenge.type === 'boss' ? 62 : 28) + (run.upgrades.extraTime || 0) * 8;
+    timeLimit = (challenge.type === 'boss' ? 62 : challenge.type === 'code' ? 110 : 28) + (run.upgrades.extraTime || 0) * 8;
     deadline = Date.now() + timeLimit * 1000;
   }
   timerHandle = window.setInterval(() => {
@@ -544,7 +588,7 @@ function eliminatedChoice(challenge) {
 }
 
 function freshEncounterState() {
-  return { order: [], boss: { step: 0, correct: 0, answers: [] }, feedback: null, announcement: '' };
+  return { order: [], boss: { step: 0, correct: 0, answers: [] }, codeSource: null, codeReport: null, feedback: null, announcement: '' };
 }
 
 function saveActiveRun() {
@@ -580,6 +624,7 @@ function renderIntegrity(value) {
 
 function controlHint(challenge) {
   if (challenge.type === 'order') return 'Select steps in order. Select a placed step to remove it.';
+  if (challenge.type === 'code') return 'Write code, run the tests, inspect failures, and iterate. Ctrl/⌘ + Enter runs tests.';
   if (challenge.type === 'input' || challenge.type === 'boss' && challenge.steps[encounter.boss.step]?.type === 'input') return 'Type your answer and press Enter.';
   return 'Press 1–4 or select an answer. The timer keeps moving.';
 }

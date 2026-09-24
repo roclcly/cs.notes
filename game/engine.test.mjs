@@ -15,9 +15,10 @@ import {
   updateSaveAfterRun,
 } from './engine.mjs';
 import { AUTHORED_CHALLENGES, createChallengePool } from './content.mjs';
+import { evaluateJavaScriptSource, evaluateStaticCode } from './code-runner.mjs';
 
-test('ships at least 56 reviewed, uniquely identified challenges', () => {
-  assert.ok(AUTHORED_CHALLENGES.length >= 56);
+test('ships at least 68 reviewed, uniquely identified challenges', () => {
+  assert.ok(AUTHORED_CHALLENGES.length >= 68);
   assert.equal(new Set(AUTHORED_CHALLENGES.map((item) => item.id)).size, AUTHORED_CHALLENGES.length);
   for (const challenge of AUTHORED_CHALLENGES) assert.equal(isValidChallenge(challenge), true, challenge.id);
 });
@@ -43,6 +44,8 @@ test('selection is deterministic, unique, balanced and places bosses correctly',
   assert.equal(first.filter((item) => item.course === 'comp1521').length, 6);
   assert.equal(first.filter((item) => item.course === 'comp1531').length, 6);
   assert.deepEqual(first.map((item) => item.type === 'boss'), [false, false, false, true, false, false, false, true, false, false, false, true]);
+  assert.deepEqual(first.map((item, index) => item.type === 'code' ? index : -1).filter((index) => index >= 0), [1, 5, 10]);
+  assert.equal(new Set(first.filter((item) => item.type === 'code').map((item) => item.course)).size, 2);
 });
 
 test('course-specific runs stay in their course', () => {
@@ -50,6 +53,51 @@ test('course-specific runs stay in their course', () => {
   for (const course of ['comp1521', 'comp1531']) {
     const run = selectRunChallenges(pool, { course, seed: 9, mastery: {} });
     assert.ok(run.every((item) => item.course === course));
+    assert.equal(run.filter((item) => item.type === 'code').length, 3);
+  }
+});
+
+test('JavaScript code labs run visible test cases and detect mutation', () => {
+  const sum = AUTHORED_CHALLENGES.find((item) => item.id === '1531-code-positive-sum');
+  const passed = evaluateJavaScriptSource(sum, 'function sumPositive(numbers) { return numbers.filter((n) => n > 0).reduce((a, b) => a + b, 0); }');
+  assert.equal(passed.passed, true);
+  assert.equal(passed.results.length, 3);
+  const failed = evaluateJavaScriptSource(sum, 'function sumPositive(numbers) { numbers.sort(); return 0; }');
+  assert.equal(failed.passed, false);
+  assert.ok(failed.results.some((result) => !result.passed));
+});
+
+test('MIPS and C code labs report each authored structural check', () => {
+  const mips = AUTHORED_CHALLENGES.find((item) => item.id === '1521-code-mips-sum');
+  const source = `sum_to_n:\n  li $v0, 0\nloop:\n  add $v0, $v0, $a0\n  addi $a0, $a0, -1\n  bnez $a0, loop\n  jr $ra`;
+  const passed = evaluateStaticCode(mips, source);
+  assert.equal(passed.passed, true);
+  assert.equal(passed.results.length, mips.tests.length);
+  assert.equal(evaluateStaticCode(mips, 'jr $ra').passed, false);
+});
+
+test('every authored code lab has a reachable passing solution', () => {
+  const solutions = {
+    '1521-code-mips-sum': `sum_to_n:\n  li $v0, 0\nloop:\n  add $v0, $v0, $a0\n  addi $a0, $a0, -1\n  bnez $a0, loop\n  jr $ra`,
+    '1521-code-mips-frame': `work:\n  addi $sp, $sp, -4\n  sw $ra, 0($sp)\n  jal helper\n  lw $ra, 0($sp)\n  addi $sp, $sp, 4\n  jr $ra`,
+    '1521-code-mips-array': `load_item:\n  sll $t0, $a1, 2\n  add $t0, $a0, $t0\n  lw $v0, 0($t0)\n  jr $ra`,
+    '1521-code-set-bit': `unsigned set_bit(unsigned value, unsigned bit) { return value | (1u << bit); }`,
+    '1521-code-write-all': `ssize_t write_all(int fd, const void *buf, size_t count) { size_t written = 0; while (written < count) { ssize_t n = write(fd, (const char *)buf + written, count - written); if (n < 0) return -1; written += n; } return written; }`,
+    '1521-code-pipe-close': `if (pid == 0) { char buffer[128]; close(pipefd[1]); read(pipefd[0], buffer, sizeof buffer); close(pipefd[0]); }`,
+    '1531-code-positive-sum': `function sumPositive(numbers) { return numbers.reduce((sum, n) => n > 0 ? sum + n : sum, 0); }`,
+    '1531-code-normalise-user': `function normaliseUser(user) { return { ...user, email: user.email.trim().toLowerCase() }; }`,
+    '1531-code-is-valid-name': `function isValidName(name) { if (typeof name !== 'string') return false; const n = name.trim().length; return n >= 2 && n <= 40; }`,
+    '1531-code-find-by-id': `function findById(items, id) { return items.find((item) => item.id === id) ?? null; }`,
+    '1531-code-http-class': `function httpClass(status) { if (status >= 200 && status < 300) return 'success'; if (status >= 400 && status < 500) return 'client'; if (status >= 500 && status < 600) return 'server'; return 'other'; }`,
+    '1531-code-authorise': `function canEdit(session, record) { return session?.userId === record.ownerId; }`,
+  };
+  const labs = AUTHORED_CHALLENGES.filter((item) => item.type === 'code');
+  assert.equal(labs.length, 12);
+  for (const lab of labs) {
+    const result = lab.language === 'javascript'
+      ? evaluateJavaScriptSource(lab, solutions[lab.id])
+      : evaluateStaticCode(lab, solutions[lab.id]);
+    assert.equal(result.passed, true, `${lab.id}: ${JSON.stringify(result.results)}`);
   }
 });
 
