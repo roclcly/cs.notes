@@ -460,7 +460,7 @@
     <div class="dropdown" id="subjectsMenu" role="menu">
       <a href="#/comp1521" role="menuitem">COMP1521 <span class="tag">18 lectures</span></a>
       <a href="#/comp1531" role="menuitem">COMP1531 <span class="tag">15 lectures</span></a>
-      <a href="#/comp2521" role="menuitem">COMP2521 <span class="tag">13 lectures</span></a>
+      <a href="#/comp2521" role="menuitem">COMP2521 <span class="tag">14 lectures</span></a>
     </div>
   </div>
   <a class="game-nav-link" href="#/game">STACKRAID</a>
@@ -566,6 +566,7 @@
           <a href="#/c25w7l2" data-nav="c25w7l2">Lecture 2 &mdash; Cycles, closure, Dijkstra recap, minimum spanning trees</a>
           <div class="lvl">Week 8</div>
           <a href="#/c25w8l1" data-nav="c25w8l1">Lecture 1 &mdash; MSTs finished, the Map ADT, hash tables</a>
+          <a href="#/c25w8l2" data-nav="c25w8l2">Lecture 2 &mdash; Hash tables in practice: sets, counters, problems</a>
         </div>
       </details>
       <div class="lvl" style="margin-top:14px">More subjects</div>
@@ -595,7 +596,7 @@
       <a class="subject-card" href="#/comp2521">
         <div class="sc-code">COMP2521</div>
         <div class="sc-name">Data Structures and Algorithms</div>
-        <div class="sc-meta">26T3 &middot; Weeks 1&ndash;8 &middot; 13 lectures</div>
+        <div class="sc-meta">26T3 &middot; Weeks 1&ndash;8 &middot; 14 lectures</div>
       </a>
       <a class="subject-card" href="#/game">
         <div class="sc-code">STACKRAID</div>
@@ -38766,6 +38767,12 @@ submit <span class="sy-t">--list</span></pre>
         <div class="lc-desc">The opening quiz (<b>BFS, Dijkstra or Prim?</b> and Dijkstra part-way through); why the MST is minimum and when it&rsquo;s unique; Kruskal&rsquo;s shrinking forest; Prim with <b>in/out</b> sets; global vs local. Then the <b>Map ADT</b> four ways, the slides&rsquo; <b>hash functions</b> side by side, hashing for passwords, checksums and mining, and the whole Hash Tables deck: collisions, <b>separate chaining, linear probing, double hashing</b>, tombstones and backshift, Knuth&rsquo;s costs, resizing.</div>
         <div class="lc-widgets">which-algorithm quiz &middot; Dijkstra mid-run &middot; cycle property &middot; shrinking forest &middot; in/out Prim &middot; global vs local &middot; map four ways &middot; hash function lab &middot; fingerprints, ROT13, mining &middot; birthday collisions &middot; collision resolution lab &middot; probe costs &middot; resizing &middot; quiz &middot; flashcards</div>
       </a>
+      <a class="lec-card" href="#/c25w8l2">
+        <div class="lc-tag">Lecture 2 &middot; Thursday lecture + Applications of Hash Tables</div>
+        <div class="lc-title">Hash tables at work: why keys are stored, what goes wrong, and sets, counters and three puzzles in O(n)</div>
+        <div class="lc-desc">Why each slot stores the <b>key</b> (100 vs 10 under % 10); the live-coded map; zIDs as good and bad hashes; the room&rsquo;s <b>mod-11 table</b> where deleting 26 hides 7, fixed by tombstones or backfill; random seeds against <b>hash flooding</b>. Then <b>sets and counters</b> on hash tables, and <b>two sum, odd-occurring elements and anagrams</b> in O(n), with every slide example, plus a Python dict console.</div>
+        <div class="lc-widgets">store-the-key demo &middot; zID hash histogram &middot; room&rsquo;s mod-11 stepper &middot; hash flooding &middot; set/counter table &middot; cost table &middot; two sum &middot; odd occurring &middot; anagram &middot; dict console &middot; quiz &middot; flashcards</div>
+      </a>
     </div>
     <p style="color:var(--ink-faint);margin-top:22px"><span class="tba-badge">TBA</span> &nbsp;Weeks 1&ndash;10 continue here as transcripts and slides arrive. Assignment 1 (trees) is released in week 4 and Assignment 2 (graphs) in week 7.</p>
   </div></section>
@@ -56822,6 +56829,818 @@ v = HashTableGetOrDefault(ht, key, 0);
   </script>
 
 
+  <section class="route c25" data-route="c25w8l2">
+  <style>
+    /* ---------- scoped: COMP2521 W5L1 ---------- */
+    [data-route="c25w8l2"] .room{border-left:3px solid var(--amber); padding:2px 0 2px 14px; margin:14px 0}
+    [data-route="c25w8l2"] .room .rt{font-family:"Space Mono",monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--amber); margin-bottom:4px}
+    [data-route="c25w8l2"] .screen code{background:#15211d; color:#f0dfb4; border:none}
+    [data-route="c25w8l2"] .thu{display:inline-block; font-family:"Space Mono",monospace; font-size:10.5px; padding:2px 8px; border-radius:20px; border:1px solid var(--violet); color:var(--violet); vertical-align:middle; margin-left:6px; font-weight:400; letter-spacing:.02em}
+    [data-route="c25w8l2"] .back{display:inline-block; font-family:"Space Mono",monospace; font-size:10.5px; padding:2px 8px; border-radius:20px; border:1px solid var(--green-dim); color:var(--green-dim); vertical-align:middle; margin-left:6px; font-weight:400; text-decoration:none; letter-spacing:.02em}
+    [data-route="c25w8l2"] .gt-wrap{overflow-x:auto; border:1px solid #1d2b26; border-radius:10px; background:#050807; padding:4px 6px}
+    [data-route="c25w8l2"] .gt{width:100%; border-collapse:collapse; font-family:"Space Mono",monospace; font-size:11.5px; color:#cfe8d8; margin:0}
+    [data-route="c25w8l2"] .gt th,[data-route="c25w8l2"] .gt td{padding:5px 7px; border-bottom:1px solid #1d2b26; text-align:right; white-space:nowrap}
+    [data-route="c25w8l2"] .gt th{color:#6f9a85; font-weight:400; font-size:10.5px}
+    [data-route="c25w8l2"] .gt td:first-child,[data-route="c25w8l2"] .gt th:first-child{text-align:left}
+    [data-route="c25w8l2"] .gt .ok{color:var(--green-bright)} [data-route="c25w8l2"] .gt .bad{color:var(--coral)} [data-route="c25w8l2"] .gt .hl{color:var(--amber)} [data-route="c25w8l2"] .gt .dim{color:#5e8472}
+    [data-route="c25w8l2"] .gt .barc{width:30%; text-align:left}
+    [data-route="c25w8l2"] .gt .barc span{display:block; height:9px; border-radius:4px; background:var(--amber); min-width:2px}
+    [data-route="c25w8l2"] .gt .barc span.g{background:var(--green-dim)} [data-route="c25w8l2"] .gt .barc span.b{background:var(--coral)}
+    [data-route="c25w8l2"] .impl{display:grid; gap:12px; grid-template-columns:minmax(0,1fr)}
+    @media(min-width:860px){ [data-route="c25w8l2"] .impl{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} [data-route="c25w8l2"] .impl.three{grid-template-columns:repeat(3,minmax(0,1fr))} [data-route="c25w8l2"] .impl.wide{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)} }
+    [data-route="c25w8l2"] .ipanel{background:#0a100e; border:1px solid #233530; border-radius:12px; padding:10px 12px; min-width:0}
+    [data-route="c25w8l2"] .ipanel .ih{font-family:"Space Mono",monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:#8fb6a3; margin-bottom:8px}
+    [data-route="c25w8l2"] .ipanel .ih span{color:#5e8472; text-transform:none; letter-spacing:0}
+    [data-route="c25w8l2"] .ipanel .res{font-family:"Space Mono",monospace; font-size:12px; color:#a8ccb7; margin-top:8px; line-height:1.6; word-break:break-word}
+    [data-route="c25w8l2"] .ipanel .res b{color:var(--green-bright)} [data-route="c25w8l2"] .ipanel .res i{font-style:normal; color:var(--coral)} [data-route="c25w8l2"] .ipanel .res em{font-style:normal; color:var(--amber)}
+    [data-route="c25w8l2"] .seq{display:flex; flex-wrap:wrap; gap:4px; min-height:32px; padding:6px; background:#050807; border:1px solid #1d2b26; border-radius:10px; margin:6px 0}
+    [data-route="c25w8l2"] .seq span{font-family:"Space Mono",monospace; font-size:12.5px; font-weight:700; padding:3px 8px; border-radius:6px; background:#123020; border:1px solid var(--green-dim); color:var(--green-bright)}
+    [data-route="c25w8l2"] .seq span.last{background:#3b2d0c; border-color:var(--amber); color:#f6e2b4}
+    [data-route="c25w8l2"] .seq span.alt{background:#1c1730; border-color:var(--violet); color:#d9cffb}
+    [data-route="c25w8l2"] .seq .none{font-family:"Space Mono",monospace; font-size:11px; color:#3f5e52; background:none; border:none; font-weight:400}
+    [data-route="c25w8l2"] .d-svg.tr svg{max-width:760px; margin:0 auto}
+    [data-route="c25w8l2"] .ipanel .d-svg{border:none; padding:0; background:none}
+    [data-route="c25w8l2"] svg .nd.warn{stroke:var(--amber); stroke-width:3; stroke-dasharray:4 3; fill:#241d0e}
+    [data-route="c25w8l2"] svg .nd.sel{stroke:#eaf6ee; stroke-width:3.4; fill:#1f2d28}
+    [data-route="c25w8l2"] svg .nd.ghost{opacity:.3}
+    [data-route="c25w8l2"] svg .nd.slot{fill:none; stroke:#4f6b60; stroke-dasharray:3 3; cursor:pointer}
+    [data-route="c25w8l2"] svg .nd.slot.ok{stroke:var(--green-bright); stroke-dasharray:none; fill:#123020}
+    [data-route="c25w8l2"] svg .nd.slot.no{stroke:var(--coral); fill:#2c140e}
+    [data-route="c25w8l2"] svg .nd.op{fill:#15202a; stroke:#6aa0c0}
+    [data-route="c25w8l2"] .layers{display:grid; gap:8px; grid-template-columns:minmax(0,1fr); margin:12px 0}
+    @media(min-width:760px){ [data-route="c25w8l2"] .layers{grid-template-columns:repeat(4,minmax(0,1fr))} }
+    [data-route="c25w8l2"] .layers > div{background:var(--paper-2); border:1px solid var(--line); border-radius:12px; padding:11px 13px; position:relative}
+    [data-route="c25w8l2"] .layers > div b{font-family:"Space Grotesk",sans-serif; display:block; font-size:15px}
+    [data-route="c25w8l2"] .layers > div .sw{font-family:"Space Mono",monospace; font-size:11.5px; color:var(--amber-dim); margin:3px 0 5px}
+    [data-route="c25w8l2"] .layers > div span{font-size:14px; color:var(--ink-soft)}
+    [data-route="c25w8l2"] .layers > div.k{background:#15110b; color:#e9e2cf; border-color:#15110b} [data-route="c25w8l2"] .layers > div.k span{color:#cdbfa3}
+    [data-route="c25w8l2"] .game{font-family:"Space Grotesk",sans-serif; font-size:18px; font-weight:700; color:#eaf6ee; margin:2px 0 8px}
+    [data-route="c25w8l2"] .game small{font-size:13px; color:#8fb6a3; font-weight:500; margin-left:8px}
+    [data-route="c25w8l2"] .tmpl td.on{background:rgba(224,163,46,.16); font-weight:700}
+    [data-route="c25w8l2"] details.sol{background:var(--paper-2); border:1px solid var(--line); border-radius:11px; padding:0 14px; margin:10px 0}
+    [data-route="c25w8l2"] details.sol>summary{cursor:pointer; padding:11px 0; font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:15px}
+    [data-route="c25w8l2"] .bag{display:flex; flex-wrap:wrap; gap:4px; min-height:36px; align-content:flex-start}
+    [data-route="c25w8l2"] .bag span{font-family:"Space Mono",monospace; font-size:12.5px; font-weight:700; padding:5px 8px; border-radius:7px; background:#15211d; border:1.5px solid #2c4239; color:#eaf6ee}
+    [data-route="c25w8l2"] .bag span.hot{border-color:var(--amber); background:#3b2d0c}
+    [data-route="c25w8l2"] .bag .none{font-family:"Space Mono",monospace; font-size:11px; color:#3f5e52; background:none; border:none; font-weight:400}
+  </style>
+  <style>
+    /* ---------- scoped: COMP2521 W5L1 extras ---------- */
+    [data-route="c25w8l2"] .mx{border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; margin:0 auto}
+    [data-route="c25w8l2"] .mx td,[data-route="c25w8l2"] .mx th{width:26px; height:26px; text-align:center; border:1px solid #1d2b26; padding:0}
+    [data-route="c25w8l2"] .mx th{color:#6f9a85; font-weight:400; font-size:10.5px; border:none}
+    [data-route="c25w8l2"] .mx td{color:#3f5e52; cursor:pointer; background:#0a100e}
+    [data-route="c25w8l2"] .mx td.on{color:#06120c; background:var(--green-dim); font-weight:700}
+    [data-route="c25w8l2"] .mx td.diag{background:#050807; cursor:default}
+    [data-route="c25w8l2"] .mx td.hit{outline:2px solid var(--amber); outline-offset:-2px}
+    [data-route="c25w8l2"] .alist{font-family:"Space Mono",monospace; font-size:12px; line-height:1.9; color:#cfe8d8}
+    [data-route="c25w8l2"] .alist b{display:inline-block; width:30px; color:#6f9a85; font-weight:400}
+    [data-route="c25w8l2"] .alist span{display:inline-block; padding:0 6px; margin-right:3px; border:1px solid #2c4239; border-radius:5px; background:#101a17}
+    [data-route="c25w8l2"] .alist span.hit{border-color:var(--amber); background:#3b2d0c}
+    [data-route="c25w8l2"] .alist span.walk{border-color:var(--blue)}
+    [data-route="c25w8l2"] .flow{display:grid; gap:6px; font-family:"Space Mono",monospace; font-size:12px}
+    [data-route="c25w8l2"] .flow div{padding:7px 10px; border:1px solid #2c4239; border-radius:9px; color:#6f9a85; background:#0a100e}
+    [data-route="c25w8l2"] .flow div.on{border-color:var(--amber); color:#f6e2b4; background:#241d0e}
+    [data-route="c25w8l2"] .flow div.act{border-color:var(--green-dim); color:var(--green-bright); background:#0f2219}
+    [data-route="c25w8l2"] .flow div.off{opacity:.35}
+    [data-route="c25w8l2"] .cases{display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 10px}
+    [data-route="c25w8l2"] svg .ndh{font-family:"Space Mono",monospace; font-size:9.5px}
+    [data-route="c25w8l2"] .comp{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:5px; vertical-align:middle}
+  </style>
+  <style>
+    /* ---------- scoped: COMP2521 W8L2 extras ---------- */
+    [data-route="c25w8l2"] .arrs{width:100%; border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8}
+    [data-route="c25w8l2"] .arrs th,[data-route="c25w8l2"] .arrs td{padding:4px 5px; border:1px solid #1d2b26; text-align:center; min-width:22px}
+    [data-route="c25w8l2"] .arrs th{color:#6f9a85; font-weight:400; font-size:10.5px; background:#050807}
+    [data-route="c25w8l2"] .arrs td.lab{text-align:left; color:#8fb6a3}
+    [data-route="c25w8l2"] .arrs td.on{background:#123020; color:var(--green-bright); font-weight:700}
+    [data-route="c25w8l2"] .arrs td.ch{background:#3b2d0c; color:#f6e2b4; font-weight:700}
+    [data-route="c25w8l2"] .arrs td.c0{background:#123020; color:#b9f5c4} [data-route="c25w8l2"] .arrs td.c1{background:#2c140e; color:#f5c2b5} [data-route="c25w8l2"] .arrs td.c2{background:#0f1c26; color:#bcd4ff} [data-route="c25w8l2"] .arrs td.c3{background:#241d0e; color:#f6e2b4}
+    [data-route="c25w8l2"] .mx{border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; margin:0 auto}
+    [data-route="c25w8l2"] .mx td,[data-route="c25w8l2"] .mx th{min-width:28px; height:26px; text-align:center; border:1px solid #1d2b26; padding:0 3px}
+    [data-route="c25w8l2"] .mx th{color:#6f9a85; font-weight:400; font-size:10.5px; border:none}
+    [data-route="c25w8l2"] .mx td{color:#3f5e52; cursor:pointer; background:#0a100e}
+    [data-route="c25w8l2"] .mx td.on{color:#06120c; background:var(--green-dim); font-weight:700}
+    [data-route="c25w8l2"] .mx td.hit{outline:2px solid var(--amber); outline-offset:-2px}
+    [data-route="c25w8l2"] .mx td.amb{color:#f6e2b4; background:#3b2d0c; font-weight:700}
+    [data-route="c25w8l2"] .alist{font-family:"Space Mono",monospace; font-size:12px; line-height:1.95; color:#cfe8d8}
+    [data-route="c25w8l2"] .alist b{display:inline-block; width:34px; color:#6f9a85; font-weight:400}
+    [data-route="c25w8l2"] .alist span{display:inline-block; padding:0 6px; margin-right:3px; border:1px solid #2c4239; border-radius:5px; background:#101a17}
+    [data-route="c25w8l2"] .alist span.hit{border-color:var(--amber); background:#3b2d0c}
+    [data-route="c25w8l2"] .alist span.walk{border-color:var(--blue); background:#0f1c26}
+    [data-route="c25w8l2"] .alist i{font-style:normal; color:#3f5e52}
+    [data-route="c25w8l2"] .cost{font-family:"Space Mono",monospace; font-size:11.5px; color:#8fb6a3; margin-top:8px; line-height:1.6}
+    [data-route="c25w8l2"] .cost b{color:var(--amber)}
+    [data-route="c25w8l2"] .mem{display:flex; flex-wrap:wrap; gap:14px; align-items:flex-start; margin:8px 0}
+    [data-route="c25w8l2"] .mem .box{font-family:"Space Mono",monospace; font-size:12px; border:1.5px solid #2c4239; border-radius:9px; background:#101a17; padding:8px 10px; min-width:150px; color:#cfe8d8}
+    [data-route="c25w8l2"] .mem .box .ad{font-size:10.5px; color:#6f9a85; margin-bottom:4px}
+    [data-route="c25w8l2"] .mem .box.a{border-color:var(--blue)} [data-route="c25w8l2"] .mem .box.b{border-color:var(--violet)}
+    [data-route="c25w8l2"] .cmpr{width:100%; border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8; margin-top:6px}
+    [data-route="c25w8l2"] .cmpr td{padding:6px 8px; border-bottom:1px solid #1d2b26; vertical-align:top}
+    [data-route="c25w8l2"] .cmpr td.t{color:var(--green-bright); font-weight:700} [data-route="c25w8l2"] .cmpr td.f{color:var(--coral); font-weight:700}
+    [data-route="c25w8l2"] .cave{display:grid; gap:3px; margin:0 auto; width:max-content}
+    [data-route="c25w8l2"] .cave div{width:44px; height:44px; border-radius:6px; background:#191512; position:relative; font-family:"Space Mono",monospace; font-size:10.5px; color:#6f9a85; display:flex; align-items:center; justify-content:center; user-select:none}
+    [data-route="c25w8l2"] .cave div.o{background:#0f1714; border:1px solid #2c4239; cursor:pointer}
+    [data-route="c25w8l2"] .cave div.seen{background:#123020; border-color:var(--green-dim); color:#b9f5c4}
+    [data-route="c25w8l2"] .cave div.front{background:#0f1c26; border-color:var(--blue); color:#bcd4ff}
+    [data-route="c25w8l2"] .cave div.cur{background:#3b2d0c; border-color:var(--amber); color:#f6e2b4; font-weight:700}
+    [data-route="c25w8l2"] .cave div.route{box-shadow:inset 0 0 0 3px var(--amber)}
+    [data-route="c25w8l2"] .cave div.tie{outline:2px dashed var(--violet); outline-offset:-5px}
+    [data-route="c25w8l2"] .cave div .ic{position:absolute; top:1px; left:3px; font-size:13px}
+    [data-route="c25w8l2"] .cave div .ar{position:absolute; bottom:0; right:3px; font-size:13px; color:var(--green-bright)}
+    [data-route="c25w8l2"] .cave div .nm{font-size:11px}
+    [data-route="c25w8l2"] .legend{display:flex; flex-wrap:wrap; gap:12px; font-family:"Space Mono",monospace; font-size:11px; color:#8fb6a3; margin:8px 0 2px}
+    [data-route="c25w8l2"] .legend i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:5px; vertical-align:-2px}
+    [data-route="c25w8l2"] .bars{display:grid; gap:7px; margin:8px 0}
+    [data-route="c25w8l2"] .bars .br{display:grid; grid-template-columns:150px minmax(0,1fr) 120px; gap:10px; align-items:center; font-family:"Space Mono",monospace; font-size:11.5px; color:#cfe8d8}
+    [data-route="c25w8l2"] .bars .br .tr{background:#050807; border:1px solid #1d2b26; border-radius:5px; height:14px; overflow:hidden}
+    [data-route="c25w8l2"] .bars .br .tr span{display:block; height:100%; background:var(--green-dim)}
+    [data-route="c25w8l2"] .bars .br .tr span.w{background:var(--coral)} [data-route="c25w8l2"] .bars .br .tr span.m{background:var(--amber)}
+    [data-route="c25w8l2"] .bars .br .v{text-align:right; color:#eaf6ee}
+    [data-route="c25w8l2"] .sorter{display:grid; gap:7px; grid-template-columns:minmax(0,1fr)}
+    @media(min-width:760px){ [data-route="c25w8l2"] .sorter{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} }
+    [data-route="c25w8l2"] .sorter .it{display:flex; gap:8px; align-items:center; justify-content:space-between; padding:8px 10px; background:#0a100e; border:1px solid #233530; border-radius:10px; color:#cfe8d8; font-size:14px}
+    [data-route="c25w8l2"] .sorter .it .d-btns{margin:0; flex:none}
+    [data-route="c25w8l2"] .sorter .it.ok{border-color:var(--green-dim)} [data-route="c25w8l2"] .sorter .it.no{border-color:var(--coral)}
+    [data-route="c25w8l2"] .sorter .it .why{display:block; font-size:12.5px; color:#8fb6a3; margin-top:4px}
+    [data-route="c25w8l2"] .isomap{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0}
+    [data-route="c25w8l2"] .isomap label{font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8; display:flex; align-items:center; gap:4px}
+    [data-route="c25w8l2"] .isomap select{background:#0a100e; color:#eaf6ee; border:1px solid #2c4239; border-radius:6px; font-family:"Space Mono",monospace; padding:3px}
+    [data-route="c25w8l2"] svg .ed.out{stroke:var(--green-bright); stroke-width:3}
+    [data-route="c25w8l2"] svg .ed.in{stroke:var(--amber); stroke-width:3}
+    [data-route="c25w8l2"] svg .ed.off{stroke:#24332e; stroke-dasharray:3 4}
+    [data-route="c25w8l2"] svg .nd.c0{fill:#123020; stroke:#7ee787; stroke-width:3}
+    [data-route="c25w8l2"] svg .nd.c1{fill:#2c140e; stroke:#e0654a; stroke-width:3}
+    [data-route="c25w8l2"] svg .nd.c2{fill:#0f1c26; stroke:#6aa0ff; stroke-width:3}
+    [data-route="c25w8l2"] svg .nd.c3{fill:#241d0e; stroke:#e0a32e; stroke-width:3}
+    [data-route="c25w8l2"] svg .nd.c4{fill:#1c1730; stroke:#b59cff; stroke-width:3}
+    [data-route="c25w8l2"] svg .nd.sel{stroke:#eaf6ee; stroke-width:3.4; fill:#1f2d28}
+    [data-route="c25w8l2"] svg .nd.dim{opacity:.35}
+    [data-route="c25w8l2"] svg text.lb{font-family:"Space Mono",monospace; font-size:13px; fill:#eaf6ee; text-anchor:middle; dominant-baseline:central; font-weight:700; pointer-events:none}
+    [data-route="c25w8l2"] .verdict{font-family:"Space Mono",monospace; font-size:12.5px; padding:8px 11px; border-radius:9px; margin:8px 0; border:1px solid #2c4239; background:#0c1512; color:#cfe8d8}
+    [data-route="c25w8l2"] .verdict.ok{border-color:var(--green-dim); color:var(--green-bright)} [data-route="c25w8l2"] .verdict.no{border-color:var(--coral); color:#f5c2b5}
+  </style>
+  <style>
+    [data-route="c25w8l2"] .maze{display:grid; gap:0; margin:0 auto; width:max-content; border:2px solid #4d6a5f}
+    [data-route="c25w8l2"] .maze div{width:22px; height:22px; box-sizing:border-box; background:#0f1714; font-family:"Space Mono",monospace; font-size:9px; color:#6f9a85; display:flex; align-items:center; justify-content:center}
+    [data-route="c25w8l2"] .maze div.seen{background:#123020} [data-route="c25w8l2"] .maze div.route{background:#3b2d0c} [data-route="c25w8l2"] .maze div.cur{background:var(--amber)}
+    [data-route="c25w8l2"] .maze div.st{background:#0f1c26; color:#bcd4ff; font-weight:700} [data-route="c25w8l2"] .maze div.ex{background:#2c140e; color:#f5c2b5; font-weight:700}
+    [data-route="c25w8l2"] .relax{display:grid; gap:10px; grid-template-columns:minmax(0,1fr)}
+    @media(min-width:760px){ [data-route="c25w8l2"] .relax{grid-template-columns:repeat(3,minmax(0,1fr))} }
+    [data-route="c25w8l2"] .relax label{font-family:"Space Mono",monospace; font-size:12px; color:#8fb6a3; display:flex; gap:6px; align-items:center}
+    [data-route="c25w8l2"] .relax input{width:70px}
+  </style>
+  <style>
+    [data-route="c25w8l2"] .mx td.miss{color:#f5c2b5; background:#2c140e; outline:2px dashed var(--coral); outline-offset:-3px}
+    [data-route="c25w8l2"] svg .ed.aa{stroke:var(--blue); stroke-width:3.2}
+    [data-route="c25w8l2"] .mx td.diag{box-shadow:inset 0 0 0 1px #2c4239}
+    [data-route="c25w8l2"] .mxrow{display:flex; flex-wrap:wrap; gap:18px; justify-content:center; align-items:flex-start}
+    [data-route="c25w8l2"] .mxrow .cap{font-family:"Space Mono",monospace; font-size:11px; color:#8fb6a3; text-align:center; margin-bottom:4px}
+    [data-route="c25w8l2"] .elist{width:100%; border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8}
+    [data-route="c25w8l2"] .elist td,[data-route="c25w8l2"] .elist th{padding:3px 7px; border-bottom:1px solid #1d2b26; text-align:left}
+    [data-route="c25w8l2"] .elist th{color:#6f9a85; font-weight:400; font-size:10.5px}
+    [data-route="c25w8l2"] .elist tr.cur td{background:#3b2d0c; color:#f6e2b4}
+    [data-route="c25w8l2"] .elist td.add{color:var(--green-bright); font-weight:700} [data-route="c25w8l2"] .elist td.rej{color:var(--coral)} [data-route="c25w8l2"] .elist td.nn{color:#3f5e52}
+    [data-route="c25w8l2"] .stk{display:flex; flex-direction:column-reverse; gap:4px; font-family:"Space Mono",monospace; font-size:12px}
+    [data-route="c25w8l2"] .stk div{border:1px solid #2c4239; border-radius:6px; background:#101a17; padding:4px 8px; color:#cfe8d8}
+    [data-route="c25w8l2"] .stk div.top{border-color:var(--amber); background:#3b2d0c; color:#f6e2b4}
+    [data-route="c25w8l2"] .stk div i{font-style:normal; color:#6f9a85}
+    [data-route="c25w8l2"] .stk .none{border:none; background:none; color:#3f5e52}
+    [data-route="c25w8l2"] .echips{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0}
+    [data-route="c25w8l2"] .echips button{font-family:"Space Mono",monospace; font-size:12px; background:#0a100e; color:#cfe8d8; border:1px solid #2c4239; border-radius:7px; padding:4px 8px; cursor:pointer}
+    [data-route="c25w8l2"] .echips button.on{background:#123020; border-color:var(--green-bright); color:var(--green-bright); font-weight:700}
+    [data-route="c25w8l2"] .xg{border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8; margin:6px 0}
+    [data-route="c25w8l2"] .xg td{padding:3px 6px; border:1px solid #1d2b26; text-align:center; min-width:34px}
+    [data-route="c25w8l2"] .xg td.lab{text-align:left; color:#8fb6a3; border:none}
+    [data-route="c25w8l2"] .xg td.k{background:#123020; color:var(--green-bright)} [data-route="c25w8l2"] .xg td.a{background:#0f1c26; color:#bcd4ff}
+    [data-route="c25w8l2"] .xg td.e{outline:2px solid var(--amber); outline-offset:-2px} [data-route="c25w8l2"] .xg td.x{background:#2c140e; color:#f5c2b5; text-decoration:line-through}
+    [data-route="c25w8l2"] .two{display:grid; gap:14px; grid-template-columns:minmax(0,1fr)}
+    @media(min-width:760px){ [data-route="c25w8l2"] .two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} }
+    [data-route="c25w8l2"] .two .cap{font-family:"Space Mono",monospace; font-size:12px; color:#8fb6a3; margin-bottom:4px}
+  </style>
+  <style>
+    [data-route="c25w8l2"] .ht{display:flex; flex-wrap:wrap; gap:4px; margin:8px 0}
+    [data-route="c25w8l2"] .ht .sl{min-width:46px; border:1px solid #2c4239; border-radius:7px; background:#0a100e; font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8; text-align:center; overflow:hidden}
+    [data-route="c25w8l2"] .ht .sl .ix{font-size:10px; color:#6f9a85; background:#050807; padding:2px 0; border-bottom:1px solid #1d2b26}
+    [data-route="c25w8l2"] .ht .sl .v{padding:6px 4px; min-height:18px}
+    [data-route="c25w8l2"] .ht .sl .v.e{color:#3f5e52}
+    [data-route="c25w8l2"] .ht .sl .v.del{color:#f5c2b5; background:#2c140e}
+    [data-route="c25w8l2"] .ht .sl .ch{display:block; margin:3px 4px; padding:2px 3px; border:1px solid #2c4239; border-radius:5px; background:#101a17}
+    [data-route="c25w8l2"] .ht .sl.pr{border-color:var(--amber); box-shadow:0 0 0 1px var(--amber)} [data-route="c25w8l2"] .ht .sl.pr .ix{color:var(--amber)}
+    [data-route="c25w8l2"] .ht .sl.hit{border-color:var(--green-bright); box-shadow:0 0 0 2px var(--green-bright)}
+    [data-route="c25w8l2"] .ht .sl.miss{border-color:var(--coral); box-shadow:0 0 0 2px var(--coral)}
+    [data-route="c25w8l2"] .ht .ch.hit{border-color:var(--green-bright); color:var(--green-bright)} [data-route="c25w8l2"] .ht .ch.pr{border-color:var(--amber)}
+    [data-route="c25w8l2"] .ht .sl .pn{font-size:10px; color:var(--amber)}
+    [data-route="c25w8l2"] .mapv{display:flex; flex-wrap:wrap; gap:4px; margin:8px 0; font-family:"Space Mono",monospace; font-size:12px}
+    [data-route="c25w8l2"] .mapv .c{border:1px solid #2c4239; border-radius:7px; background:#0a100e; padding:4px 7px; color:#cfe8d8; text-align:center; min-width:58px}
+    [data-route="c25w8l2"] .mapv .c i{display:block; font-style:normal; font-size:10.5px; color:#6f9a85}
+    [data-route="c25w8l2"] .mapv .c.pr{border-color:var(--amber)} [data-route="c25w8l2"] .mapv .c.hit{border-color:var(--green-bright); box-shadow:0 0 0 1px var(--green-bright)} [data-route="c25w8l2"] .mapv .c.mv{border-color:var(--violet)}
+    [data-route="c25w8l2"] .mapv .lvl{width:100%; display:flex; justify-content:center; gap:6px}
+    [data-route="c25w8l2"] .hx{font-family:"Space Mono",monospace; font-size:12.5px; color:#cfe8d8; word-break:break-all}
+    [data-route="c25w8l2"] .hx b.d{color:var(--coral)}
+    [data-route="c25w8l2"] .inp{background:#0a100e; color:#eaf6ee; border:1px solid #2c4239; border-radius:6px; font-family:"Space Mono",monospace; padding:4px 6px; font-size:12px}
+    [data-route="c25w8l2"] textarea.inp{width:100%; min-height:54px}
+    [data-route="c25w8l2"] .logl{font-family:"Space Mono",monospace; font-size:11.5px; color:#8fb6a3; max-height:120px; overflow:auto; margin-top:6px; line-height:1.6}
+  </style>
+
+  <header>
+    <div class="wrap hero">
+      <div class="eyebrow">COMP2521 &middot; 26T3 &middot; Data Structures and Algorithms &middot; Week 8 &mdash; Lecture 2</div>
+      <h1>Hash tables at work: <span class="thin">why keys are stored, what goes wrong, and sets, counters and three puzzles in O(n)</span></h1>
+      <p class="lede">&ldquo;Where hash maps excel is when we start talking about the average case.&rdquo; The Thursday lecture of week 8 finished the Hash Tables deck in its own way. It covered why the slot stores the <b>key</b> as well as the value; a live-coded map interface; what makes a hash function good (zIDs: first three digits vs last three); the room&rsquo;s own mod-11 example worked by chaining and by linear probing, including a deletion that breaks a lookup; and break questions about random seeds, attackers and secret hash functions. Then the Applications deck: hash tables as <b>sets</b> and <b>counters</b>, and three interview-style problems (two sum, odd-occurring elements, anagrams) left for Monday.</p>
+      <div class="chips">
+        <span class="chip">store the key too</span>
+        <span class="chip">worst case vs average case</span>
+        <span class="chip">first three digits of a zID</span>
+        <span class="chip">26 sits in 7&rsquo;s slot</span>
+        <span class="chip">tombstone or backfill</span>
+        <span class="chip">random a and b</span>
+        <span class="chip">hash flooding</span>
+        <span class="chip">set = keys only</span>
+        <span class="chip">counter = key &rarr; count</span>
+        <span class="chip">two sum</span>
+        <span class="chip">odd occurring</span>
+        <span class="chip">anagram</span>
+        <span class="chip">Python dicts</span>
+        <span class="chip alt">transcript &middot; 1 deck (Applications of Hash Tables, 20 slides) &middot; recap of the Hash Tables deck</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <nav class="map" aria-label="Lecture sections">
+      <a href="#c25w8l2-open"><span class="n">01</span><span class="t">What this page covers</span></a>
+      <a href="#c25w8l2-key"><span class="n">02</span><span class="t">Why store the key?</span></a>
+      <a href="#c25w8l2-code"><span class="n">03</span><span class="t">The live-coded map</span></a>
+      <a href="#c25w8l2-zid"><span class="n">04</span><span class="t">Good hash, bad hash</span></a>
+      <a href="#c25w8l2-room"><span class="n">05</span><span class="t">The room&rsquo;s mod-11 table</span></a>
+      <a href="#c25w8l2-flood"><span class="n">06</span><span class="t">Random seeds and attackers</span></a>
+      <a href="#c25w8l2-set"><span class="n">07</span><span class="t">Sets and counters</span></a>
+      <a href="#c25w8l2-two"><span class="n">08</span><span class="t">Two sum</span></a>
+      <a href="#c25w8l2-odd"><span class="n">09</span><span class="t">Odd-occurring elements</span></a>
+      <a href="#c25w8l2-ana"><span class="n">10</span><span class="t">Anagrams</span></a>
+      <a href="#c25w8l2-py"><span class="n">11</span><span class="t">Python dictionaries</span></a>
+      <a href="#c25w8l2-chk"><span class="n">12</span><span class="t">Check yourself</span></a>
+    </nav>
+
+    <!-- 01 -->
+    <section class="sec" id="c25w8l2-open">
+      <div class="sec-eyebrow">Sources</div>
+      <h2>The rest of hash tables, then what they&rsquo;re for <span class="block-tag">(how this page is assembled)</span></h2>
+      <p class="sec-lead">The transcript is the <b>Thursday lecture of week 8</b>. Its first hour taught the rest of the <b>Hash Tables</b> deck: collisions, separate chaining, linear probing, deletion, clustering, Knuth&rsquo;s costs, double hashing and resizing. Those slides are covered on the <a href="#/c25w8l1">Week 8 Lecture 1 page</a> (the collision-resolution lab reproduces every worked example), so this page builds on what the room added. The last 20 minutes taught this lecture&rsquo;s own deck, <b>Applications of Hash Tables</b>, covered in full here. The three problems were set for the weekend, with solutions promised on Monday; this page lets you try them first and reveal the method when you&rsquo;re ready.</p>
+      <div class="d-props">
+        <div class="d-prop"><div class="pt">Thursday &middot; hash tables, again</div><div class="pc">transcript &middot; &sect;02&ndash;&sect;06</div><div class="pd">A map is a generalised array; map vs dictionary (&ldquo;there is none&rdquo;); why keys are stored; worst case vs average case; a live-coded Map.h and hash table; the four requirements for a hash function; zIDs; mod 11 with 4 8 15 16 23 42; chaining; the next free slot; 26 and 7; deleting 26; tombstones and backfill; clumping; &alpha;; double hashing; card collecting; break questions.</div></div>
+        <div class="d-prop"><div class="pt">Thursday &middot; the break</div><div class="pc">transcript &middot; &sect;06</div><div class="pd">String keys; random a and b chosen when a table is created (&ldquo;what Go does&rdquo;); attackers who pre-compute colliding inputs; DVD region codes and security through obscurity; the NSA and DES; RSA and factoring; one-time pads; hash functions in hardware.</div></div>
+        <div class="d-prop"><div class="pt">Applications of Hash Tables</div><div class="pc">20 slides &middot; &sect;07&ndash;&sect;11</div><div class="pd">Recap; Set ADT and its implementations; set as a hash table; Counter ADT and implementations; counter as a hash table; two sum; odd occurring elements; anagram; bonus: Python dictionaries.</div></div>
+        <div class="d-prop"><div class="pt">Already on the W8L1 page</div><div class="pc">Hash Tables slides 24&ndash;120</div><div class="pd">Separate chaining, linear and double hashing on every slide example; backshift and tombstones; clustering; Knuth&rsquo;s formulas (and three slips in the slides&rsquo; tables); resizing; GetOrDefault.</div></div>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="sec" id="c25w8l2-key">
+      <div class="sec-eyebrow">A question from last lecture</div>
+      <h2>&ldquo;Why do we need to store the key and the value, not just the value?&rdquo; <span class="block-tag">(transcript &middot; Xavier&rsquo;s question)</span></h2>
+      <p class="sec-lead">Because different keys can hash to the same slot. The room&rsquo;s example: h(x) = x % 10, insert key 100 with value 100. It lands in slot 0. Now look up key 10: it also hashes to 0, and a table that only stored values would hand back 100, &ldquo;instead of what it should be doing, saying no, 10 is not stored.&rdquo; Storing the key lets the lookup check that the slot really holds the key it was asked about.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">h(x) = x % 10 &mdash; with and without keys in the slots</span></div>
+        <div class="body">
+          <div class="d-row"><label class="d-stat"><input type="checkbox" id="c25w8l2-kyk" checked> slots store the key as well</label><label>key</label><input class="inp" id="c25w8l2-kyin" value="10" style="width:70px"><span class="d-btns" style="margin:0"><button id="c25w8l2-kyins">insert (value = key)</button><button id="c25w8l2-kyget" class="go">lookup</button><button id="c25w8l2-kyrs">reset to {100}</button></span></div>
+          <div class="ht" id="c25w8l2-kyt"></div>
+          <div class="d-out" id="c25w8l2-kyout"></div>
+        </div>
+      </div>
+      <div class="call note"><b>And then the real problem.</b> &ldquo;What happens now if I try to add 10 to this structure?&rdquo; Without a collision policy, insert just overwrites. &ldquo;This is where hash maps fall over and why &hellip; we don&rsquo;t tend to talk about the worst case behaviour&rdquo;: in the worst case every key collides and a hash table is &ldquo;no better than just storing things in a linked list.&rdquo; On average, insert, lookup and delete are O(1): &ldquo;if we did this n times, then the total time would be O(n).&rdquo;</div>
+    </section>
+
+    <!-- 03 -->
+    <section class="sec" id="c25w8l2-code">
+      <div class="sec-eyebrow">Live coding</div>
+      <h2>From Map.h to a hash table: &ldquo;going from the concepts to the code&rdquo; <span class="block-tag">(transcript)</span></h2>
+      <p class="sec-lead">The lecturer live-coded the skeleton, leaving <span class="mono">Key</span>, <span class="mono">Value</span> and the hash function abstract. The ADT is code-independent: &ldquo;I could do the same thing in any other programming language.&rdquo; The concrete hash table implements the same interface, so callers never know. A map is &ldquo;a generalised array&rdquo;: an array is a map whose keys happen to be the indices 0&hellip;n&minus;1. As for &ldquo;What&rsquo;s the difference between a map and a dictionary?&rdquo;, &ldquo;There is none.&rdquo;</p>
+      <div class="codecmp">
+        <div><div class="tcol-h">Map.h (the ADT)</div>
+<pre class="code">typedef struct map *Map;
+
+Map   MapNew(void);
+void  MapFree(Map m);
+
+// insert, or update the value if k exists
+void  MapInsert(Map m, Key k, Value v);
+
+// the value for k, if it exists
+Value MapLookup(Map m, Key k);
+
+// remove k and its value, if it exists
+void  MapDelete(Map m, Key k);</pre></div>
+        <div><div class="tcol-h">HashTable.c (the room&rsquo;s first attempt)</div>
+<pre class="code">#include "Map.h"
+
+struct keyValue { Key key; Value value; };
+
+struct map {                 // really a hash table
+    struct keyValue *slots;  // array of pairs
+    int numSlots;
+    ...                      // depends on collisions
+};
+
+int hash(Key k);             // defined later
+
+void MapInsert(Map m, Key k, Value v) {
+    int i = hash(k);
+    m-&gt;slots[i] = (struct keyValue){k, v};
+    // ...overwrites whatever was there:
+    // collisions still need handling
+}</pre></div>
+      </div>
+      <div class="call tip"><b>The lecturer&rsquo;s advice, again.</b> &ldquo;Try and do this stuff yourself &hellip; I&rsquo;ll start implementing something and I&rsquo;ll go, oh yeah, I know I&rsquo;m gonna need this variable later on &hellip; and I might not mention why.&rdquo; Finish this file yourself, with chaining or probing, as practice for the exam.</div>
+    </section>
+
+    <!-- 04 -->
+    <section class="sec" id="c25w8l2-zid">
+      <div class="sec-eyebrow">Hash functions &middot; the room&rsquo;s criteria</div>
+      <h2>In range, deterministic, cheap, uniform: and why the first three digits of a zID fail <span class="block-tag">(transcript)</span></h2>
+      <p class="sec-lead">Necessary: the result is in [0, N &minus; 1], and the function is <b>deterministic</b>. &ldquo;It&rsquo;s no good to throw in a random number&rdquo; at hash time, though a random number may be chosen once, when the function is set up. Desirable: <b>O(1)</b> (&ldquo;some modular arithmetic, some additions, some multiplications&rdquo;) and <b>uniform</b>. &ldquo;Take your zIDs and a hash function that takes the first three digits. That&rsquo;s gonna be a terrible hash function, because most of your zIDs start with 5.&rdquo; The last three digits are &ldquo;roughly spread out evenly.&rdquo;</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">hash a class of zIDs into 1000 slots</span></div>
+        <div class="body">
+          <div class="d-row"><label>students</label><input type="range" id="c25w8l2-zn" min="50" max="1000" step="50" value="400"><span class="d-stat" id="c25w8l2-znv"></span><span class="d-btns" id="c25w8l2-zf" style="margin:0"><button class="on" data-f="first">first three digits</button><button data-f="last">last three digits</button><button data-f="mod">zID % 997</button></span><button id="c25w8l2-znew">new class</button></div>
+          <canvas id="c25w8l2-zc" width="1000" height="120" style="width:100%;height:120px;background:#050807;border:1px solid #1d2b26;border-radius:8px"></canvas>
+          <div class="d-btns" id="c25w8l2-zst" style="margin:6px 0 0"></div>
+          <div class="d-out" id="c25w8l2-zout"></div>
+        </div>
+      </div>
+      <div class="call note"><b>Cryptographic hashes add one more property</b>: &ldquo;easy to compute going this way, it&rsquo;s hard to compute going this way.&rdquo; That&rsquo;s for passwords and file verification. A plain <span class="mono">x % 11</span> is in range, deterministic, cheap and uniform on random input, so it&rsquo;s fine for a table, but &ldquo;absolutely&rdquo; easy to reverse: &ldquo;don&rsquo;t store your passwords in this way, please.&rdquo;</div>
+    </section>
+
+    <!-- 05 -->
+    <section class="sec" id="c25w8l2-room">
+      <div class="sec-eyebrow">The room&rsquo;s worked example</div>
+      <h2>4 8 15 16 23 42 into 11 slots, then 26 and 7: chaining vs &ldquo;the next free spot&rdquo; <span class="block-tag">(transcript)</span> <a class="back" href="#/c25w8l1">full collision lab on W8L1</a></h2>
+      <p class="sec-lead">h(x) = x % 11. 4, 8, 16, 23 and 42 spread out nicely; 15 collides with 4. Two suggestions from the room. <b>&ldquo;Make a list&rdquo;</b>: separate chaining. <b>Matthew&rsquo;s &ldquo;next free value&rdquo;</b>: linear probing (&ldquo;you don&rsquo;t really want to go back to your family and say we were talking about linear probing today&rdquo;). With probing, 26 (also 4 mod 11) runs along to slot 7, so &ldquo;26 is taking up the slot of 7&rdquo; and 7 gets pushed further. Then <b>delete 26</b> naively and look up 7: the probe stops at the empty slot 7 and wrongly says 7 isn&rsquo;t there. Fix it with a <b>tombstone</b> (&ldquo;skip if looking, replace if inserting&rdquo;) or a <b>backfill</b> (rehash everything after it).</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">the room&rsquo;s table, step by step</span></div>
+        <div class="body">
+          <div class="d-row"><span class="d-btns" id="c25w8l2-rmm" style="margin:0"><button data-m="chain">make a list (chaining)</button><button class="on" data-m="lin">next free spot (linear probing)</button></span><span class="d-btns" id="c25w8l2-rmd" style="margin:0"><button class="on" data-d="naive">delete: just empty the slot</button><button data-d="tomb">delete: tombstone</button><button data-d="back">delete: backfill</button></span></div>
+          <div id="c25w8l2-rmpl"></div>
+          <div class="ht" id="c25w8l2-rmt"></div>
+          <div class="d-btns" id="c25w8l2-rmst" style="margin:0"></div>
+          <div class="d-out" id="c25w8l2-rmout" style="margin-top:8px"></div>
+        </div>
+      </div>
+      <div class="call note"><b>From the floor.</b> &ldquo;Do you always go to the right?&rdquo; &ldquo;You could go to the left &hellip; it&rsquo;s all symmetric,&rdquo; but alternating directions makes lookups messy. &ldquo;Keep a pointer to the end of the list?&rdquo; Insert still has to scan the list for duplicates, so it doesn&rsquo;t help. &ldquo;Use a BST for each chain?&rdquo; Chains should be 2 or 3 long; if they&rsquo;re long, resize instead. And &ldquo;if I have a perfect hash function, does double hashing help?&rdquo; No; it fights <b>clumping</b>, the long runs that make the &ldquo;area of collision&rdquo; grow.</div>
+      <div class="call note"><b>Card collecting.</b> Even a perfectly uniform hash collides: &ldquo;if my array is half full, then it&rsquo;s still gonna be 50% that I&rsquo;m gonna get a collision.&rdquo; Like collecting cards, duplicates appear long before the set is complete. So &alpha; = M/N matters: chaining can run at &alpha; &gt; 1, but linear probing needs &alpha; &lt; 1, and &ldquo;really only works if alpha is much less than one.&rdquo;</div>
+    </section>
+
+    <!-- 06 -->
+    <section class="sec" id="c25w8l2-flood">
+      <div class="sec-eyebrow">Break questions</div>
+      <h2>&ldquo;They&rsquo;d be able to pre-calculate all the inputs that map to one value&rdquo;: random seeds <span class="block-tag">(transcript &middot; Oliver&rsquo;s questions)</span></h2>
+      <p class="sec-lead">If everyone knows h(x) = x % N, an attacker can send a web server thousands of keys that all land in one slot, turning every O(1) operation into O(n). The defence the room discussed: choose the constants (the slide&rsquo;s a and b) <b>at random when the table is created</b>, then keep them fixed. The function stays deterministic for that table, but outsiders can&rsquo;t predict it. &ldquo;Go does [this] when you create a new hash map.&rdquo; Python does something similar for strings, and Rust for its default HashMap.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">an attacker sends keys k = 64&middot;i + 5 to a 64-slot chained table</span></div>
+        <div class="body">
+          <div class="d-row"><label>keys sent</label><input type="range" id="c25w8l2-fln" min="16" max="2000" step="16" value="512"><span class="d-stat" id="c25w8l2-flnv"></span><span class="d-btns" id="c25w8l2-flk" style="margin:0"><button class="on" data-k="atk">attacker&rsquo;s keys</button><button data-k="rnd">ordinary random keys</button></span><button id="c25w8l2-flseed">new secret seed</button></div>
+          <div class="two">
+            <div><div class="cap">h(k) = k % 64 (public)</div><canvas id="c25w8l2-flca" width="640" height="110" style="width:100%;height:110px;background:#050807;border:1px solid #1d2b26;border-radius:8px"></canvas><div class="d-btns" id="c25w8l2-flsa" style="margin:4px 0 0"></div></div>
+            <div><div class="cap" id="c25w8l2-flcap">h(k) = ((a&middot;k + b) mod p) mod 64, secret a, b</div><canvas id="c25w8l2-flcb" width="640" height="110" style="width:100%;height:110px;background:#050807;border:1px solid #1d2b26;border-radius:8px"></canvas><div class="d-btns" id="c25w8l2-flsb" style="margin:4px 0 0"></div></div>
+          </div>
+          <div class="d-out" id="c25w8l2-flout"></div>
+        </div>
+      </div>
+      <div class="call note"><b>Public vs private.</b> In cryptography the algorithm should be public and only a key (here, the seed) private. The alternative is security through obscurity: DVD region locking kept its scheme secret, people reverse-engineered it, &ldquo;and they realise it&rsquo;s not as secure as they think it is.&rdquo; Other examples from the break: DES (the US government&rsquo;s standard: &ldquo;it depends on how much you trust the government&rdquo;), RSA (secure only while factoring is hard), the one-time pad (provably secure, but &ldquo;we can only use it one time&rdquo;), and hardware attacks that read intermediate values. Even seeded hashes need care: if a and b were both 0, the function would be &ldquo;completely broken&rdquo;.</div>
+    </section>
+
+    <!-- 07 -->
+    <section class="sec" id="c25w8l2-set">
+      <div class="sec-eyebrow">Applications slides 2&ndash;14</div>
+      <h2>A set is a map with keys only; a counter maps each item to its count <span class="block-tag">(Applications slides 2&ndash;14 &middot; transcript)</span></h2>
+      <p class="sec-lead"><b>Set ADT</b> (an unordered collection of distinct elements): insert, membership, delete. On a hash table, &ldquo;use the value itself as the key&rdquo;; the stored value can be anything. That&rsquo;s a 5th set implementation after unordered/ordered arrays, linked lists and AVL trees, with O(1) average for all three operations. <b>Counter ADT</b> (a multiset; &ldquo;each distinct item has a count&rdquo;): add one, and get a count. On a hash table the item is the key and the count is the value. Add is a lookup, an increment and an insert, &ldquo;these are all O(1)&rdquo;. The cost is memory: an AVL tree uses space for its items only; a hash table needs spare slots.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">the snack table: one hash table, used as a set or as a counter</span></div>
+        <div class="body">
+          <div class="d-row"><span class="d-btns" id="c25w8l2-scm" style="margin:0"><button class="on" data-m="cnt">counter</button><button data-m="set">set</button></span><label>item</label><input class="inp" id="c25w8l2-sci" value="bananas" style="width:110px"><span class="d-btns" id="c25w8l2-scops" style="margin:0"></span><button id="c25w8l2-scrs">reset</button></div>
+          <div class="ht" id="c25w8l2-sct"></div>
+          <div class="d-out" id="c25w8l2-scout"></div>
+        </div>
+      </div>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">slides 7, 9, 12, 14: fill in the hash table row</span></div>
+        <div class="body">
+          <div class="gt-wrap"><table class="elist" id="c25w8l2-sctab"></table></div>
+          <div class="d-btns" style="margin:6px 0 0"><button id="c25w8l2-screv">reveal the hash table costs</button></div>
+          <div class="d-out" id="c25w8l2-sctout"></div>
+        </div>
+      </div>
+      <div class="call note"><b>ADTs aren&rsquo;t fixed.</b> &ldquo;There&rsquo;s no definitive state of all the functions we do and don&rsquo;t consider.&rdquo; Some counters include remove, some sets include size. The operation <i>names</i> tend to be standard: push/pop for stacks, enqueue/dequeue for queues, add for collections, lookup for maps.</div>
+    </section>
+
+    <!-- 08 -->
+    <section class="sec" id="c25w8l2-two">
+      <div class="sec-eyebrow">Applications slide 16 &middot; set for the weekend</div>
+      <h2>Two sum: is there a pair adding to T? From O(n&sup2;) to O(n) with a set <span class="block-tag">(slide 16 &middot; transcript)</span></h2>
+      <p class="sec-lead">Given an array and a target S, &ldquo;determine whether the array contains two integers that sum to S.&rdquo; Checking every pair is O(n&sup2;). &ldquo;I want you to figure out a way to do this in O(n) time, perhaps using a hash map,&rdquo; and the numbers may be huge, so you can&rsquo;t just index an array by value. The room simplified it to distinct numbers and an odd target; the slides&rsquo; version keeps duplicates (A has two 3s, and twoSum(A, 6) is true). Try it before you reveal the method.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">twoSum(A, S)</span></div>
+        <div class="body">
+          <div class="d-row"><label>A</label><input class="inp" id="c25w8l2-tsa" value="12 6 3 3 7 8" style="width:220px"><label>S</label><input class="inp" id="c25w8l2-tss" value="13" style="width:60px"><span class="d-btns" style="margin:0"><button id="c25w8l2-tsgo" class="go">run</button><button id="c25w8l2-tsrev">reveal the O(n) method</button><button id="c25w8l2-tsbig">n = 5000 random</button></span></div>
+          <div id="c25w8l2-tsbody" style="display:none">
+            <div id="c25w8l2-tspl"></div>
+            <div class="mapv" id="c25w8l2-tsarr"></div>
+            <div class="d-lbl">set of numbers seen so far</div><div class="bag" id="c25w8l2-tsset"></div>
+          </div>
+          <div class="d-btns" id="c25w8l2-tsst" style="margin:6px 0 0"></div>
+          <div class="d-out" id="c25w8l2-tsout"></div>
+          <div class="d-btns" id="c25w8l2-tsex" style="margin:6px 0 0"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section class="sec" id="c25w8l2-odd">
+      <div class="sec-eyebrow">Applications slide 17 &middot; set for the weekend</div>
+      <h2>Odd-occurring elements: count everything once <span class="block-tag">(slide 17 &middot; transcript)</span></h2>
+      <p class="sec-lead">&ldquo;Return the number of distinct integers that occur an odd number of times.&rdquo; In [4, 3, 4, 8, 8, 4], 4 occurs 3 times and 3 once (both odd); 8 twice. So the answer is 2. Asking &ldquo;how many times does 4 appear?&rdquo; for each element is O(n&sup2;). &ldquo;Think about the counter ADT.&rdquo;</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">oddOccurring(A)</span></div>
+        <div class="body">
+          <div class="d-row"><label>A</label><input class="inp" id="c25w8l2-oda" value="4 3 4 8 8 4" style="width:220px"><span class="d-btns" style="margin:0"><button id="c25w8l2-odgo" class="go">run</button><button id="c25w8l2-odrev">reveal the O(n) method</button></span><span class="d-btns" id="c25w8l2-odex" style="margin:0"></span></div>
+          <div id="c25w8l2-odbody" style="display:none"><div id="c25w8l2-odpl"></div><div class="mapv" id="c25w8l2-odarr"></div><div class="d-lbl">counter</div><div class="mapv" id="c25w8l2-odcnt"></div></div>
+          <div class="d-out" id="c25w8l2-odout"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="sec" id="c25w8l2-ana">
+      <div class="sec-eyebrow">Applications slide 18 &middot; set for the weekend</div>
+      <h2>Anagrams: the same amount of each character <span class="block-tag">(slide 18 &middot; transcript)</span></h2>
+      <p class="sec-lead">&ldquo;Two strings are anagrams if they contain the same amount of each character.&rdquo; &ldquo;I think this is an easier problem than the previous one,&rdquo; and that definition is already the hint. (Last lecture&rsquo;s sum-of-characters hash sends every anagram to the same slot, but equal sums don&rsquo;t prove two strings are anagrams: &ldquo;ad&rdquo; and &ldquo;bc&rdquo; have the same sum.)</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">anagram(s, t)</span></div>
+        <div class="body">
+          <div class="d-row"><label>s</label><input class="inp" id="c25w8l2-ans" value="aaabb" style="width:130px"><label>t</label><input class="inp" id="c25w8l2-ant" value="ababa" style="width:130px"><span class="d-btns" style="margin:0"><button id="c25w8l2-ango" class="go">run</button><button id="c25w8l2-anrev">reveal the O(n) method</button></span><span class="d-btns" id="c25w8l2-anex" style="margin:0"></span></div>
+          <div id="c25w8l2-anbody" style="display:none"><div class="d-lbl">counter: +1 for each character of s, &minus;1 for each of t</div><div class="mapv" id="c25w8l2-ancnt"></div></div>
+          <div class="d-out" id="c25w8l2-anout"></div>
+        </div>
+      </div>
+      <div class="call tip"><b>The room&rsquo;s plan:</b> &ldquo;on Monday I&rsquo;ll talk through the solutions &hellip; along with a revision quiz, with chocolates.&rdquo; The methods here are the standard counter and set solutions; Monday&rsquo;s page will add whatever the room says.</div>
+    </section>
+
+    <!-- 11 -->
+    <section class="sec" id="c25w8l2-py">
+      <div class="sec-eyebrow">Applications slides 19&ndash;20 &middot; bonus</div>
+      <h2>&ldquo;Python has built-in syntax for hash tables, which are called dictionaries&rdquo; <span class="block-tag">(slides 19&ndash;20, not covered in the room)</span></h2>
+      <p class="sec-lead">Create with <span class="mono">d = {}</span>; insert with <span class="mono">d[key] = value</span>; check with <span class="mono">key in d</span>; get with <span class="mono">d[key]</span>; delete with <span class="mono">del d[key]</span>. Type lines into the mini console below; it understands those five forms, plus <span class="mono">d.get(key, default)</span> (last lecture&rsquo;s GetOrDefault) and <span class="mono">len(d)</span>. The slots underneath use slide 22&rsquo;s hash with 8 slots, for illustration; CPython&rsquo;s dict actually uses its own seeded hash and open addressing.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">a tiny dictionary console</span></div>
+        <div class="body">
+          <div class="d-row"><span class="mono" style="color:#8fb6a3">&gt;&gt;&gt;</span><input class="inp" id="c25w8l2-pyin" value="d['jas'] = 'green'" style="width:60%"><button id="c25w8l2-pygo" class="go">run</button><button id="c25w8l2-pydemo">run the slides&rsquo; example</button></div>
+          <div class="logl" id="c25w8l2-pylog" style="max-height:200px"></div>
+          <div class="ht" id="c25w8l2-pyt"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section class="sec" id="c25w8l2-chk">
+      <div class="sec-eyebrow">Check yourself</div>
+      <h2>Quiz: hash tables in practice <span class="block-tag">(all sources)</span></h2>
+      <div class="d-quiz" id="c25w8l2-qz"></div>
+    </section>
+
+    <!-- FLASHCARDS -->
+    <section class="sec" id="c25w8l2-recall">
+      <div class="sec-eyebrow">Active recall</div>
+      <h2>Test yourself first</h2>
+      <p class="sec-lead">Answer before you flip. <span class="mono">room</span> = said in Thursday&rsquo;s lecture, <span class="mono">A n</span> = slide n of Applications of Hash Tables.</p>
+      <div class="cards" id="c25w8l2-cards"></div>
+    </section>
+
+    <!-- GLOSSARY -->
+    <section class="sec" id="c25w8l2-keywords">
+      <div class="sec-eyebrow">Glossary</div>
+      <h2>Keywords at a glance</h2>
+      <div class="kw-grid">
+        <div class="kw"><div class="t">Map / dictionary</div><div class="d">The same thing: key&ndash;value pairs, one value per key. A generalised array.</div></div>
+        <div class="kw"><div class="t">Average vs worst case</div><div class="d">Hash tables: O(1) average, O(n) worst (everything collides).</div></div>
+        <div class="kw"><div class="t">Seeded hash</div><div class="d">A hash whose constants are chosen at random when the table is made, then fixed.</div></div>
+        <div class="kw"><div class="t">Hash flooding</div><div class="d">Sending keys chosen to collide, to slow a table to O(n) per operation.</div></div>
+        <div class="kw"><div class="t">Tombstone</div><div class="d">Deleted-slot marker: skip it when looking, reuse it when inserting.</div></div>
+        <div class="kw"><div class="t">Backfill</div><div class="d">After deleting, rehash the items that follow until an empty slot.</div></div>
+        <div class="kw"><div class="t">Clumping</div><div class="d">Linear probing&rsquo;s long runs of full slots, which make collisions likelier.</div></div>
+        <div class="kw"><div class="t">Set ADT</div><div class="d">Distinct elements: insert, membership, delete. On a hash table: item as key.</div></div>
+        <div class="kw"><div class="t">Counter ADT (multiset)</div><div class="d">Each distinct item has a count: add, get. On a hash table: item &rarr; count.</div></div>
+        <div class="kw"><div class="t">Two sum</div><div class="d">Pair summing to S? For each x, check S &minus; x in the set of earlier items.</div></div>
+        <div class="kw"><div class="t">Anagram</div><div class="d">Same count of every character: compare counters.</div></div>
+        <div class="kw"><div class="t">Security through obscurity</div><div class="d">Relying on a secret algorithm rather than a secret key.</div></div>
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="summary">
+      <h2>One-screen summary</h2>
+      <p>A slot must store the <b>key</b> with the value, or a colliding key (10 vs 100 under % 10) gets the wrong answer. Hash tables are O(1) on <b>average</b> but O(n) in the worst case. A hash function must be in range and deterministic, and should be cheap and uniform; the first three digits of a zID aren&rsquo;t uniform, the last three are. In the room&rsquo;s mod-11 table, chaining keeps each key in its own slot&rsquo;s list; linear probing lets 26 take 7&rsquo;s slot, and naively deleting 26 hides 7: use a <b>tombstone</b> or a <b>backfill</b>. Randomly chosen constants (fixed per table) stop attackers pre-computing collisions.</p>
+      <p>Applications: a <b>set</b> is a hash table keyed by the items; a <b>counter</b> maps items to counts (add = lookup, +1, insert). Both are O(1) average, at the cost of extra memory. <b>Two sum</b>: scan once, checking S &minus; x against a set of earlier numbers. <b>Odd occurring</b>: count, then count the odd counts. <b>Anagram</b>: equal character counters. All O(n) instead of O(n&sup2;). Python&rsquo;s dict is a hash table: <span class="mono">d[k] = v</span>, <span class="mono">k in d</span>, <span class="mono">del d[k]</span>.</p>
+      <div class="tldr">TL;DR &middot; store the key &middot; O(1) average, O(n) worst &middot; in range, deterministic, cheap, uniform &middot; zID: last 3 digits, not first 3 &middot; deleting from a probe table: tombstone or backfill &middot; random seed vs attackers &middot; set = keys &middot; counter = key &rarr; count &middot; two sum: S &minus; x in seen &middot; odd: count then filter &middot; anagram: same counts</div>
+    </section>
+
+    <details class="audit">
+      <summary>Coverage audit &mdash; what maps to which slide</summary>
+      <div class="audit-body">
+        <table>
+          <thead><tr><th>Source</th><th>Topic</th><th>Where on this page</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">transcript &sect;recap</td><td>Maps as ordered pairs; Python dictionaries; a map as a generalised array; map vs dictionary; maps over sets, ordered arrays, AVL trees; hashing a wide key range down to 0&hellip;N</td><td>&sect;01, &sect;03</td></tr>
+            <tr><td class="mono">transcript &sect;keys</td><td>Why store the key (100 vs 10 mod 10); collisions; worst vs average case; O(1) average</td><td>&sect;02</td></tr>
+            <tr><td class="mono">transcript &sect;live code</td><td>Map.h; ADTs are code-independent; HashTable.c; keyValue struct; insert overwrites; concepts to code</td><td>&sect;03</td></tr>
+            <tr><td class="mono">transcript &sect;hash functions</td><td>Deterministic; cheap; uniform; in range; zID first three vs last three digits; cryptographic hashes and passwords; Bitcoin; many passwords share a hash</td><td>&sect;04</td></tr>
+            <tr><td class="mono">transcript &sect;mod 11</td><td>4 8 15 16 23 42; chaining (&ldquo;make a list&rdquo;); worst case; BST chains; end pointers; next free slot; 26 and 7; deleting 26; linear probing; left or right; advantages and clumping; tombstone; backfill; load factor; card collecting; double hashing</td><td>&sect;05 widget + notes; W8L1 &sect;12</td></tr>
+            <tr><td class="mono">transcript &sect;break</td><td>String keys (char sums); random a, b at creation (Go); attackers pre-computing collisions; the mix function; DVD region codes; NSA and DES; RSA; one-time pad; hardware security; who makes hash functions</td><td>&sect;06</td></tr>
+            <tr><td class="mono">transcript &sect;deck recap</td><td>Separate chaining figure; resize (double, rehash everything); linear probing insert/lookup; backshift and tombstone on slide 70&rsquo;s table; Knuth; clusters; double hashing examples (22; 5 20 16 1 42 15); tombstones only; costs; chains short so no BST; GetOrDefault</td><td>W8L1 &sect;12&ndash;&sect;14</td></tr>
+            <tr><td class="mono">A 1&ndash;4</td><td>Recap: key&ndash;value pairs, operations, average O(1), worst O(n); used everywhere</td><td>&sect;07 lead</td></tr>
+            <tr><td class="mono">A 5&ndash;9</td><td>Set ADT, interface, implementations table, set via hash table</td><td>&sect;07 widgets</td></tr>
+            <tr><td class="mono">A 10&ndash;14</td><td>Counter ADT, interface, implementations, counter via hash table (lookup, +1, re-insert)</td><td>&sect;07 widgets</td></tr>
+            <tr><td class="mono">A 15&ndash;18</td><td>Assorted problems; two sum examples; odd occurring examples; anagram examples</td><td>&sect;08&ndash;&sect;10 (every slide example as a button)</td></tr>
+            <tr><td class="mono">A 19&ndash;20</td><td>Bonus: Python dictionaries and their operations</td><td>&sect;11</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+  </section>
+  <script>
+  (function(){
+    'use strict';
+    const $=C25.$, R='c25w8l2-';
+    const q=id=>$(R+id);
+    function pick(id, attr, cb){ const box=q(id); const bs=[...box.querySelectorAll('button[data-'+attr+']')]; bs.forEach(b=>b.addEventListener('click',()=>{ bs.forEach(x=>x.classList.remove('on')); b.classList.add('on'); cb(b.getAttribute('data-'+attr), b); })); }
+    const stat=window.C25w72.stat, rng=window.C25w72.rng, HB=window.C25w81b;
+    const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const nums=s=>String(s).split(/[^-0-9]+/).filter(x=>x!==''&&x!=='-').map(Number);
+    function slots(arr,cls,label){ return arr.map((s,i)=>'<div class="sl'+(cls?cls(i):'')+'"><div class="ix">['+i+']'+(label?label(i):'')+'</div><div class="v'+(s===null||s===undefined?' e':s==='DEL'?' del':'')+'">'+(s===null||s===undefined?'&middot;':s)+'</div></div>').join(''); }
+    function bars(cv,counts,hl){ const c=cv.getContext('2d'), W=cv.width, H=cv.height, n=counts.length, mx=Math.max(1,...counts); c.clearRect(0,0,W,H); const bw=W/n;
+      counts.forEach((v,i)=>{ if(!v) return; const h=(H-6)*v/mx; c.fillStyle=v>1?(v>=mx*0.6&&mx>2?'#e0654a':'#e0a32e'):'#7ee787'; c.fillRect(i*bw,H-h,Math.max(1,bw-(bw>3?1:0)),h); }); }
+
+    /* ================= 02 · store the key ================= */
+    (function(){
+      let T;
+      function reset(){ T=new Array(10).fill(null); T[0]={k:100,v:100}; render(null,'Inserted key 100 (value 100): 100 % 10 = 0, slot 0. Now look up 10.'); }
+      function render(hit,msg){ const keys=q('kyk').checked;
+        q('kyt').innerHTML=slots(T.map(s=>s?(keys?'<b>'+s.k+'</b> &rarr; '+s.v:String(s.v)):null),i=>i===hit?' pr':'');
+        if(msg!==undefined) q('kyout').innerHTML=msg; }
+      q('kyins').onclick=()=>{ const k=parseInt(q('kyin').value,10); if(isNaN(k)) return; const i=((k%10)+10)%10, old=T[i];
+        T[i]={k:k,v:k}; render(i,k+' % 10 = '+i+'. '+(old&&old.k!==k?'<span class="bad">Slot '+i+' held key '+old.k+': this naive insert just overwrote it.</span> &ldquo;Insert is gonna override anything that already exists in there. So I need to deal with collisions.&rdquo;':'Stored in slot '+i+'.')); };
+      q('kyget').onclick=()=>{ const k=parseInt(q('kyin').value,10); if(isNaN(k)) return; const i=((k%10)+10)%10, s=T[i], keys=q('kyk').checked;
+        if(!s) return render(i,k+' % 10 = '+i+': empty slot, so '+k+' isn&rsquo;t there. Correct.');
+        if(keys) render(i,k+' % 10 = '+i+'. The slot holds key '+s.k+(s.k===k?': a match, value <b>'+s.v+'</b>. Correct.':' &ne; '+k+', so <b>'+k+' is not in the table</b>. Correct, thanks to the stored key.'));
+        else render(i,k+' % 10 = '+i+'. The slot just says <b>'+s.v+'</b>, so lookup('+k+') returns '+s.v+'. '+(s.k===k?'Right by luck: the table can&rsquo;t tell.':'<span class="bad">Wrong: '+k+' was never inserted; that value belongs to key '+s.k+'.</span>')); };
+      q('kyrs').onclick=reset; q('kyk').onchange=()=>render(null);
+      reset();
+    })();
+
+    /* ================= 04 · zID hashing ================= */
+    (function(){
+      let f='first', seed=7, Z=[];
+      function gen(){ const r=rng(seed++), n=+q('zn').value; Z=[]; for(let i=0;i<n;i++){ const year=r(); const base=year<0.15?5400000:year<0.45?5500000:5600000; Z.push(base+Math.floor(r()*100000)); } draw(); }
+      function h(z){ return f==='first'?Math.floor(z/10000):f==='last'?z%1000:z%997; }
+      function draw(){ q('znv').innerHTML='<b>'+Z.length+'</b>'; const N=1000, c=new Array(N).fill(0); Z.forEach(z=>{ const i=f==='first'?h(z)%1000:h(z); c[i]++; });
+        bars(q('zc'),c); const used=c.filter(x=>x).length, mx=Math.max(...c), coll=Z.length-used;
+        q('zst').innerHTML=stat('slots used',used+' / '+(f==='mod'?997:1000))+stat('largest bucket',mx)+stat('keys sharing a slot',coll);
+        const ideal=1000*(1-Math.pow(1-1/1000,Z.length));
+        q('zout').innerHTML=(f==='first'?'Every zID here is z54&hellip;, z55&hellip; or z56&hellip;, so the first three digits are 540&ndash;569 (the class&rsquo;s years): <b>'+used+' slots</b> do all the work. &ldquo;You&rsquo;re gonna get a lot of collisions in 56 and nobody&rsquo;s gonna get like 123.&rdquo;':f==='last'?'The last three digits are spread evenly: '+used+' slots used, close to the ideal ~'+ideal.toFixed(0)+' for a uniform hash.':'zID % 997 (a prime) is also uniform here: '+used+' slots used.')+' (zIDs here are simulated: z5400000&ndash;z5699999.)'; }
+      pick('zf','f',x=>{ f=x; draw(); }); q('zn').oninput=gen; q('znew').onclick=gen; gen();
+    })();
+
+    /* ================= 05 · the room's mod-11 table ================= */
+    (function(){
+      let mode='lin', del='naive';
+      const N=11, KEYS=[4,8,15,16,23,42,26,7];
+      const pl=C25.player(q('rmpl'),{frames:[],render:render});
+      function build(){
+        const fr=[];
+        if(mode==='chain'){ const T=[...Array(N)].map(()=>[]);
+          const snap=(hl,msg)=>fr.push({T:T.map(l=>l.slice()),hl:hl,msg:msg});
+          snap(-1,'11 empty lists. h(x) = x % 11.');
+          KEYS.forEach(k=>{ const i=k%N; T[i].push(k); snap(i,'h('+k+') = '+i+(T[i].length>1?': collision, so '+k+' joins slot '+i+'&rsquo;s list ('+T[i].join(' &rarr; ')+').':': slot '+i+'.')); });
+          const i=26%N; T[i]=T[i].filter(x=>x!==26); snap(i,'Delete 26: unlink it from slot 4&rsquo;s list. No other key moves.');
+          snap(7,'Look up 7: h(7) = 7, the list there holds 7. <span class="ok">Found</span>, in one comparison. Chaining never has the deletion problem. (The delete buttons only matter for probing.)');
+        } else {
+          const T=new Array(N).fill(null);
+          const snap=(pr,hit,msg,miss)=>fr.push({T:T.slice(),pr:pr||[],hit:hit,miss:miss,msg:msg});
+          snap([],-1,'11 empty slots. h(x) = x % 11; on a collision, try the next slot to the right.');
+          const ins=k=>{ let i=k%N; const pr=[]; while(T[i]!==null&&T[i]!=='DEL'&&T[i]!==k){ pr.push(i); i=(i+1)%N; } pr.push(i); T[i]=k; return pr; };
+          KEYS.forEach(k=>{ const pr=ins(k), at=pr[pr.length-1]; let note='';
+            if(k===15) note=' 15 &ldquo;was gonna map to the same thing as 4&rdquo;, so it takes the next free spot.';
+            if(k===26) note=' &ldquo;Now 26 is taking up the slot of 7.&rdquo;';
+            if(k===7) note=' 7&rsquo;s own slot is taken by 26, so 7 has to walk.';
+            snap(pr,at,'Insert '+k+': h('+k+') = '+(k%N)+(pr.length>1?'; probed '+pr.join(' &rarr; ')+', stored at ['+at+'].':', stored at ['+at+'].')+note); });
+          const d=T.indexOf(26);
+          if(del==='naive'){ T[d]=null; snap([d],-1,'Delete 26 by simply emptying slot '+d+'.',d); }
+          else if(del==='tomb'){ T[d]='DEL'; snap([d],-1,'Delete 26 with a <b>tombstone</b> at ['+d+']: &ldquo;if you&rsquo;re looking for a value, skip over me. But if you insert a value, you can replace me.&rdquo;',d); }
+          else { T[d]=null; const moved=[]; let j=(d+1)%N; while(T[j]!==null){ const k=T[j]; T[j]=null; const pr=ins(k); moved.push(k+' &rarr; ['+pr[pr.length-1]+']'); j=(j+1)%N; }
+            snap([d],-1,'Delete 26 and <b>backfill</b>: empty slot '+d+', then rehash everything after it up to the next empty slot: '+moved.join(', ')+'. &ldquo;If something was actually in the right spot it would stay in the right spot.&rdquo;',d); }
+          let i=7, pr=[], found=-1; for(let c=0;c<N;c++){ pr.push(i); if(T[i]===null) break; if(T[i]===7){ found=i; break; } i=(i+1)%N; }
+          snap(pr,found,found>=0?'Look up 7: probe '+pr.join(' &rarr; ')+'. <span class="ok">Found at ['+found+']</span>'+(del==='tomb'?', stepping over the tombstone.':', and in one probe, because the backfill moved 7 home.'):'Look up 7: h(7) = 7 and slot 7 is <b>empty</b>, so the search stops: &ldquo;7 is not in my array&rdquo;. <span class="bad">Wrong: 7 is at [10].</span> The empty slot broke its probe path.',found<0?pr[pr.length-1]:undefined);
+        }
+        pl.load(fr);
+      }
+      function render(f){
+        if(mode==='chain'){ q('rmt').innerHTML=f.T.map((l,i)=>'<div class="sl'+(i===f.hl?' pr':'')+'"><div class="ix">['+i+']</div><div class="v'+(l.length?'':' e')+'">'+(l.length?l.map(k=>'<span class="ch">'+k+'</span>').join(''):'&middot;')+'</div></div>').join('');
+          q('rmst').innerHTML=stat('items',f.T.reduce((a,l)=>a+l.length,0))+stat('&alpha;',(f.T.reduce((a,l)=>a+l.length,0)/N).toFixed(2))+stat('longest list',Math.max(...f.T.map(l=>l.length))); }
+        else { const pos=new Map(); f.pr.forEach((x,i)=>{ if(!pos.has(x)) pos.set(x,i+1); });
+          q('rmt').innerHTML=slots(f.T,i=>i===f.hit?' hit':i===f.miss?' miss':pos.has(i)?' pr':'',i=>pos.has(i)?' <span class="pn">#'+pos.get(i)+'</span>':'');
+          const M=f.T.filter(x=>x!==null&&x!=='DEL').length; q('rmst').innerHTML=stat('items',M)+stat('&alpha;',(M/N).toFixed(2))+stat('longest run',(()=>{ let b=0,c=0; for(let k=0;k<2*N;k++){ const s=f.T[k%N]; if(s!==null){ c++; b=Math.max(b,c); } else c=0; } return Math.min(b,N); })()); }
+        q('rmout').innerHTML=f.msg;
+      }
+      pick('rmm','m',m=>{ mode=m; build(); }); pick('rmd','d',d=>{ del=d; build(); }); build();
+    })();
+
+    /* ================= 06 · hash flooding ================= */
+    (function(){
+      const N=64n, P=2147483647n; let kind='atk', a, b; const r=rng(4242);
+      function seedNew(){ a=BigInt(1+Math.floor(r()*2147483646)); b=BigInt(Math.floor(r()*2147483647)); q('flcap').innerHTML='h(k) = ((a&middot;k + b) mod p) mod 64, secret a = '+a+', b = '+b+', p = 2<sup>31</sup> &minus; 1'; draw(); }
+      function draw(){ const n=+q('fln').value; q('flnv').innerHTML='<b>'+n+'</b>'; const rr=rng(77);
+        const keys=[]; for(let i=0;i<n;i++) keys.push(kind==='atk'?BigInt(64*i+5):BigInt(Math.floor(rr()*1e9)));
+        const ca=new Array(64).fill(0), cb=new Array(64).fill(0);
+        keys.forEach(k=>{ ca[Number(k%N)]++; cb[Number(((a*k+b)%P)%N)]++; });
+        bars(q('flca'),ca); bars(q('flcb'),cb);
+        const cost=c=>c.reduce((s,x)=>s+x*(x+1)/2,0)/n;
+        q('flsa').innerHTML=stat('longest chain',Math.max(...ca))+stat('avg comparisons per lookup',cost(ca).toFixed(1));
+        q('flsb').innerHTML=stat('longest chain',Math.max(...cb))+stat('avg comparisons per lookup',cost(cb).toFixed(1));
+        q('flout').innerHTML=kind==='atk'?'Every attacker key is 5 mod 64, so the public hash puts all '+n+' in slot 5: each lookup walks a chain of about '+(n/2).toFixed(0)+'. Building the table cost about '+(n*n/2).toLocaleString()+' comparisons. The seeded hash spreads the same keys evenly; without knowing a and b, the attacker can&rsquo;t aim.':'With ordinary random keys both hashes do fine; the seed only matters when someone chooses keys against you.'; }
+      pick('flk','k',k=>{ kind=k; draw(); }); q('fln').oninput=draw; q('flseed').onclick=seedNew; seedNew();
+    })();
+
+    /* ================= 07 · set & counter ================= */
+    (function(){
+      let mode='cnt', M;
+      const N=7, h=s=>HB.hSum(s,N);
+      function reset(){ M=new Map([['crisps',2],['bananas',3],['apples',0],['doughnuts',0]]); if(mode==='set') M=new Map([...M.keys()].map(k=>[k,true])); render(-1,null,mode==='cnt'?'The room&rsquo;s table: 2 packets of crisps, 3 bananas, 0 apples, 0 doughnuts. Item = key, count = value.':'As a set the counts don&rsquo;t matter: each item is a key, the value is ignored.'); }
+      function render(slot,key,msg){ const B=[...Array(N)].map(()=>[]); M.forEach((v,k)=>B[h(k)].push([k,v]));
+        q('sct').innerHTML=B.map((l,i)=>'<div class="sl'+(i===slot?' pr':'')+'"><div class="ix">['+i+']</div><div class="v'+(l.length?'':' e')+'">'+(l.length?l.map(([k,v])=>'<span class="ch'+(k===key?' hit':'')+'">'+esc(k)+(mode==='cnt'?': '+v:'')+'</span>').join(''):'&middot;')+'</div></div>').join('');
+        if(msg) q('scout').innerHTML=msg; }
+      function ops(){ const o=mode==='cnt'?[['add','add one'],['get','get count'],['rem','remove one']]:[['ins','insert'],['has','contains'],['del','delete']];
+        q('scops').innerHTML=o.map(x=>'<button data-o="'+x[0]+'"'+(x[0]==='add'||x[0]==='ins'?' class="go"':'')+'>'+x[1]+'</button>').join('');
+        q('scops').querySelectorAll('button').forEach(b=>b.onclick=()=>op(b.dataset.o)); }
+      function op(o){ const k=q('sci').value.trim().toLowerCase(); if(!k) return; const s=h(k), pre='h(&ldquo;'+esc(k)+'&rdquo;) = '+s+'. ';
+        if(o==='add'){ const had=M.has(k), c=had?M.get(k):0; M.set(k,c+1); render(s,k,pre+'<b>count = get('+esc(k)+')</b> = '+c+(had?'':' (not there yet, so 0)')+'; count + 1 = '+(c+1)+'; <b>insert('+esc(k)+', '+(c+1)+')</b> replaces the value. Lookup, increment, insert: O(1) + O(1) + O(1).'); }
+        else if(o==='get') render(s,k,pre+'get('+esc(k)+') = <b>'+(M.has(k)?M.get(k):0)+'</b>: one lookup, O(1).');
+        else if(o==='rem'){ const c=M.has(k)?M.get(k):0; if(c>0) M.set(k,c-1); render(s,k,pre+(c>0?'count '+c+' &rarr; '+(c-1)+'. (Not every counter ADT has remove: &ldquo;some people might say counter also includes remove.&rdquo;)':'Count is already 0.')); }
+        else if(o==='ins'){ const had=M.has(k); M.set(k,true); render(s,k,pre+(had?'Already in the set: nothing changes (sets hold distinct elements).':'Insert '+esc(k)+' as a key.')); }
+        else if(o==='has') render(s,k,pre+'contains('+esc(k)+') = <b>'+M.has(k)+'</b>.');
+        else { const had=M.delete(k); render(s,k,pre+(had?'Deleted.':'Not in the set.')); } }
+      pick('scm','m',m=>{ mode=m; ops(); reset(); }); q('scrs').onclick=reset; ops(); reset();
+      const T=[['Set','Insert','Membership','Delete'],['Unordered array','O(n)','O(n)','O(n)'],['Ordered array','O(n)','O(log n)','O(n)'],['Linked list','O(n)','O(n)','O(n)'],['AVL tree','O(log n)','O(log n)','O(log n)'],['Hash table*','O(1)','O(1)','O(1)'],['Counter','Add','Get',''],['Unordered array','O(n)','O(n)',''],['Ordered array','O(n)','O(log n)',''],['AVL tree','O(log n)','O(log n)',''],['Hash table*','O(1)','O(1)','']];
+      let rev=false;
+      function tab(){ q('sctab').innerHTML=T.map((r,i)=>(i===0||i===6?'<tr>'+r.map(x=>'<th>'+x+'</th>').join('')+'</tr>':'<tr>'+r.map((x,j)=>'<td class="'+(r[0]==='Hash table*'&&j>0&&x?(rev?'add':'nn'):'')+'">'+(r[0]==='Hash table*'&&j>0&&x&&!rev?'?':x)+'</td>').join('')+'</tr>')).join('');
+        q('sctout').innerHTML=rev?'* average costs. Worst case O(n), if every key lands in one slot. Plus the memory trade-off: &ldquo;AVL trees, you&rsquo;ll only ever use as much memory as the items you&rsquo;ve got.&rdquo;':'Slides 7 and 12 leave the hash table row as &ldquo;?&rdquo;. What goes there?'; }
+      q('screv').onclick=()=>{ rev=!rev; tab(); }; tab();
+    })();
+
+    /* ---- shared reveal helper for 08–10 ---- */
+    function revealer(btn,body,cb){ let on=false; q(btn).onclick=()=>{ on=!on; q(body).style.display=on?'':'none'; q(btn).textContent=on?'hide the method':'reveal the O(n) method'; cb(on); }; return ()=>on; }
+
+    /* ================= 08 · two sum ================= */
+    (function(){
+      const pl=C25.player(q('tspl'),{frames:[],render:render});
+      let A=[], S=0;
+      const isOn=revealer('tsrev','tsbody',()=>run());
+      function naive(A,S){ let c=0; for(let i=0;i<A.length;i++) for(let j=i+1;j<A.length;j++){ c++; if(A[i]+A[j]===S) return {ok:true,c:c,i:i,j:j}; } return {ok:false,c:c}; }
+      function hashed(A,S,rec){ const seen=new Set(), fr=[]; let c=0;
+        for(let i=0;i<A.length;i++){ const x=A[i], need=S-x; c++;
+          if(seen.has(need)){ if(rec) fr.push({i:i,seen:[...seen],hit:need,msg:'x = '+x+': is S &minus; x = '+need+' in the set? <span class="ok">Yes</span>, so '+need+' + '+x+' = '+S+'. Return true.'}); return {ok:true,c:c,fr:fr}; }
+          seen.add(x); if(rec) fr.push({i:i,seen:[...seen],msg:'x = '+x+': is S &minus; x = '+need+' in the set? No. Add '+x+'.'}); }
+        if(rec) fr.push({i:A.length,seen:[...seen],msg:'Scanned everything: no pair sums to '+S+'. Return false.'}); return {ok:false,c:c,fr:fr}; }
+      function run(){ A=nums(q('tsa').value); S=parseInt(q('tss').value,10); if(!A.length||isNaN(S)) return;
+        const nv=naive(A,S), hv=hashed(A,S,true);
+        q('tsst').innerHTML=stat('answer',hv.ok)+stat('pairs checked (naive)',nv.c)+(isOn()?stat('set lookups (hash)',hv.c):'');
+        q('tsout').innerHTML='twoSum(A, '+S+') = <b>'+hv.ok+'</b>'+(nv.ok?' ('+A[nv.i]+' + '+A[nv.j]+')':'')+'. The naive double loop checked '+nv.c+' pair'+(nv.c===1?'':'s')+' (up to n(n&minus;1)/2 = '+(A.length*(A.length-1)/2)+').'+(isOn()?' The set version did one O(1) check per element: '+hv.c+'. It looks for S &minus; x <i>before</i> adding x, so twoSum(A, 6) finds 3 + 3 only because there are two 3s.':' Reveal the method to step through the O(n) version.');
+        pl.load(hv.fr); }
+      function render(f){ q('tsarr').innerHTML=A.map((x,i)=>'<div class="c'+(i===f.i?' pr':i<f.i?' hit':'')+'">'+x+'<i>['+i+']</i></div>').join('');
+        q('tsset').innerHTML=f.seen.length?f.seen.map(x=>'<span'+(x===f.hit?' class="hot"':'')+'>'+x+'</span>').join(''):'<span class="none">(empty)</span>'; q('tsout').dataset.f=f.msg; if(isOn()) q('tsout').innerHTML=f.msg; }
+      q('tsgo').onclick=run;
+      q('tsex').innerHTML=[['12 6 3 3 7 8',13],['12 6 3 3 7 8',16],['12 6 3 3 7 8',3],['12 6 3 3 7 8',6]].map(e=>'<button data-a="'+e[0]+'" data-s="'+e[1]+'">twoSum(A, '+e[1]+')</button>').join('');
+      q('tsex').querySelectorAll('button').forEach(b=>b.onclick=()=>{ q('tsa').value=b.dataset.a; q('tss').value=b.dataset.s; run(); });
+      q('tsbig').onclick=()=>{ const r=rng(Math.floor(Math.random()*1e6)), n=5000, B=[]; for(let i=0;i<n;i++) B.push(Math.floor(r()*1e9)); const s=-1;
+        let t0=performance.now(); const nv=naive(B,s); const t1=performance.now(); const hv=hashed(B,s,false); const t2=performance.now();
+        q('tsst').innerHTML=stat('n',n)+stat('naive pairs',nv.c.toLocaleString())+stat('naive ms',(t1-t0).toFixed(1))+stat('set lookups',hv.c)+stat('set ms',(t2-t1).toFixed(1));
+        q('tsout').innerHTML='5000 random numbers up to 10<sup>9</sup>, with a target no pair can hit (the worst case for both). Naive: '+nv.c.toLocaleString()+' pair checks; set: '+hv.c+' lookups.'; };
+      run();
+    })();
+
+    /* ================= 09 · odd occurring ================= */
+    (function(){
+      const pl=C25.player(q('odpl'),{frames:[],render:render}); let A=[];
+      const isOn=revealer('odrev','odbody',()=>run());
+      function run(){ A=nums(q('oda').value); const C=new Map(), fr=[];
+        A.forEach((x,i)=>{ C.set(x,(C.get(x)||0)+1); fr.push({i:i,C:new Map(C),msg:'add('+x+'): count['+x+'] = '+C.get(x)+'.'}); });
+        const odd=[...C].filter(([k,v])=>v%2===1);
+        fr.push({i:A.length,C:new Map(C),fin:true,msg:'Now one pass over the counter: '+[...C].map(([k,v])=>k+' &times; '+v+(v%2?' (odd)':'')).join(', ')+'. Answer: <b>'+odd.length+'</b>. Two O(n) passes in all.'});
+        pl.load(fr,'end'); if(!isOn()) q('odout').innerHTML='oddOccurring(['+A.join(', ')+']) = <b>'+odd.length+'</b>. Reveal the method to see the counter fill up.'; }
+      function render(f){ q('odarr').innerHTML=A.map((x,i)=>'<div class="c'+(i===f.i?' pr':i<f.i?' hit':'')+'">'+x+'</div>').join('');
+        q('odcnt').innerHTML=[...f.C].map(([k,v])=>'<div class="c'+(f.fin&&v%2?' hit':'')+'">'+k+'<i>'+v+'</i></div>').join('');
+        if(isOn()) q('odout').innerHTML=f.msg; }
+      q('odgo').onclick=run;
+      q('odex').innerHTML=['4 3 4 8 8 4','7 2 1 5 6 9','1 1 3 3 7 7'].map(e=>'<button data-a="'+e+'">['+e.split(' ').join(', ')+']</button>').join('');
+      q('odex').querySelectorAll('button').forEach(b=>b.onclick=()=>{ q('oda').value=b.dataset.a; run(); });
+      run();
+    })();
+
+    /* ================= 10 · anagram ================= */
+    (function(){
+      const isOn=revealer('anrev','anbody',()=>run());
+      function run(){ const s=q('ans').value, t=q('ant').value, C=new Map();
+        for(const ch of s) C.set(ch,(C.get(ch)||0)+1); for(const ch of t) C.set(ch,(C.get(ch)||0)-1);
+        const bad=[...C].filter(([k,v])=>v!==0), ok=!bad.length;
+        q('ancnt').innerHTML=[...C].map(([k,v])=>'<div class="c'+(v===0?' hit':' pr')+'">'+esc(k===' '?'␣':k)+'<i>'+(v>0?'+':'')+v+'</i></div>').join('');
+        q('anout').innerHTML='anagram(&ldquo;'+esc(s)+'&rdquo;, &ldquo;'+esc(t)+'&rdquo;) = <b>'+ok+'</b>.'+(isOn()?' Add 1 per character of s, subtract 1 per character of t: '+(ok?'every count ends at 0.':'nonzero counts for '+bad.map(([k,v])=>'&lsquo;'+esc(k)+'&rsquo; ('+(v>0?'+':'')+v+')').join(', ')+'.')+' O(|s| + |t|). (A quick length check rules out &ldquo;abcde&rdquo; vs &ldquo;abcdef&rdquo; immediately.)':''); }
+      q('ango').onclick=run;
+      const EX=[['abcde','edcba'],['abcde','fdcba'],['abcde','abcdef'],['aaabb','ababa'],['aaabb','babab']];
+      q('anex').innerHTML=EX.map((e,i)=>'<button data-i="'+i+'">'+e[0]+' / '+e[1]+'</button>').join('');
+      q('anex').querySelectorAll('button').forEach(b=>b.onclick=()=>{ const e=EX[+b.dataset.i]; q('ans').value=e[0]; q('ant').value=e[1]; run(); });
+      run();
+    })();
+
+    /* ================= 11 · Python dict console ================= */
+    (function(){
+      let D=new Map(); const log=[];
+      const lit=s=>{ s=s.trim(); let m=s.match(/^'([^']*)'$/)||s.match(/^"([^"]*)"$/); if(m) return {v:m[1],r:"'"+m[1]+"'"}; if(/^-?\d+$/.test(s)) return {v:Number(s),r:s}; if(s==='True'||s==='False'||s==='None') return {v:s,r:s}; return null; };
+      const key=v=>typeof v+':'+v, show=v=>typeof v==='number'||v==='True'||v==='False'||v==='None'?String(v):"'"+v+"'";
+      function exec(line){ line=line.trim(); let m, out='';
+        try{
+          if(/^d\s*=\s*\{\s*\}$/.test(line)){ D=new Map(); }
+          else if((m=line.match(/^d\[(.+)\]\s*=\s*(.+)$/))){ const k=lit(m[1]), v=lit(m[2]); if(!k||!v) throw 'SyntaxError: use string or int literals'; D.set(key(k.v),[k.v,v.v]); }
+          else if((m=line.match(/^del\s+d\[(.+)\]$/))){ const k=lit(m[1]); if(!k) throw 'SyntaxError'; if(!D.delete(key(k.v))) throw 'KeyError: '+k.r; }
+          else if((m=line.match(/^(.+)\s+in\s+d$/))){ const k=lit(m[1]); if(!k) throw 'SyntaxError'; out=D.has(key(k.v))?'True':'False'; }
+          else if((m=line.match(/^d\.get\((.+?)(?:,\s*(.+))?\)$/))){ const k=lit(m[1]), dflt=m[2]?lit(m[2]):{v:'None'}; if(!k) throw 'SyntaxError'; out=D.has(key(k.v))?show(D.get(key(k.v))[1]):(m[2]?show(dflt.v):'None'); if(out==='None') out=''; }
+          else if((m=line.match(/^d\[(.+)\]$/))){ const k=lit(m[1]); if(!k) throw 'SyntaxError'; if(!D.has(key(k.v))) throw 'KeyError: '+k.r; out=show(D.get(key(k.v))[1]); }
+          else if(/^len\(d\)$/.test(line)) out=String(D.size);
+          else if(line==='d') out='{'+[...D.values()].map(([k,v])=>show(k)+': '+show(v)).join(', ')+'}';
+          else throw 'not understood (try d[\'jas\'] = \'green\', \'jas\' in d, d[\'jas\'], del d[\'jas\'], d.get(\'x\', 0), len(d), d)';
+        }catch(e){ out='<span class="bad">'+esc(String(e))+'</span>'; }
+        log.push('&gt;&gt;&gt; '+esc(line)+(out?'<br>'+(out.startsWith('<span')?out:esc(out)):'')); q('pylog').innerHTML=log.slice(-14).join('<br>'); q('pylog').scrollTop=1e6;
+        const B=[...Array(8)].map(()=>[]); D.forEach(([k,v])=>B[HB.hashAny32(String(k))%8].push(show(k)+': '+show(v)));
+        q('pyt').innerHTML=B.map((l,i)=>'<div class="sl"><div class="ix">['+i+']</div><div class="v'+(l.length?'':' e')+'">'+(l.length?l.map(x=>'<span class="ch">'+esc(x)+'</span>').join(''):'&middot;')+'</div></div>').join(''); }
+      q('pygo').onclick=()=>exec(q('pyin').value);
+      q('pyin').addEventListener('keydown',e=>{ if(e.key==='Enter') exec(q('pyin').value); });
+      q('pydemo').onclick=()=>["d = {}","d['jas'] = 'green'","d['andrew'] = 'red'","d['sasha'] = 'purple'","'jas' in d","d['jas']","d['jas'] = 'orange'","d['jas']","del d['jas']","'jas' in d","d.get('jas', 'no fav colour')","len(d)","d"].forEach(exec);
+      exec('d = {}');
+    })();
+  })();
+  </script>
+  <script>
+  (function(){
+    'use strict';
+    const R='c25w8l2-';
+    function mix(items){ return items.map((it,k)=>{ const n=it.opts.length, s=(k*2+1)%n; const opts=it.opts.slice(s).concat(it.opts.slice(0,s)); return Object.assign({},it,{opts:opts,a:(n-s)%n}); }); }
+    C25.quiz(R+'qz',mix([
+      {q:'h(x) = x % 10 and only values are stored. Key 100 (value 100) is in slot 0. lookup(10) returns&hellip;',opts:['100, wrongly','not found','10','an error'],why:'10 also hashes to 0. Storing the key lets the lookup see the slot belongs to 100.'},
+      {q:'The worst-case cost of a hash table lookup is&hellip;',opts:['O(n)','O(1)','O(log n)','O(n log n)'],why:'If every key collides, it&rsquo;s no better than a linked list. O(1) is the average.'},
+      {q:'Which property is necessary, not just desirable, for a table&rsquo;s hash function?',opts:['deterministic','hard to reverse','uniform','uses random numbers each call'],why:'In range and deterministic are required; cheap and uniform are the ideals.'},
+      {q:'Why is &ldquo;the first three digits of a zID&rdquo; a bad hash?',opts:['most zIDs start with the same few digits, so a few slots get everything','it isn&rsquo;t deterministic','it&rsquo;s too slow','it&rsquo;s out of range'],why:'The last three digits spread evenly instead.'},
+      {q:'Linear probing, h(x) = x % 11, with 4 8 15 16 23 42 inserted. Where does 26 go?',opts:['slot 7','slot 4','slot 5','slot 6'],why:'26 % 11 = 4; slots 4, 5, 6 are full (4, 15, 16), so slot 7.'},
+      {q:'Then 7 is inserted (it ends at slot 10) and 26 is deleted by just emptying its slot. lookup(7)&hellip;',opts:['wrongly reports not found','finds 7','loops forever','finds 26'],why:'The probe starts at 7, hits the empty slot and stops.'},
+      {q:'A tombstone is&hellip;',opts:['skipped when looking up, reusable when inserting','reusable when looking up, skipped when inserting','always skipped','removed on lookup'],why:'&ldquo;Skip if looking, replace if inserting.&rdquo;'},
+      {q:'Why choose a hash function&rsquo;s constants at random when the table is created?',opts:['so attackers can&rsquo;t pre-compute keys that all collide','so the hash is non-deterministic','to make it faster','to avoid storing keys'],why:'It stays fixed per table (deterministic), but unpredictable from outside.'},
+      {q:'How do you implement the Set ADT with a hash table?',opts:['use each item as a key; the value doesn&rsquo;t matter','use each item as a value with key 0','store the set in one slot','hash the whole set'],why:'Insert, contains, delete become O(1) average.'},
+      {q:'Counter add(item) on a hash table is&hellip;',opts:['lookup the count, add 1, insert the new count: O(1) average','O(log n)','O(n): scan for the item','impossible without remove'],why:'Each of the three steps is O(1) on average.'},
+      {q:'twoSum in O(n): for each x, check whether ___ is in the set of earlier numbers.',opts:['S &minus; x','x','S + x','x / 2'],why:'Check before adding x, so a single 3 doesn&rsquo;t pair with itself for S = 6.'},
+      {q:'oddOccurring([4, 3, 4, 8, 8, 4]) is&hellip;',opts:['2','3','1','4'],why:'4 occurs 3 times, 3 once (both odd); 8 twice.'},
+      {q:'Two strings are anagrams iff&hellip;',opts:['every character has the same count in both','their character sums are equal','they have the same length','their hashes are equal'],why:'Equal sums or hashes don&rsquo;t prove it: &ldquo;ad&rdquo; and &ldquo;bc&rdquo; have equal sums.'},
+      {q:'In Python, d.get(k, 0)&hellip;',opts:['returns d[k] if present, else 0, in one lookup','raises KeyError if k is missing','inserts k with value 0','deletes k'],why:'Last lecture&rsquo;s GetOrDefault.'}
+    ]));
+    C25.cards(R+'cards',[
+      ['room','Map vs dictionary?','&ldquo;There is none.&rdquo; Same thing.'],
+      ['room','A map is a generalised&hellip;','Array: an array is a map whose keys are 0&hellip;n&minus;1.'],
+      ['room','Why store the key in the slot?','Different keys can share a slot; the key confirms which one is there.'],
+      ['room','When do hash tables shine?','The average case: O(1) per operation. Worst case O(n).'],
+      ['room','Four hash function requirements?','In range; deterministic; cheap (O(1)); uniform.'],
+      ['room','Where can randomness go?','In choosing the function&rsquo;s constants once, at creation, never per call.'],
+      ['room','zID hash: first three or last three digits?','Last three: spread evenly. First three: almost all 5xx.'],
+      ['room','Cryptographic hash, the extra property?','Hard to reverse: easy one way, hard the other.'],
+      ['room','Two collision ideas from the room?','Make a list (separate chaining); next free slot (linear probing).'],
+      ['room','Why does naive deletion break linear probing?','An empty slot stops later lookups early, hiding keys stored past it.'],
+      ['room','Tombstone rule?','Skip if looking; replace if inserting.'],
+      ['room','Backfill?','After deleting, rehash every following item up to the next empty slot.'],
+      ['room','Why not a BST per chain?','Chains should be short; if they&rsquo;re long, resize the table.'],
+      ['room','Load factor limits?','Chaining can exceed 1; linear probing needs &alpha; &lt; 1, ideally much less.'],
+      ['room','What does double hashing fix?','Clumping: keys that collide jump by different amounts.'],
+      ['room','Hash flooding?','Sending keys chosen to collide. Defence: a secret random seed per table.'],
+      ['room','Security through obscurity?','Keeping the algorithm secret (DVD region codes); fails once reverse-engineered.'],
+      ['A 5','Set ADT?','Unordered distinct elements: insert, membership, delete.'],
+      ['A 8','Set on a hash table?','Items are keys; values are ignored. O(1) average.'],
+      ['A 10','Counter ADT?','Each distinct item has a count: add, get.'],
+      ['A 13','Counter add on a hash table?','Look up the count, +1, insert it back.'],
+      ['room','Hash table vs AVL tree trade-off?','O(1) average vs O(log n) worst; but hash tables need spare memory.'],
+      ['A 16','Two sum in O(n)?','For each x: if S &minus; x is in the seen set, true; else add x.'],
+      ['A 17','Odd occurring in O(n)?','Count every element, then count the odd counts.'],
+      ['A 18','Anagram in O(n)?','Counter: +1 per char of s, &minus;1 per char of t; all zero &rArr; anagram.'],
+      ['A 20','Python dict operations?','d = {}; d[k] = v; k in d; d[k]; del d[k].']
+    ]);
+  })();
+  </script>
+
+
   </main>
 </div>
 
@@ -58492,7 +59311,7 @@ main:
 
 /* ============ SITE ROUTER + NAV ============ */
 (function(){
-  const ROUTES=['home','game','comp1521','comp1531','w1l1','w1l2','w2l1','w2l2','w3l1','w3l2','w4l1','w4l2','w5l1','w5l2','w7l1','w7l2','w8l1','w8l2','w9l1','w9l2','w10l1','w10l2','c31w1l1','c31w1l2','c31w2tw','c31w2l1','c31w2l2','c31w3l1','c31w3l2','c31it1','c31w4l1','c31w4l2','c31w5l1','c31w5l2','c31w7l1','c31w7l2','c31w8l1','c31w8l2','c31w9l1','c31w10l1','comp2521','c25w1l1','c25w1l2','c25w2l1','c25w2l2','c25w3l1','c25w3l2','c25w4l1','c25w4l2','c25w5l1','c25w5l2','c25w7l1','c25w7l2','c25w8l1'];
+  const ROUTES=['home','game','comp1521','comp1531','w1l1','w1l2','w2l1','w2l2','w3l1','w3l2','w4l1','w4l2','w5l1','w5l2','w7l1','w7l2','w8l1','w8l2','w9l1','w9l2','w10l1','w10l2','c31w1l1','c31w1l2','c31w2tw','c31w2l1','c31w2l2','c31w3l1','c31w3l2','c31it1','c31w4l1','c31w4l2','c31w5l1','c31w5l2','c31w7l1','c31w7l2','c31w8l1','c31w8l2','c31w9l1','c31w10l1','comp2521','c25w1l1','c25w1l2','c25w2l1','c25w2l2','c25w3l1','c25w3l2','c25w4l1','c25w4l2','c25w5l1','c25w5l2','c25w7l1','c25w7l2','c25w8l1','c25w8l2'];
   const CRUMB={home:'Home',game:'StackRaid',comp1521:'COMP1521',comp1531:'COMP1531',
                w1l1:'COMP1521 · Week 1 · Lecture 1',w1l2:'COMP1521 · Week 1 · Lecture 2',
                w2l1:'COMP1521 · Week 2 · Lecture 1',w2l2:'COMP1521 · Week 2 · Lecture 2',
@@ -58541,7 +59360,8 @@ main:
                c25w5l2:'COMP2521 · Week 5 · Lecture 2',
                c25w7l1:'COMP2521 · Week 7 · Lecture 1',
                c25w7l2:'COMP2521 · Week 7 · Lecture 2',
-               c25w8l1:'COMP2521 · Week 8 · Lecture 1'};
+               c25w8l1:'COMP2521 · Week 8 · Lecture 1',
+               c25w8l2:'COMP2521 · Week 8 · Lecture 2'};
   const sections=[...document.querySelectorAll('.route')];
   const crumbs=document.getElementById('crumbs');
   const sidebar=document.getElementById('sidebar');
