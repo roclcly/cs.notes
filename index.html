@@ -569,7 +569,7 @@
           <a href="#/c25w8l2" data-nav="c25w8l2">Lecture 2 &mdash; Hash tables in practice: sets, counters, problems</a>
           <div class="lvl">Week 9</div>
           <a href="#/c25w9l1" data-nav="c25w9l1">Lecture 1 &mdash; Puzzles solved, priority queues, binary heaps</a>
-          <a href="#/c25w9l2" data-nav="c25w9l2">Lecture 2 &mdash; Tries (slides only)</a>
+          <a href="#/c25w9l2" data-nav="c25w9l2">Lecture 2 &mdash; Heaps finished, heap sort, tries</a>
         </div>
       </details>
       <div class="lvl" style="margin-top:14px">More subjects</div>
@@ -38786,10 +38786,10 @@ submit <span class="sy-t">--list</span></pre>
         <div class="lc-widgets">MST race &middot; mod-6 probe &middot; hub vs MST &middot; puzzle tracer &middot; stack/queue/PQ script &middot; PQ cost bars &middot; heap checker &middot; 2i / 2i + 1 explorer &middot; insert stepper &middot; delete stepper &middot; heap sort &middot; heapify O(n) &middot; quiz &middot; flashcards</div>
       </a>
       <a class="lec-card" href="#/c25w9l2">
-        <div class="lc-tag">Lecture 2 &middot; Tries &middot; slides only (transcript not yet available)</div>
-        <div class="lc-title">Tries: a tree where the path is the key, so searching costs the length of the word, not the size of the set</div>
-        <div class="lc-desc">Built from the <b>Tries</b> deck alone. Keys as paths and <b>finishing</b> nodes; <b>insertion</b> (sea shell sell shore she), <b>search</b> (&ldquo;apple&rdquo; vs &ldquo;ear&rdquo;), <b>deletion</b> with dead-branch pruning (&ldquo;earth&rdquo;); O(m) time and O(nR) space; linked-list, left-child right-sibling, nybble and compressed variants; word finding, autocomplete and predictive text (4663).</div>
-        <div class="lc-widgets">prefix-query costs &middot; trie builder &middot; insert stepper &middot; search stepper &middot; delete + prune stepper &middot; pointer counter &middot; five representations &middot; keypad predictive text &middot; autocomplete &middot; quiz &middot; flashcards</div>
+        <div class="lc-tag">Lecture 2 &middot; Thursday lecture + Tries</div>
+        <div class="lc-title">Heaps finished, then tries: fix down, heap sort&rsquo;s properties argued out, and a tree where the path is the key</div>
+        <div class="lc-desc">The room finished heaps: <b>fix down</b> with the bigger child, 1- vs 0-based indexing, an AVL tree with a max pointer, <b>heap sort</b> (in place, unstable, non-adaptive, with a counterexample) and why bottom-up heapify is O(n). Then <b>tries</b>: keys as paths and <b>finishing</b> nodes; <b>insertion</b> (sea shell sell shore she), <b>search</b> (&ldquo;apple&rdquo; vs &ldquo;ear&rdquo;), <b>deletion</b> with dead-branch pruning (&ldquo;earth&rdquo;); O(m) time and O(nR) space; linked-list, left-child right-sibling, nybble and compressed variants; word finding, autocomplete and predictive text (4663).</div>
+        <div class="lc-widgets">heap insert/delete (1- or 0-based) &middot; trade-off quiz &middot; stability counterexample &middot; adaptivity counts &middot; heapify sum &middot; prefix-query costs &middot; trie builder &middot; insert stepper &middot; search stepper &middot; delete + prune stepper &middot; pointer counter &middot; five representations &middot; keypad predictive text &middot; autocomplete &middot; quiz &middot; flashcards</div>
       </a>
     </div>
     <p style="color:var(--ink-faint);margin-top:22px"><span class="tba-badge">TBA</span> &nbsp;Weeks 1&ndash;10 continue here as transcripts and slides arrive. Assignment 1 (trees) is released in week 4 and Assignment 2 (graphs) in week 7.</p>
@@ -58871,9 +58871,15 @@ void fixDown(Item items[], int i, int N) {
   <header>
     <div class="wrap hero">
       <div class="eyebrow">COMP2521 &middot; 26T3 &middot; Data Structures and Algorithms &middot; Week 9 &mdash; Lecture 2</div>
-      <h1>Tries: <span class="thin">a tree where the path is the key, so searching costs the length of the word, not the size of the set</span></h1>
-      <p class="lede">A trie (from re<b>trie</b>val, &ldquo;pronounced as &lsquo;try&rsquo; not &lsquo;tree&rsquo;&rdquo;) stores a set of strings so that a search for a key of length <b>m</b> takes <b>O(m)</b>, whatever the number of keys. Each link is one character, a key is a path from the root, and a <b>finishing</b> node marks where a key ends. This page covers the whole <b>Tries</b> deck: insertion, search, deletion and its dead branches, the O(nR) space bill, four ways to cut it (linked-list children, left-child right-sibling, nybbles, compression), and autocomplete, predictive text and word finding.</p>
+      <h1>Heaps finished, then tries: <span class="thin">fix down, heap sort&rsquo;s properties argued out, and a tree where the path is the key</span></h1>
+      <p class="lede">&ldquo;Do, don&rsquo;t watch.&rdquo; The Thursday lecture of week 9 spent its first hour finishing <b>heaps</b>: deletion by <b>fix down</b>, why not just an AVL tree with a pointer to the maximum, <b>heap sort</b> (in place, but is it stable? adaptive?), and a neat sum showing bottom-up <b>heapify</b> is O(n). Then it started the course&rsquo;s last topic. A trie (from re<b>trie</b>val, &ldquo;pronounced as &lsquo;try&rsquo; not &lsquo;tree&rsquo;&rdquo;) stores a set of strings so that a search for a key of length <b>m</b> takes <b>O(m)</b>, whatever the number of keys. Each link is one character, a key is a path from the root, and a <b>finishing</b> node marks where a key ends. The room got through insertion, search, deletion and the O(m) / O(nR) analysis. This page also covers the rest of the <b>Tries</b> deck from the slides: four ways to cut the memory bill (linked-list children, left-child right-sibling, nybbles, compression) and autocomplete, predictive text and word finding.</p>
       <div class="chips">
+        <span class="chip">fix down</span>
+        <span class="chip">swap with the bigger child</span>
+        <span class="chip">AVL + max pointer?</span>
+        <span class="chip">heap sort: in place, unstable, non-adaptive</span>
+        <span class="chip">&frac14; + &frac28; + &frac316; + &hellip; = 1</span>
+        <span class="chip">z5 redundancy</span>
         <span class="chip">set of strings</span>
         <span class="chip">O(m) per operation</span>
         <span class="chip">finishing nodes</span>
@@ -58888,7 +58894,7 @@ void fixDown(Item items[], int i, int N) {
         <span class="chip">compressed trie</span>
         <span class="chip">autocomplete</span>
         <span class="chip">4663</span>
-        <span class="chip alt">slides only &middot; 1 deck (Tries, 67 slides) &middot; no transcript yet</span>
+        <span class="chip alt">transcript &middot; 1 deck (Tries, 67 slides) &middot; heaps from the W9L1 deck</span>
       </div>
     </div>
   </header>
@@ -58896,35 +58902,105 @@ void fixDown(Item items[], int i, int N) {
   <div class="wrap">
     <nav class="map" aria-label="Lecture sections">
       <a href="#c25w9l2-open"><span class="n">01</span><span class="t">What this page covers</span></a>
-      <a href="#c25w9l2-why"><span class="n">02</span><span class="t">Why not an AVL tree or hash table?</span></a>
-      <a href="#c25w9l2-rep"><span class="n">03</span><span class="t">What a trie is</span></a>
-      <a href="#c25w9l2-ins"><span class="n">04</span><span class="t">Insertion</span></a>
-      <a href="#c25w9l2-srch"><span class="n">05</span><span class="t">Search</span></a>
-      <a href="#c25w9l2-del"><span class="n">06</span><span class="t">Deletion and dead branches</span></a>
-      <a href="#c25w9l2-cost"><span class="n">07</span><span class="t">O(m) time, O(nR) space</span></a>
-      <a href="#c25w9l2-var"><span class="n">08</span><span class="t">Variants that save memory</span></a>
-      <a href="#c25w9l2-app"><span class="n">09</span><span class="t">Applications</span></a>
-      <a href="#c25w9l2-chk"><span class="n">10</span><span class="t">Check yourself</span></a>
+      <a href="#c25w9l2-hdel"><span class="n">02</span><span class="t">Heaps: insert, delete, indexing</span></a>
+      <a href="#c25w9l2-avl"><span class="n">03</span><span class="t">Why a heap, not an AVL tree?</span></a>
+      <a href="#c25w9l2-hsort"><span class="n">04</span><span class="t">Heap sort, argued out</span></a>
+      <a href="#c25w9l2-hfy"><span class="n">05</span><span class="t">Heapify in O(n): the sum</span></a>
+      <a href="#c25w9l2-why"><span class="n">06</span><span class="t">Why tries?</span></a>
+      <a href="#c25w9l2-rep"><span class="n">07</span><span class="t">What a trie is</span></a>
+      <a href="#c25w9l2-ins"><span class="n">08</span><span class="t">Insertion</span></a>
+      <a href="#c25w9l2-srch"><span class="n">09</span><span class="t">Search</span></a>
+      <a href="#c25w9l2-del"><span class="n">10</span><span class="t">Deletion and dead branches</span></a>
+      <a href="#c25w9l2-cost"><span class="n">11</span><span class="t">O(m) time, O(nR) space</span></a>
+      <a href="#c25w9l2-var"><span class="n">12</span><span class="t">Variants that save memory</span></a>
+      <a href="#c25w9l2-app"><span class="n">13</span><span class="t">Applications</span></a>
+      <a href="#c25w9l2-chk"><span class="n">14</span><span class="t">Check yourself</span></a>
     </nav>
 
     <!-- 01 -->
     <section class="sec" id="c25w9l2-open">
       <div class="sec-eyebrow">Sources</div>
-      <h2>Built from the slides alone <span class="block-tag">(how this page is assembled)</span></h2>
-      <p class="sec-lead">This is the <b>Thursday lecture of week 9</b> (12 November). Unlike the other lecture pages, it is built from the lecture&rsquo;s slide deck only: <b>Tries</b>, 67 slides, downloaded from the course&rsquo;s lecture page. The lecture recording exists on Echo360, but its transcript wasn&rsquo;t available: on 12 November the transcript request returned &ldquo;not found&rdquo;, and on the 14 November recheck Echo360 required a fresh sign-in. So nothing here comes from the room. There are no quotes from the lecture and no worked examples beyond the slides&rsquo; own; anything the room added (questions, live examples, a quiz) isn&rsquo;t here. Every claim cites its slide, and the page will be extended once the transcript can be read.</p>
+      <h2>The end of heaps, then the last topic of the course <span class="block-tag">(how this page is assembled)</span></h2>
+      <p class="sec-lead">The transcript is the <b>Thursday lecture of week 9</b> (12 November), retrieved from Echo360 on 14 November. (A first version of this page went up from the slides alone while the transcript wasn&rsquo;t available.) The first hour finished the <b>Priority Queues and Heaps</b> deck. Its slides are on the <a href="#/c25w9l1">Week 9 Lecture 1 page</a>, which has steppers for every slide example, so this page adds what the room said and asked. The second hour taught <b>Tries</b> up to the analysis on slide 36: &ldquo;tries is usually typically the last topic &hellip; it&rsquo;s often not assessed. That is not something I believe in, I believe that any topic covered is assessable.&rdquo; Slides 37&ndash;54 (variants and applications) weren&rsquo;t reached in the room and are tagged <span class="thu">slides only</span>.</p>
       <div class="d-props">
-        <div class="d-prop"><div class="pt">Tries &middot; core</div><div class="pc">slides 1&ndash;36 &middot; &sect;02&ndash;&sect;07</div><div class="pd">Motivation (autocomplete, predictive text, approximate matching, spell checking); AVL trees and hash tables vs patterns; the trie and its features; the node struct; insertion (sea shell sell shore she); search (&ldquo;apple&rdquo;, &ldquo;ear&rdquo;); deletion and dead branches (&ldquo;shore&rdquo;, &ldquo;earth&rdquo;); O(m) and O(nR).</div></div>
-        <div class="d-prop"><div class="pt">Tries &middot; variants</div><div class="pc">slides 37&ndash;50 &middot; &sect;08</div><div class="pd">208 bytes of pointers per node; linked-list children; left-child right-sibling binary trees; alphabet reduction into 4-bit nybbles; compressed tries.</div></div>
-        <div class="d-prop"><div class="pt">Tries &middot; applications</div><div class="pc">slides 51&ndash;54 &middot; &sect;09</div><div class="pd">Word finding in a document; autocomplete; predictive text on a keypad (4663 &rarr; good, home, hood, hoof).</div></div>
-        <div class="d-prop"><div class="pt">Lecture transcript</div><div class="pc">not available</div><div class="pd">Recording listed on Echo360; transcript &ldquo;not found&rdquo; on 12 Nov, sign-in required on 14 Nov. When it can be read, the room&rsquo;s material will be added here, like on every other lecture page.</div></div>
+        <div class="d-prop"><div class="pt">Thursday &middot; admin</div><div class="pc">transcript &middot; &sect;01</div><div class="pd">No &ldquo;one of these five questions will be on the exam&rdquo; hints: in past terms students who got them &ldquo;tend to underperform&rdquo;. Practice exams are out; next week&rsquo;s revision will discuss how to approach questions at a higher level. Please fill in myExperience (no reward), constructively. &ldquo;Do, don&rsquo;t watch.&rdquo;</div></div>
+        <div class="d-prop"><div class="pt">Thursday &middot; heaps</div><div class="pc">transcript &middot; &sect;02&ndash;&sect;05</div><div class="pd">Completeness (at most one node with one child); inserting 18; 1-based vs 0-based indexing; arrays vs nodes for space; delete by fix down, swapping with the bigger child; deleting until empty gives descending order; the AVL-with-a-max-pointer question; trade-offs; heap sort; in place, stable?, adaptive?; bottom-up heapify and its O(n) sum.</div></div>
+        <div class="d-prop"><div class="pt">Thursday &middot; tries</div><div class="pc">transcript + slides 1&ndash;36 &middot; &sect;06&ndash;&sect;11</div><div class="pd">Storing zIDs without the &ldquo;z5&rdquo;; she sells sea shells; dictionaries and retrieval; texting 4663 on an old phone; hashing can&rsquo;t find &ldquo;goo&hellip;&rdquo;; the slide 8 trie; alphabet sizes (26, or 10 for phone numbers and zIDs); insert, search, delete with the room&rsquo;s own examples; O(m) and O(nR).</div></div>
+        <div class="d-prop"><div class="pt">Tries &middot; variants and applications</div><div class="pc">slides 37&ndash;54 &middot; &sect;12&ndash;&sect;13 <span class="thu">slides only</span></div><div class="pd">208 bytes of pointers per node; linked-list children; left-child right-sibling; nybbles; compressed tries; word finding; autocomplete; predictive text.</div></div>
       </div>
-      <div class="call note"><b>Where the example words come from.</b> The key sets in the widgets are the slides&rsquo; own: ace, aces, ape, apes, app, apply, early, earth, east (slide 8 onward), and sea, shell, sell, shore, she (slides 14&ndash;15 and 56&ndash;67). The predictive-text dictionary adds a few common words to slide 4&rsquo;s good, home, hood and hoof; those extras are marked as the page&rsquo;s own.</div>
+      <div class="call note"><b>Where the example words come from.</b> The key sets in the widgets are the slides&rsquo; own: ace, aces, ape, apes, app, apply, early, earth, east (slide 8 onward), and sea, shell, sell, shore, she (slides 14&ndash;15 and 56&ndash;67, also the room&rsquo;s &ldquo;she sells sea shells by the sea shore&rdquo;). The predictive-text dictionary adds a few common words to slide 4&rsquo;s good, home, hood and hoof; those extras are marked as the page&rsquo;s own.</div>
+    </section>
+
+    <!-- 02 -->
+    <section class="sec" id="c25w9l2-hdel">
+      <div class="sec-eyebrow">Heaps &middot; finished in the room</div>
+      <h2>Insert by fix up, delete by fix down: &ldquo;push a rogue element down the heap&rdquo; <span class="block-tag">(transcript &middot; Priority Queues slides 31&ndash;112)</span> <a class="back" href="#/c25w9l1">heap steppers on W9L1</a></h2>
+      <p class="sec-lead">A binary heap fills &ldquo;top to bottom, left to right&rdquo;, so at most <b>one</b> node has a single child; everyone else has 0 or 2. Compare a height-balanced AVL tree, which may have many one-child nodes. That shape is what lets the heap live in an array, with the number of levels optimal at about log n. <b>Insert</b>: put the item in the next free place, then fix up along one path. The room&rsquo;s example inserts 18 into 20 10 15 8 2 13: it swaps with 15, then stops under 20. <b>Delete</b>: take the root, move the last item up into its place, then <b>fix down</b>: compare the two children and swap with the <b>bigger</b> one (&ldquo;if I swapped 8 with 20, then 20&rsquo;s still gonna be in the wrong place&rdquo;). Stop when the item is &ge; its larger child, or it has no children: index 2i past the item count.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">the room&rsquo;s heap examples &mdash; tree and array together</span></div>
+        <div class="body">
+          <div class="d-row"><label>preset</label><select id="c25w9l2-hdp"></select><span class="d-btns" style="margin:0"><button id="c25w9l2-hdload">load</button></span><label>insert</label><input class="inp" id="c25w9l2-hdk" value="18" style="width:60px"><span class="d-btns" style="margin:0"><button id="c25w9l2-hdins" class="go">insert</button><button id="c25w9l2-hddel">delete max</button><button id="c25w9l2-hdall">delete until empty</button></span><span class="d-btns" id="c25w9l2-hdix" style="margin:0"><button class="on" data-x="1">1-based (offset) array</button><button data-x="0">0-based array</button></span></div>
+          <div id="c25w9l2-hdpl"></div>
+          <div class="d-svg tr"><svg id="c25w9l2-hdsvg" style="max-width:520px"></svg></div>
+          <div class="harr" id="c25w9l2-hdarr"></div>
+          <div class="d-btns" id="c25w9l2-hdst" style="margin:0"></div>
+          <div class="d-out" id="c25w9l2-hdout" style="margin-top:8px"></div>
+        </div>
+      </div>
+      <div class="call note"><b>1-based or 0-based?</b> Oliver asked whether the array could start at 0. Yes: then i&rsquo;s children are 2i + 1 and 2i + 2, and its parent is (i &minus; 1)/2 rounded down. It works, but &ldquo;it gets messier when you want to go the other way.&rdquo; The toggle above relabels the same heap both ways. <b>Arrays vs nodes for space?</b> In C an array is the leanest option (no child pointers); in a language like Java an array carries some extra structure, but &ldquo;they&rsquo;re only gonna differ by a constant value&rdquo;. Keep a <span class="mono">numItems</span> count, because part of the array is unused.</div>
+    </section>
+
+    <!-- 03 -->
+    <section class="sec" id="c25w9l2-avl">
+      <div class="sec-eyebrow">Heaps &middot; a question from the room</div>
+      <h2>&ldquo;Could you augment your AVL tree to keep track of the maximum value?&rdquo; <span class="block-tag">(transcript &middot; Stanley&rsquo;s question)</span></h2>
+      <p class="sec-lead">Yes, and then peek is O(1) for an AVL tree too. Ideas like that lead towards heaps such as the Fibonacci heap, which only restructures on delete. So why use a binary heap? &ldquo;It&rsquo;s just a little bit less structure involved &hellip; the code is gonna be simpler.&rdquo; Fix up is about three lines, while AVL insertion needs left-left, left-right, right-left and right-right rebalancing. The price of less structure is that a heap can&rsquo;t answer &ldquo;is A bigger than B?&rdquo; or find anything but the maximum quickly. The same trade-off thinking applies to sets: hash tables win on time, &ldquo;but hash maps are horrible if you don&rsquo;t know how much data you&rsquo;re gonna have to orders of magnitude&rdquo;, because every resize means a new hash function and a full rehash, while an AVL tree &ldquo;just grows arbitrarily large&rdquo;. And this, per the lecturer, is exam material: &ldquo;this is the sort of question I like to ask in exam situations, a nice soft question that tests your understanding.&rdquo;</p>
+      <div class="d-quiz" id="c25w9l2-avlq"></div>
+    </section>
+
+    <!-- 04 -->
+    <section class="sec" id="c25w9l2-hsort">
+      <div class="sec-eyebrow">Heap sort &middot; in the room</div>
+      <h2>&ldquo;It just happens to magically come out sorted&rdquo;: in place yes, stable no, adaptive no <span class="block-tag">(transcript &middot; Priority Queues slides 118&ndash;172)</span> <a class="back" href="#/c25w9l1">heap sort stepper on W9L1</a></h2>
+      <p class="sec-lead">Deleting until empty returns 30, 25, 17, 13, 8, 6: descending. So: put everything into a heap, delete until empty, store each item as it comes out. That&rsquo;s O(n log n) without merge sort&rsquo;s splitting and merging, &ldquo;as efficient as merge sort&rdquo;, and better than insertion and bubble sort (n&sup2;) and quicksort&rsquo;s worst case. Then the room checked the three sorting properties from week 2. <b>In place</b>: yes (Oliver): the heap grows inside the array, one boundary moving along. <b>Stable</b>: Angus said no, because of long-range swaps; the lecturer agreed but wasn&rsquo;t sure how to prove it and set it as a challenge: find inputs where equal keys come out swapped. <b>Adaptive</b>: a sorted array is already a min heap, so heapify is easy, but the deletions still cost n log n, so no.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">the room&rsquo;s challenge: catch heap sort being unstable</span></div>
+        <div class="body">
+          <div class="d-row"><label>keys (letters mark equal keys)</label><input class="inp" id="c25w9l2-stin" value="2a 2b 1" style="width:220px"><span class="d-btns" style="margin:0"><button id="c25w9l2-stgo" class="go">heap sort it</button><button id="c25w9l2-stfind">search for the smallest counterexample</button></span></div>
+          <div class="d-lbl">input &rarr; output</div>
+          <div class="mapv" id="c25w9l2-stio"></div>
+          <div class="d-out" id="c25w9l2-stout"></div>
+          <div class="d-row" style="margin-top:12px"><label>n</label><input type="range" id="c25w9l2-adn" min="8" max="2048" step="8" value="512"><span class="d-stat" id="c25w9l2-adnv"></span></div>
+          <div class="bars" id="c25w9l2-adbars"></div>
+          <div class="d-out" id="c25w9l2-adout"></div>
+        </div>
+      </div>
+      <div class="call note"><b>At the break.</b> A student recalled that heap sort can be made stable by also tracking each item&rsquo;s original index and using it to break ties, giving up being in place. The lecturer was open to it (&ldquo;I&rsquo;m more than happy to be convinced otherwise&rdquo;), and noted the slides&rsquo; last word: unstable, non-adaptive, in place. He added that space is rarely the deciding factor: &ldquo;space is cheap &hellip; it&rsquo;s the other ones that we care about so much, actually stability and adaptivity.&rdquo; The counterexample search above uses the slides&rsquo; algorithm (bottom-up heapify, then swap the root to the end); the specific counterexample is the page&rsquo;s own computation.</div>
+    </section>
+
+    <!-- 05 -->
+    <section class="sec" id="c25w9l2-hfy">
+      <div class="sec-eyebrow">Heapify &middot; the room&rsquo;s sum</div>
+      <h2>Bottom-up heapify costs &frac14; + &frac28; + &frac316; + &hellip; = at most n steps <span class="block-tag">(transcript &middot; Priority Queues slides 137&ndash;147)</span></h2>
+      <p class="sec-lead">Inserting items one at a time costs log 1 + log 2 + &hellip; + log n = O(n log n). Building &ldquo;bottom up&rdquo; is cheaper. The room&rsquo;s example was 5 3 2 1 6 7 4: the last four items are already heaps of size 1; then add 2, 3 and 5 from right to left, fixing each one down. Half the nodes are leaves (0 steps), a quarter move down at most 1 level, an eighth at most 2, and so on. The total is n &times; (&frac14; + &frac28; + &frac316; + &hellip;). Stack the series into rows: &frac14; + &frac18; + &frac116; + &hellip; = &frac12;, then &frac18; + &frac116; + &hellip; = &frac14;, then &frac116; + &hellip; = &frac18;&hellip; Each column adds up to one term of the original series, and the rows total &frac12; + &frac14; + &frac18; + &hellip; = <b>1</b>. So heapify is O(n). (&ldquo;I thought that was really neat.&rdquo;)</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">the column trick, and the room&rsquo;s example</span></div>
+        <div class="body">
+          <div class="gt-wrap"><table class="xg" id="c25w9l2-hfgrid"></table></div>
+          <div class="d-out" id="c25w9l2-hfsum"></div>
+          <div class="d-lbl" style="margin-top:10px">5 3 2 1 6 7 4, heapified bottom up (max heap)</div>
+          <div class="d-btns" id="c25w9l2-hfst" style="margin:0"></div>
+          <div class="harr" id="c25w9l2-hfarr"></div>
+          <div class="d-out" id="c25w9l2-hfout"></div>
+        </div>
+      </div>
+      <div class="call note"><b>But it doesn&rsquo;t make heap sort faster overall.</b> Heapify is O(n) even on sorted input, but &ldquo;repeatedly deleting is n log n, that&rsquo;s gonna be the bottleneck&rdquo;. Heap sort stays O(n log n), unstable, non-adaptive and in place. <b>Other break questions:</b> the assignment&rsquo;s task 1 challenge test hanging is fine (&ldquo;the challenge is there to be a challenge&rdquo;); someone described Go growing a hash map by allocating a double-size table and moving entries across gradually on later inserts; and password checks store hashes, which is a different structure from a hash table that stores keys with values.</div>
     </section>
 
     <!-- 02 -->
     <section class="sec" id="c25w9l2-why">
       <div class="sec-eyebrow">Slides 2&ndash;6</div>
-      <h2>A set of strings, searched &ldquo;with a pattern&rdquo; <span class="block-tag">(slides 2&ndash;6)</span></h2>
+      <h2>A set of strings, searched &ldquo;with a pattern&rdquo; <span class="block-tag">(slides 2&ndash;6 &middot; transcript)</span></h2>
       <p class="sec-lead">Autocomplete, predictive text, approximate string matching and spell checking all search a set of strings with a pattern. With what the course has covered so far, an AVL tree gives O(log n) worst case and a hash table O(1) on average (slide 5). They&rsquo;re efficient for exact lookups, &ldquo;but they are not efficient when searching for a pattern&rdquo; (slide 6). The widget compares how much each structure must look at to answer &ldquo;which keys start with this prefix?&rdquo;.</p>
       <div class="screen">
         <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">prefix query: which keys start with &hellip;?</span></div>
@@ -58935,12 +59011,13 @@ void fixDown(Item items[], int i, int N) {
         </div>
       </div>
       <div class="call note"><b>How the bars are counted</b> (the page&rsquo;s model, not the slides&rsquo;). A hash table has no order, so it must examine every key. A balanced BST can find the first key &ge; the prefix in about log&#8322; n comparisons, then walk forward through the matches; each comparison may itself read up to m characters. A trie walks m nodes, then visits only the subtree of matches.</div>
+      <div class="call note"><b>In the room.</b> The lecturer framed tries as the efficiency of redundancy. To store everyone&rsquo;s zID, &ldquo;I wouldn&rsquo;t bother storing your full zID&rdquo;, since every one in the room starts with z5: store the shared start once. For patterns, hash tables fail by design: &ldquo;If I want to find all the words that begin with G O O, they&rsquo;re gonna hash to different things &hellip; with a good hash function, they&rsquo;re not all gonna hash in the same area.&rdquo; Tries instead &ldquo;make use of this structure that we have inside our data&rdquo;. The old-phone example (pressing 4663 for good, home, hood or hoof) was the lecturer&rsquo;s own: &ldquo;I was terrible at it.&rdquo;</div>
     </section>
 
     <!-- 03 -->
     <section class="sec" id="c25w9l2-rep">
       <div class="sec-eyebrow">Slides 7&ndash;12</div>
-      <h2>Keys are paths, not stored values <span class="block-tag">(slides 7&ndash;12)</span></h2>
+      <h2>Keys are paths, not stored values <span class="block-tag">(slides 7&ndash;12 &middot; transcript)</span></h2>
       <p class="sec-lead">A trie is a tree representing a set of strings (&ldquo;keys&rdquo; or &ldquo;words&rdquo;). Each <b>link</b> is one character, and a key is the <b>path</b> from the root. A node can be tagged as <b>finishing</b>, marking the end of a key, and may carry data for that key. Unlike a search tree, &ldquo;the nodes in a trie do not store their associated key&rdquo;: keys are implicit in their position (slide 9). Here are the slides&rsquo; nine keys; green nodes are finishing.</p>
       <div class="screen">
         <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">the slide 8 trie &mdash; edit the keys</span></div>
@@ -58963,12 +59040,13 @@ struct node {
         <div><div class="tcol-h">Reading a trie</div>
           <p style="font-size:14.5px">A node&rsquo;s key is the characters on the links from the root. &ldquo;app&rdquo; is a key because its node is finishing; &ldquo;ap&rdquo; isn&rsquo;t, although its node exists, because it&rsquo;s only a prefix of other keys. A key can end at a node that also has children (&ldquo;app&rdquo; continues to &ldquo;apply&rdquo;), which is why &ldquo;finishing&rdquo; is a flag, not &ldquo;is a leaf&rdquo;.</p></div>
       </div>
+      <div class="call note"><b>In the room: &ldquo;she sells sea shells by the sea shore&rdquo;.</b> All of she, sells, sea, shells and shore start with s, so the s is stored once, then the tree splits into se&hellip; and sh&hellip;. Nodes that end a word get marked; the lecturer counted the result as 12 nodes. (Build the slides&rsquo; version, sea shell sell shore she, in &sect;08: also 12 nodes below the root.) The alphabet size depends on the keys: 26 for lowercase words, 10 for phone numbers or zIDs, so each node has that many child slots. On slide 12&rsquo;s concrete picture, the lecturer noted the finishing flags belong on the a and s nodes: &ldquo;I would have put the finishing indicator at A and S.&rdquo;</div>
     </section>
 
     <!-- 04 -->
     <section class="sec" id="c25w9l2-ins">
       <div class="sec-eyebrow">Slides 13&ndash;16, 56&ndash;67</div>
-      <h2>Insert: walk the key, creating missing children, then mark the end <span class="block-tag">(slides 13&ndash;16, 56&ndash;67)</span></h2>
+      <h2>Insert: walk the key, creating missing children, then mark the end <span class="block-tag">(slides 13&ndash;16, 56&ndash;67 &middot; transcript)</span></h2>
       <p class="sec-lead">Start at the root. For each character c of the key, left to right: if there&rsquo;s no child for c, create one; descend into it. Finally mark the node as finishing and store the data (slide 13). Shared prefixes share nodes: after &ldquo;sea&rdquo;, &ldquo;sell&rdquo; reuses s and e. Step through the slides&rsquo; example (sea, shell, sell, shore, she) or add your own words.</p>
       <div class="screen">
         <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">trieInsert, one character at a time</span></div>
@@ -59000,12 +59078,13 @@ struct node {
         <div><div class="tcol-h">The slides&rsquo; exercise</div>
           <p style="font-size:14.5px">&ldquo;Try writing an iterative version.&rdquo; Hint from the process on slide 13: keep a pointer <span class="mono">curr</span>; for each character, create <span class="mono">curr-&gt;children[c]</span> if it&rsquo;s NULL, then move <span class="mono">curr</span> into it; after the loop, set <span class="mono">curr-&gt;finish = true</span>. With 26 children per node, index the array with <span class="mono">c - 'a'</span>.</p></div>
       </div>
+      <div class="call note"><b>In the room.</b> &ldquo;This is so super easy to do in Python, because Python allows for string splitting&rdquo;: <span class="mono">key[1:]</span> is the rest. In C, pass a pointer to the next character instead. And the exercise again: write the iterative version, stepping through the word and down the tree together.</div>
     </section>
 
     <!-- 05 -->
     <section class="sec" id="c25w9l2-srch">
       <div class="sec-eyebrow">Slides 17&ndash;24</div>
-      <h2>Search: two ways to fail <span class="block-tag">(slides 17&ndash;24)</span></h2>
+      <h2>Search: two ways to fail <span class="block-tag">(slides 17&ndash;24 &middot; transcript)</span></h2>
       <p class="sec-lead">Search walks the same way as insertion. A missing child for some character means not found. Reaching the end of the key at a node means found <i>only if</i> that node is finishing (slide 17). The slides show both failures. For &ldquo;apple&rdquo;, the node for &ldquo;appl&rdquo; has no child for &lsquo;e&rsquo;. For &ldquo;ear&rdquo;, the node exists, but it isn&rsquo;t a finishing node.</p>
       <div class="screen">
         <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">trieSearch on the slide 8 trie</span></div>
@@ -59033,17 +59112,19 @@ struct node {
         <div><div class="tcol-h">Cost</div>
           <p style="font-size:14.5px">At most m + 1 nodes are visited (the root plus one per character), and each step is an O(1) array index. The number of keys stored never enters into it: a trie with a million words answers &ldquo;is &lsquo;ear&rsquo; a key?&rdquo; in the same 4 steps as one with nine.</p></div>
       </div>
+      <div class="call note"><b>In the room.</b> &ldquo;early&rdquo;: e, a, r, l, y, and y is finishing, so it&rsquo;s in. &ldquo;apple&rdquo;: a, p, p, l, &ldquo;oh, there&rsquo;s no e&rdquo;, so it isn&rsquo;t. &ldquo;ear&rdquo;: the path exists, but r isn&rsquo;t finishing, so it isn&rsquo;t a key. Try all three with the buttons above.</div>
     </section>
 
     <!-- 06 -->
     <section class="sec" id="c25w9l2-del">
       <div class="sec-eyebrow">Slides 25&ndash;35</div>
-      <h2>Delete: unmark the node, then prune the dead branch <span class="block-tag">(slides 25&ndash;35)</span></h2>
+      <h2>Delete: unmark the node, then prune the dead branch <span class="block-tag">(slides 25&ndash;35 &middot; transcript)</span></h2>
       <p class="sec-lead">The easy part: find the key&rsquo;s node and mark it non-finishing. But that &ldquo;can leave behind dead branches&rdquo;, branches with no finishing node, which waste memory (slide 25). Deleting &ldquo;shore&rdquo; that way leaves o&ndash;r&ndash;e hanging. So after unmarking, while the current node is not finishing and has no children, delete it and move up to its parent, recursively, &ldquo;careful not to delete the root node&rdquo; (slide 27). Deleting &ldquo;earth&rdquo; removes the nodes for &ldquo;earth&rdquo; and &ldquo;eart&rdquo; and stops at &ldquo;ear&rdquo;, which still leads to &ldquo;early&rdquo;.</p>
       <div class="screen">
         <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">trieDelete &mdash; with and without pruning</span></div>
         <div class="body">
           <div class="d-row"><span class="d-btns" id="c25w9l2-dlset" style="margin:0"><button class="on" data-s="a">slide 8 keys</button><button data-s="s">sea shell sell shore she</button></span><label>delete</label><input class="inp" id="c25w9l2-dlq" value="earth" style="width:100px"><span class="d-btns" id="c25w9l2-dlm" style="margin:0"><button class="on" data-m="prune">unmark + prune</button><button data-m="naive">only unmark</button></span><button id="c25w9l2-dlgo" class="go">delete</button><button id="c25w9l2-dlrs">reset</button></div>
+          <div class="d-row"><label>the room&rsquo;s deletions (fresh trie each time)</label><span class="d-btns" id="c25w9l2-dlex" style="margin:0"></span></div>
           <div id="c25w9l2-dlpl"></div>
           <div class="d-svg tr"><svg id="c25w9l2-dlsvg"></svg></div>
           <div class="d-btns" id="c25w9l2-dlst" style="margin:0"></div>
@@ -59074,12 +59155,19 @@ doTrieDelete(t, key, isRoot):
         <div><div class="tcol-h">Why it prunes the right amount</div>
           <p style="font-size:14.5px">The check runs on the way back up, after the recursive call returns. A node is removed only if it ends no key and its last child has just gone. The first node that still finishes a key, or still has another child, returns itself, and every node above it is kept too. <span class="mono">isRoot</span> keeps the root alive even when the trie becomes empty.</p></div>
       </div>
+      <div class="call note"><b>The room&rsquo;s deletions</b> (buttons above, on the slide 8 keys):
+        <b>app</b>: just unmark the second p, because apply still runs through it.
+        <b>early</b>: unmark y; y has no children, so delete it; l is now childless and non-finishing, so delete it; stop at r, which still leads to earth.
+        <b>apply</b>: delete y and l, then stop at p, because &ldquo;I don&rsquo;t want to delete P &hellip; it&rsquo;s a final node.&rdquo;
+        <b>ace</b>: unmark e only; it still has the child s (aces).
+        <b>earth</b>: delete h and t; r has a child, so stop.
+        &ldquo;You want to kill the dead branches.&rdquo;</div>
     </section>
 
     <!-- 07 -->
     <section class="sec" id="c25w9l2-cost">
       <div class="sec-eyebrow">Slides 36&ndash;37</div>
-      <h2>O(m) for every operation, O(nR) space <span class="block-tag">(slides 36&ndash;37)</span></h2>
+      <h2>O(m) for every operation, O(nR) space <span class="block-tag">(slides 36&ndash;37 &middot; transcript)</span></h2>
       <p class="sec-lead">Insertion, search and deletion each examine at most m nodes, where m is the key&rsquo;s length: <b>O(m)</b>. Space is <b>O(nR)</b>: n is the total number of characters in all keys (a bound on the node count) and R is the alphabet size, because every node holds R child pointers. With 26 letters that&rsquo;s 8 &times; 26 = <b>208 bytes</b> of pointers per node on a 64-bit machine; for all of ASCII, 128 pointers. &ldquo;Even if trie contains many keys, most child pointers will be unused&rdquo; (slide 37).</p>
       <div class="screen">
         <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">count the nodes and the wasted pointers</span></div>
@@ -59090,12 +59178,13 @@ doTrieDelete(t, key, isRoot):
           <div class="d-out" id="c25w9l2-csout"></div>
         </div>
       </div>
+      <div class="call note"><b>In the room.</b> The analysis was where the lecture ended: O(m) because each operation follows one path whose length is the word&rsquo;s length, and O(nR) space for n characters across all keys and the R-slot arrays &ldquo;sitting in each&rdquo; node. The variants below were left to the slides.</div>
     </section>
 
     <!-- 08 -->
     <section class="sec" id="c25w9l2-var">
       <div class="sec-eyebrow">Slides 37&ndash;50</div>
-      <h2>Trading time for memory: four other representations <span class="block-tag">(slides 37&ndash;50)</span></h2>
+      <h2>Trading time for memory: four other representations <span class="block-tag">(slides 37&ndash;50)</span> <span class="thu">slides only</span></h2>
       <p class="sec-lead">&ldquo;Different representations exist to reduce memory usage at the cost of increased running time&rdquo; (slide 38). <b>Linked list of children</b>: each node keeps a list of only its real children. <b>Left-child right-sibling</b>: merge each list cell into its trie node (<span class="mono">char c; children; sibling</span>), giving a binary tree with one extra pointer per node, but up to ALPHABET_SIZE siblings to walk past. <b>Alphabet reduction</b>: split each 8-bit character into two 4-bit nybbles, so each node has only 16 children but every path is twice as long. <b>Compressed trie</b>: merge non-finishing nodes that have exactly one child into that child, so one node can hold several characters.</p>
       <div class="screen">
         <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">same keys, five representations</span></div>
@@ -59113,7 +59202,7 @@ doTrieDelete(t, key, isRoot):
     <!-- 09 -->
     <section class="sec" id="c25w9l2-app">
       <div class="sec-eyebrow">Slides 51&ndash;54</div>
-      <h2>Word finding, autocomplete, predictive text <span class="block-tag">(slides 51&ndash;54)</span></h2>
+      <h2>Word finding, autocomplete, predictive text <span class="block-tag">(slides 51&ndash;54)</span> <span class="thu">slides only</span></h2>
       <p class="sec-lead"><b>Word finding</b>: preprocess a document by storing every word in a trie with the locations of its occurrences, then query the trie instead of scanning the document (slide 51). <b>Autocomplete</b>: given some letters, find all words that start with them: walk to the prefix&rsquo;s node, then collect every finishing node below it (slide 53). <b>Predictive text</b>: given keypad presses where each button stands for several letters, find every matching word: explore all the letters a button could mean, following only links that exist (slide 54). Slide 4&rsquo;s example: <b>4663</b> &rarr; good, home, hood, hoof.</p>
       <div class="screen">
         <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">predictive text on a phone keypad</span></div>
@@ -59141,7 +59230,7 @@ doTrieDelete(t, key, isRoot):
     <!-- 10 -->
     <section class="sec" id="c25w9l2-chk">
       <div class="sec-eyebrow">Check yourself</div>
-      <h2>Quiz: tries <span class="block-tag">(slides)</span></h2>
+      <h2>Quiz: heaps finished, tries <span class="block-tag">(all sources)</span></h2>
       <div class="d-quiz" id="c25w9l2-qz"></div>
     </section>
 
@@ -59149,7 +59238,7 @@ doTrieDelete(t, key, isRoot):
     <section class="sec" id="c25w9l2-recall">
       <div class="sec-eyebrow">Active recall</div>
       <h2>Test yourself first</h2>
-      <p class="sec-lead">Answer before you flip. <span class="mono">T n</span> = slide n of Tries. (No <span class="mono">room</span> cards on this page: the lecture transcript wasn&rsquo;t available.)</p>
+      <p class="sec-lead">Answer before you flip. <span class="mono">room</span> = said in Thursday&rsquo;s lecture, <span class="mono">T n</span> = slide n of Tries.</p>
       <div class="cards" id="c25w9l2-cards"></div>
     </section>
 
@@ -59158,6 +59247,10 @@ doTrieDelete(t, key, isRoot):
       <div class="sec-eyebrow">Glossary</div>
       <h2>Keywords at a glance</h2>
       <div class="kw-grid">
+        <div class="kw"><div class="t">Fix down (down heap)</div><div class="d">Swap a misplaced item with its bigger child until it&rsquo;s &ge; both children or a leaf.</div></div>
+        <div class="kw"><div class="t">0-based heap indexing</div><div class="d">Children 2i + 1, 2i + 2; parent (i &minus; 1)/2. 1-based: 2i, 2i + 1, i/2.</div></div>
+        <div class="kw"><div class="t">Bottom-up heapify</div><div class="d">Fix down the first half of the array from right to left: O(n).</div></div>
+        <div class="kw"><div class="t">Stable / adaptive / in place</div><div class="d">The three sorting properties. Heap sort: in place only.</div></div>
         <div class="kw"><div class="t">Trie</div><div class="d">A tree for a set of strings: one character per link, a key per root-to-node path. Pronounced &ldquo;try&rdquo;.</div></div>
         <div class="kw"><div class="t">Finishing node</div><div class="d">A node flagged as the end of a key. Not the same as a leaf.</div></div>
         <div class="kw"><div class="t">Implicit key</div><div class="d">Nodes don&rsquo;t store their key; it&rsquo;s spelled by the path to them.</div></div>
@@ -59176,9 +59269,10 @@ doTrieDelete(t, key, isRoot):
     <!-- SUMMARY -->
     <section class="summary">
       <h2>One-screen summary</h2>
+      <p>Heaps, finished: a binary heap has at most one one-child node, so it fits an array (1-based: children 2i, 2i + 1; 0-based: 2i + 1, 2i + 2). <b>Insert</b>: next free slot, fix up. <b>Delete</b>: last item to the root, <b>fix down</b> by swapping with the bigger child. Deleting until empty gives descending order: that&rsquo;s <b>heap sort</b>, O(n log n), in place, unstable (long-range swaps), non-adaptive (deletes still cost n log n). Bottom-up <b>heapify</b> is O(n) because &frac14; + &frac28; + &frac316; + &hellip; = 1. An AVL tree with a max pointer also peeks in O(1), but heaps win on simplicity.</p>
       <p>A <b>trie</b> stores a set of strings as paths: one character per link, a <b>finishing</b> flag where a key ends, keys implicit in position. <b>Insert</b>: walk the key, creating missing children, mark the end. <b>Search</b>: walk the key; fail on a missing child, or if the last node isn&rsquo;t finishing (&ldquo;apple&rdquo; vs &ldquo;ear&rdquo;). <b>Delete</b>: unmark, then on the way back up remove nodes that are non-finishing with no children, never the root (deleting &ldquo;earth&rdquo; removes &ldquo;earth&rdquo; and &ldquo;eart&rdquo;). Every operation is <b>O(m)</b>, independent of the number of keys.</p>
       <p>Space is <b>O(nR)</b>: 26 pointers (208 bytes) per node, mostly NULL. Save memory at the cost of time with <b>linked-list children</b>, a <b>left-child right-sibling</b> binary tree, <b>nybbles</b> (16-way nodes, double-length paths) or a <b>compressed trie</b> (merge single-child chains). Tries power <b>word finding</b>, <b>autocomplete</b> (prefix, then subtree) and <b>predictive text</b> (4663 &rarr; good, home, hood, hoof).</p>
-      <div class="tldr">TL;DR &middot; path = key &middot; finishing flag &middot; insert/search/delete O(m) &middot; two ways to miss: no child, not finishing &middot; delete: unmark, prune upward, keep the root &middot; O(nR) space, 208 B/node &middot; lists / LCRS / nybbles / compression trade time for space &middot; prefix queries are the point</div>
+      <div class="tldr">TL;DR &middot; fix down: swap with the bigger child &middot; heap sort: in place, unstable, non-adaptive &middot; heapify O(n) &middot; path = key &middot; finishing flag &middot; insert/search/delete O(m) &middot; two ways to miss: no child, not finishing &middot; delete: unmark, prune upward, keep the root &middot; O(nR) space, 208 B/node &middot; lists / LCRS / nybbles / compression trade time for space &middot; prefix queries are the point</div>
     </section>
 
     <details class="audit">
@@ -59187,7 +59281,12 @@ doTrieDelete(t, key, isRoot):
         <table>
           <thead><tr><th>Source</th><th>Topic</th><th>Where on this page</th></tr></thead>
           <tbody>
-            <tr><td class="mono">transcript</td><td>Not available: Echo360 transcript &ldquo;not found&rdquo; (12 Nov); sign-in required on recheck (14 Nov). No lecture content is represented.</td><td>&sect;01</td></tr>
+            <tr><td class="mono">transcript &sect;admin</td><td>No exam-question hints (students underperformed); revision next week; practice exams; myExperience; &ldquo;do, don&rsquo;t watch&rdquo;</td><td>&sect;01</td></tr>
+            <tr><td class="mono">transcript &sect;heaps</td><td>Priority queue recap; completeness (one one-child node at most); array storage; min vs max heap; inserting 18 into 20 10 15 8 2 13; peek O(1); 1-based vs 0-based (Oliver); arrays vs nodes for space; delete: last item to root, fix down with the bigger child; stopping condition; the 20 17 11 13 1 8 example in the array; delete until empty &rarr; descending</td><td>&sect;02</td></tr>
+            <tr><td class="mono">transcript &sect;trade-offs</td><td>Cost table with AVL row; AVL + max pointer (Stanley); Fibonacci heaps; code simplicity; hash maps vs AVL when data size is unknown; exam-style soft questions</td><td>&sect;03</td></tr>
+            <tr><td class="mono">transcript &sect;heap sort</td><td>Heap sort; n log n vs merge, quick, insertion, bubble; in place (Oliver); stable? (long swaps, a challenge); adaptive? (sorted = min heap, deletes still n log n); bottom-up heapify; 5 3 2 1 6 7 4; the &frac14; + &frac28; + &hellip; = 1 sum</td><td>&sect;04, &sect;05</td></tr>
+            <tr><td class="mono">transcript &sect;break</td><td>Assignment task 1 challenge test; stable heap sort with index tie-breaks; rehashing and password hashes; Go&rsquo;s incremental hash map growth; &ldquo;space is cheap&rdquo;</td><td>&sect;04, &sect;05 notes</td></tr>
+            <tr><td class="mono">transcript &sect;tries</td><td>Any topic covered is assessable; zID redundancy; she sells sea shells; retrieval; 4663 texting; hashing vs &ldquo;goo&rdquo;; slide 8 keys; alphabet sizes; struct; slide 12 flags; insertion and Python slicing; search early/apple/ear; deletion app/early/apply/shore/ace/earth; O(m), O(nR). Lecture ended here.</td><td>&sect;06&ndash;&sect;11 notes, &sect;10 buttons</td></tr>
             <tr><td class="mono">T 1&ndash;6</td><td>Motivation: autocomplete, predictive text (4663), approximate matching, spell checking; AVL O(log n), hash O(1) average; inefficient for patterns</td><td>&sect;02, &sect;09</td></tr>
             <tr><td class="mono">T 7&ndash;12</td><td>Trie definition; O(m) queries; name; slide 8 example keys; features (links, paths, finishing nodes, data, implicit keys); node struct; concrete representation</td><td>&sect;03</td></tr>
             <tr><td class="mono">T 13&ndash;16</td><td>Insertion process; sea shell sell shore she; recursive pseudocode; iterative exercise</td><td>&sect;04</td></tr>
@@ -59401,9 +59500,128 @@ doTrieDelete(t, key, isRoot):
   <script>
   (function(){
     'use strict';
+    const $=C25.$, R='c25w9l2-';
+    const q=id=>$(R+id);
+    function pick(id, attr, cb){ const box=q(id); const bs=[...box.querySelectorAll('button[data-'+attr+']')]; bs.forEach(b=>b.addEventListener('click',()=>{ bs.forEach(x=>x.classList.remove('on')); b.classList.add('on'); cb(b.getAttribute('data-'+attr), b); })); }
+    function stat(l,v){ return '<span class="d-stat">'+l+' <b>'+v+'</b></span>'; }
+    const nums=s=>String(s).split(/[^-0-9]+/).filter(x=>x!==''&&x!=='-').map(Number);
+    function rng(seed){ return function(){ seed|=0; seed=seed+0x6D2B79F5|0; let t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+    /* 0-based heap drawing; labels shifted by `base` */
+    function tree0(h,size){ const mk=i=>i<size?{i:i,key:h[i],left:mk(2*i+1),right:mk(2*i+2)}:null; return mk(0); }
+    function drawH(svg,h,size,base,cls){ C25.drawBinTree(svg,tree0(h,size),{r:17,gx:40,gy:56,cls:n=>cls(n.i),sub:n=>'['+(n.i+base)+']',subCls:()=>'',label:n=>String(n.key)}); }
+    function arrHtml(h,size,base,cls){ let s=''; if(base===1) s+='<div class="off"><i>[0]</i><b>&ndash;</b></div>'; for(let i=0;i<size;i++) s+='<div class="'+cls(i)+'"><i>['+(i+base)+']</i><b>'+h[i]+'</b></div>'; return s; }
+
+    /* ================= 02 · heap stepper (room examples) ================= */
+    (function(){
+      const PRE=[['The room: insert 18 into 20 10 15 8 2 13','20 10 15 8 2 13','18'],['The room (slide 72): delete from 20 17 11 13 1 8','20 17 11 13 1 8',''],['The room (slides 81&ndash;109): 30 25 17 13 8 6, delete until empty','30 25 17 13 8 6','']];
+      const sp=q('hdp'); PRE.forEach((p,i)=>sp.add(new Option(p[0].replace(/&ndash;/g,'–'),i)));
+      let base=1, h=[], out=[], fr=[], swaps=0;
+      const pl=C25.player(q('hdpl'),{frames:[],render:render});
+      const P=i=>base===1?'['+(i+1)+' / 2] = ['+Math.floor((i+1)/2)+']':'[('+i+' &minus; 1) / 2] = ['+Math.floor((i-1)/2)+']';
+      const K=i=>base===1?'[2&middot;'+(i+1)+'] and [2&middot;'+(i+1)+' + 1]':'[2&middot;'+i+' + 1] and [2&middot;'+i+' + 2]';
+      const ix=i=>i+base;
+      const snap=(cur,o,msg)=>fr.push({h:h.slice(),cur:cur,o:o||[],out:out.slice(),msg:msg,swaps:swaps});
+      function ins(x){ h.push(x); let i=h.length-1; snap(i,[],'Add '+x+' at the next free place, ['+ix(i)+'] (the end of the array).');
+        while(i>0){ const p=Math.floor((i-1)/2);
+          if(h[i]>h[p]){ snap(i,[p],h[i]+' &gt; its parent '+h[p]+' at '+P(i)+': swap.'); [h[i],h[p]]=[h[p],h[i]]; swaps++; i=p; }
+          else { snap(i,[p],h[i]+' &le; its parent '+h[p]+' at '+P(i)+': <b>stop</b>.'); return; } }
+        snap(0,[],h[0]+' is the new root.'); }
+      function del(){ if(!h.length){ snap(-1,[],'Empty.'); return; } const top=h[0], last=h.pop(); out.push(top);
+        if(!h.length){ snap(-1,[],'Delete '+top+': the heap is now empty.'); return; }
+        h[0]=last; snap(0,[],'Remove '+top+'; move the last item, '+last+', to the root.');
+        let i=0; const N=h.length;
+        while(2*i+1<N){ let j=2*i+1; const kids=[j]; if(j+1<N){ kids.push(j+1); if(h[j+1]>h[j]) j++; }
+          if(h[i]>=h[j]){ snap(i,kids,'Children at '+K(i)+'; the bigger is '+h[j]+'. '+h[i]+' &ge; '+h[j]+': <b>stop</b>.'); return; }
+          snap(i,kids,'Children at '+K(i)+'; the bigger is '+h[j]+' &gt; '+h[i]+': swap with the <b>bigger</b> child.'); [h[i],h[j]]=[h[j],h[i]]; swaps++; i=j; }
+        snap(i,[],h[i]+' at ['+ix(i)+'] has no children ('+(base===1?'2i = '+(2*(i+1)):'2i + 1 = '+(2*i+1))+' is past the last item): stop.'); }
+      function load(){ const p=PRE[+sp.value]; h=nums(p[1]); out=[]; fr=[]; swaps=0; if(p[2]) q('hdk').value=p[2]; snap(-1,[],'Heap: '+h.join(' ')+'.'); pl.load(fr); }
+      function finish(msg){ fr.push(Object.assign({},fr[fr.length-1],{cur:-1,o:[],msg:fr[fr.length-1].msg+' '+msg})); pl.load(fr); }
+      function render(f){ const cls=i=>i===f.cur?'cur':f.o.includes(i)?'kid':'';
+        drawH(q('hdsvg'),f.h,f.h.length,base,i=>i===f.cur?'cur':f.o.includes(i)?'front':'');
+        q('hdarr').innerHTML=arrHtml(f.h,f.h.length,base,cls);
+        q('hdst').innerHTML=stat('items',f.h.length)+stat('swaps',f.swaps)+(f.out.length?stat('deleted',f.out.join(' ')):'');
+        q('hdout').innerHTML=f.msg; }
+      q('hdload').onclick=load; sp.onchange=load;
+      q('hdins').onclick=()=>{ const x=parseInt(q('hdk').value,10); if(isNaN(x)) return; fr=[]; swaps=0; snap(-1,[],'Heap: '+h.join(' ')+'.'); ins(x); finish('Heap now: '+h.join(' ')+'.'+(sp.value==='0'&&x===18&&h.join()==='20,10,18,8,2,13,15'?' <span class="ok">As in the room: 18 swaps with 15, then stops under 20.</span>':'')); };
+      q('hddel').onclick=()=>{ fr=[]; swaps=0; snap(-1,[],'Heap: '+(h.length?h.join(' '):'(empty)')+'.'); del(); finish('Heap now: '+(h.length?h.join(' '):'(empty)')+'.'+(h.join()==='17,13,11,8,1'?' <span class="ok">As in the room: 17 13 11 8 1.</span>':'')); };
+      q('hdall').onclick=()=>{ fr=[]; swaps=0; snap(-1,[],'Heap: '+h.join(' ')+'.'); while(h.length) del(); finish('Out in order: <b>'+out.join(' ')+'</b>, largest first. &ldquo;We&rsquo;re gonna use that fact to develop a new sorting algorithm.&rdquo;'); };
+      pick('hdix','x',x=>{ base=+x; pl.load(fr,'end'); });
+      load();
+    })();
+
+    /* ================= 03 · trade-off quiz ================= */
+    C25.quiz(R+'avlq',[
+      {q:'You need a priority queue and nothing else (insert, delete-max, peek). The room&rsquo;s preference?',opts:['a binary heap: simple code, O(log n) / O(1)','an AVL tree with a max pointer','an unordered array','a hash table'],a:0,why:'Same big-O as the augmented AVL tree for these operations, with much less structure and code.'},
+      {q:'You need the maximum <i>and</i> to ask &ldquo;is item A ranked above item B?&rdquo; quickly.',opts:['an AVL tree (optionally with a max pointer)','a binary heap','a hash table','an unordered linked list'],a:0,why:'A heap only orders parents over children; it can&rsquo;t compare two arbitrary items quickly.'},
+      {q:'A set of keys whose size could be anywhere from a thousand to a million. Why might an AVL tree beat a hash table?',opts:['resizing a hash table means a new hash function and rehashing everything; an AVL tree just grows','AVL lookups are O(1)','hash tables can&rsquo;t store strings','AVL trees use less memory per key'],a:0,why:'&ldquo;Hash maps are horrible if you don&rsquo;t know how much data you&rsquo;re gonna have to orders of magnitude.&rdquo;'},
+      {q:'Why teach Prim at all, if Kruskal also finds MSTs?',opts:['each suits different situations: the course is about choosing','Prim is always faster','Kruskal is wrong on dense graphs','exams only ask Prim'],a:0,why:'&ldquo;It&rsquo;s not a case of teaching you Prim&rsquo;s and then saying &hellip; you&rsquo;d never use Prim&rsquo;s anywhere.&rdquo;'}
+    ]);
+
+    /* ================= 04 · stability + adaptivity ================= */
+    (function(){
+      function heapSort(a,cmp){ a=a.slice(); let c=0; const less=(x,y)=>{ c++; return cmp(x,y)<0; };
+        function fd(i,N){ while(2*i+1<=N){ let j=2*i+1; if(j<N&&less(a[j],a[j+1])) j++; if(!less(a[i],a[j])) break; [a[i],a[j]]=[a[j],a[i]]; i=j; } }
+        const n=a.length; for(let i=Math.floor(n/2)-1;i>=0;i--) fd(i,n-1); const hc=c;
+        for(let s=n;s>1;s--){ [a[0],a[s-1]]=[a[s-1],a[0]]; fd(0,s-2); }
+        return {a:a,heapify:hc,total:c}; }
+      const byKey=(x,y)=>x.k-y.k;
+      function parse(s){ return String(s).trim().split(/[\s,]+/).filter(Boolean).map((t,i)=>{ const m=t.match(/^(-?\d+)([a-z]*)$/i); return m?{k:+m[1],tag:m[2]||'',pos:i}:null; }).filter(Boolean); }
+      function stable(inp,outp){ return outp.every((x,i)=>i===0||outp[i-1].k!==x.k||outp[i-1].pos<x.pos); }
+      const lab=x=>x.k+(x.tag?'<sub>'+x.tag+'</sub>':'');
+      function show(inp){ const r=heapSort(inp,byKey), ok=stable(inp,r.a);
+        q('stio').innerHTML=inp.map(x=>'<div class="c">'+lab(x)+'</div>').join('')+'<div class="c" style="border:none;background:none">&rarr;</div>'+r.a.map((x,i)=>{ const bad=r.a.some((y,j)=>y.k===x.k&&((j<i&&y.pos>x.pos)||(j>i&&y.pos<x.pos))); return '<div class="c'+(bad?' pr':' hit')+'">'+lab(x)+'</div>'; }).join('');
+        return ok; }
+      q('stgo').onclick=()=>{ const inp=parse(q('stin').value); if(!inp.length) return; const ok=show(inp); q('stout').innerHTML=ok?'Equal keys kept their input order this time. Stability means for <i>every</i> input; try the search.':'<span class="bad">Unstable:</span> equal keys came out in a different order from the input (amber).'; };
+      q('stfind').onclick=()=>{ for(let n=2;n<=6;n++){ const total=Math.pow(3,n); for(let m=0;m<total;m++){ let x=m; const keys=[]; for(let i=0;i<n;i++){ keys.push(1+x%3); x=Math.floor(x/3); }
+            const seen={}; const inp=keys.map((k,i)=>{ seen[k]=(seen[k]||0)+1; return {k:k,tag:'abcdef'[seen[k]-1],pos:i}; });
+            if(!keys.some((k,i)=>keys.indexOf(k)!==i)) continue;
+            const r=heapSort(inp,byKey); if(!stable(inp,r.a)){ q('stin').value=inp.map(v=>v.k+v.tag).join(' '); show(inp); q('stout').innerHTML='Smallest counterexample found (n = '+n+', keys from 1&ndash;3): <b>'+inp.map(v=>v.k+v.tag).join(' ')+'</b> sorts to <b>'+r.a.map(v=>v.k+v.tag).join(' ')+'</b>. The equal keys swapped order, so heap sort is <b>not stable</b>. (The page&rsquo;s own search, answering the room&rsquo;s challenge.)'; return; } } } };
+      function ad(){ const n=+q('adn').value; q('adnv').innerHTML='<b>'+n+'</b>'; const r=rng(9);
+        const mk=a=>a.map((k,i)=>({k:k,pos:i}));
+        const asc=[...Array(n).keys()], desc=asc.slice().reverse(), rnd=asc.map(()=>Math.floor(r()*n));
+        const rows=[['already sorted (ascending)',heapSort(mk(asc),byKey)],['random',heapSort(mk(rnd),byKey)],['reverse sorted',heapSort(mk(desc),byKey)]], top=Math.max(...rows.map(x=>x[1].total));
+        q('adbars').innerHTML=rows.map(x=>'<div class="br"><span>'+x[0]+'</span><div class="tr"><span class="m" style="width:'+(100*x[1].heapify/top)+'%;float:left"></span><span style="width:'+(100*(x[1].total-x[1].heapify)/top)+'%;float:left"></span></div><span class="v">'+x[1].total.toLocaleString()+'</span></div>').join('')+'<div style="font-family:Space Mono,monospace;font-size:11px;color:#6f9a85">comparisons: amber = heapify, green = the deletions</div>';
+        const s=rows[0][1], m=rows[1][1];
+        q('adout').innerHTML='Sorted input still costs '+s.total.toLocaleString()+' comparisons vs '+m.total.toLocaleString()+' for random: no speed-up, so heap sort is <b>not adaptive</b>. (This max-heap version builds its heap from ascending input with work; the room&rsquo;s point was that even when the heap is free, &ldquo;this step here, it&rsquo;s still gonna take n log n&rdquo;.)'; }
+      q('adn').oninput=ad; ad(); q('stgo').click();
+    })();
+
+    /* ================= 05 · the sum and the room's heapify ================= */
+    (function(){
+      const N=6; let h='<tr><td class="lab"></td>'+[...Array(N)].map((_,c)=>'<td class="lab">col '+(c+1)+'</td>').join('')+'<td class="lab">row sum</td></tr>';
+      for(let r=1;r<=N;r++){ h+='<tr><td class="lab">row '+r+'</td>'; for(let c=1;c<=N;c++) h+='<td class="'+(c>=r?'a':'')+'">'+(c>=r?'1/'+Math.pow(2,c+1):'')+'</td>'; h+='<td class="k">1/'+Math.pow(2,r)+' &hellip;</td></tr>'; }
+      h+='<tr><td class="lab">column sum</td>'+[...Array(N)].map((_,c)=>'<td class="k">'+(c+1)+'/'+Math.pow(2,c+2)+'</td>').join('')+'<td class="k">&rarr; 1</td></tr>';
+      q('hfgrid').innerHTML=h;
+      let part=0; const ps=[]; for(let k=1;k<=12;k++){ part+=k/Math.pow(2,k+1); ps.push(part.toFixed(4)); }
+      q('hfsum').innerHTML='Each row is a geometric series (row r sums to 1/2<sup>r</sup>, continuing to the right forever); each column holds c copies of 1/2<sup>c+1</sup>, which is one term of the original sum. Partial sums of &frac14; + &frac28; + &frac316; + &hellip;: '+ps.slice(0,8).join(', ')+' &hellip; &rarr; 1. So at most n fix-down steps in total.';
+      const a=[5,3,2,1,6,7,4], steps=[]; let sw=0;
+      for(let i=Math.floor(a.length/2)-1;i>=0;i--){ let k=i; const start=a[k]; let moved=[];
+        while(2*k+1<a.length){ let j=2*k+1; if(j+1<a.length&&a[j+1]>a[j]) j++; if(a[k]>=a[j]) break; moved.push(a[j]); [a[k],a[j]]=[a[j],a[k]]; sw++; k=j; }
+        steps.push('fix down '+start+' at ['+i+']'+(moved.length?': swaps with '+moved.join(', then '):': already in place')); }
+      q('hfarr').innerHTML=a.map((v,i)=>'<div class="'+(i<3?'cur':'')+'"><i>['+i+']</i><b>'+v+'</b></div>').join('');
+      q('hfst').innerHTML=stat('swaps',sw)+stat('n',a.length);
+      q('hfout').innerHTML='Leaves 1 6 7 4 are already heaps. '+steps.join('; ')+'. Result: '+a.join(' ')+'. As the room put it: &ldquo;5 gets replaced with 7. And then down heap 5 is bigger than 2 and 4, so it gets done.&rdquo; ('+sw+' swaps for 7 items.)';
+    })();
+
+    /* ================= 10 · the room's trie deletions ================= */
+    (function(){
+      const box=q('dlex'); if(!box) return;
+      box.innerHTML=['app','early','apply','ace','earth'].map(w=>'<button data-w="'+w+'">'+w+'</button>').join('');
+      box.querySelectorAll('button').forEach(b=>b.onclick=()=>{ q('dlset').querySelector('[data-s="a"]').click(); q('dlm').querySelector('[data-m="prune"]').click(); q('dlrs').click(); q('dlq').value=b.dataset.w; q('dlgo').click(); });
+    })();
+  })();
+  </script>
+  <script>
+  (function(){
+    'use strict';
     const R='c25w9l2-';
     function mix(items){ return items.map((it,k)=>{ const n=it.opts.length, s=(k*2+1)%n; const opts=it.opts.slice(s).concat(it.opts.slice(0,s)); return Object.assign({},it,{opts:opts,a:(n-s)%n}); }); }
     C25.quiz(R+'qz',mix([
+      {q:'Heap delete: the item moved to the root is smaller than both children. Swap it with&hellip;',opts:['the bigger child','the smaller child','either child','its parent'],why:'Swapping with the smaller child would leave the bigger child above it: &ldquo;20&rsquo;s still gonna be in the wrong place.&rdquo;'},
+      {q:'In a 0-based heap array, the parent of index 5 is&hellip;',opts:['2','3','4','1'],why:'(i &minus; 1)/2 = 2. (1-based: i/2.)'},
+      {q:'Deleting from a max heap until it&rsquo;s empty returns the items&hellip;',opts:['in descending order','in insertion order','in ascending order','in array order'],why:'That&rsquo;s heap sort.'},
+      {q:'Heap sort is&hellip;',opts:['in place, but not stable or adaptive','stable and adaptive','stable but not in place','adaptive but not stable'],why:'Long-range swaps break stability; even a sorted input still pays n log n for the deletions.'},
+      {q:'Bottom-up heapify costs about n &times; (&frac14; + &frac28; + &frac316; + &hellip;), which is&hellip;',opts:['n','n log n','n/2','n&sup2;'],why:'The series sums to 1 (the column trick), so heapify is O(n).'},
       {q:'Searching a trie for a key of length m costs&hellip;',opts:['O(m)','O(log n)','O(n)','O(nR)'],why:'At most m nodes are examined, whatever the number of keys (slide 36).'},
       {q:'In a trie, a node&rsquo;s key is&hellip;',opts:['spelled by the links on the path from the root','stored in the node','its index in an array','the hash of its children'],why:'&ldquo;Keys are implicitly defined by their position in the trie&rdquo; (slide 9).'},
       {q:'In the slide 8 trie, why is &ldquo;ear&rdquo; not found?',opts:['its node exists but is not finishing','there is no child for &lsquo;r&rsquo;','tries can&rsquo;t store 3-letter keys','it was deleted'],why:'&ldquo;Not found &ndash; node for &lsquo;ear&rsquo; is not a finishing node&rdquo; (slide 23).'},
@@ -59420,6 +59638,21 @@ doTrieDelete(t, key, isRoot):
       {q:'Predictive text 4663 on slide 4 gives&hellip;',opts:['good, home, hood, hoof','gone, home','good only','hood, hoof'],why:'Slide 4&rsquo;s example.'}
     ]));
     C25.cards(R+'cards',[
+      ['room','Why no &ldquo;one of these 5 questions&rdquo; exam hints?','Students given them tended to fixate and underperform.'],
+      ['room','How many one-child nodes can a binary heap have?','At most one; every other node has 0 or 2 children.'],
+      ['room','Insert 18 into heap 20 10 15 8 2 13?','Add at the end, swap with 15, stop under 20: 20 10 18 8 2 13 15.'],
+      ['room','0-based heap indexing?','Children 2i + 1, 2i + 2; parent (i &minus; 1)/2. Works, but messier going up.'],
+      ['room','Fix down: which child?','The bigger one. Stop when &ge; it, or when there are no children.'],
+      ['room','AVL tree with a max pointer vs heap?','Both peek in O(1); the heap&rsquo;s code is far simpler (fix up is ~3 lines).'],
+      ['room','When might an AVL tree beat a hash table for a set?','When the data size is unknown to orders of magnitude: no resizing or rehashing.'],
+      ['room','Heap sort, three properties?','In place: yes. Stable: no (long-range swaps). Adaptive: no.'],
+      ['room','Is a sorted array a heap?','Yes, a min heap. Heapify is then trivial, but deletion still costs n log n.'],
+      ['room','Why is bottom-up heapify O(n)?','n(&frac14; + &frac28; + &frac316; + &hellip;) and the series sums to 1.'],
+      ['room','Bottom-up heapify of 5 3 2 1 6 7 4 (max)?','7 6 5 1 3 2 4.'],
+      ['room','Is the last topic examinable?','&ldquo;Any topic covered is assessable.&rdquo;'],
+      ['room','Why can&rsquo;t hash tables find all words starting &ldquo;goo&rdquo;?','A good hash scatters them across the table.'],
+      ['room','Alphabet size for phone numbers or zIDs?','10: one child slot per digit.'],
+      ['room','Delete &ldquo;apply&rdquo; from the slide 8 trie?','Remove y and l; stop at p, a finishing node (app).'],
       ['T 2','Applications that search strings by pattern?','Autocomplete, predictive text, approximate string matching, spell checking.'],
       ['T 5','Set of strings with AVL tree / hash table?','O(log n) worst case / O(1) average, but neither handles patterns well.'],
       ['T 7','What is a trie?','A tree representing a set of strings; string matching in O(m), m = key length.'],
