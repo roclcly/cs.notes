@@ -62039,7 +62039,7 @@ main:
     const h=location.hash;
     if(h.startsWith('#/')){
       const parts=h.slice(2).split('/'); setRoute(parts[0]);
-      if(parts[1]){ const el=document.getElementById(parts[1]); if(el) setTimeout(()=>{ el.scrollIntoView({block:'start'}); el.classList.remove('fade'); el.classList.add('topic-flash'); setTimeout(()=>el.classList.add('fade'),900); setTimeout(()=>el.classList.remove('topic-flash','fade'),2200); },30); }
+      if(parts[1]){ const el=document.getElementById(parts[1]); if(el) setTimeout(()=>{ el.scrollIntoView({block:'start',behavior:'instant'}); el.classList.remove('fade'); el.classList.add('topic-flash'); setTimeout(()=>el.classList.add('fade'),900); setTimeout(()=>el.classList.remove('topic-flash','fade'),2200); },30); }
     }
     else if(h===''||h==='#') setRoute('home');
     // bare anchors (#hex etc.) are ignored by the router and scroll normally
