@@ -460,7 +460,7 @@
     <div class="dropdown" id="subjectsMenu" role="menu">
       <a href="#/comp1521" role="menuitem">COMP1521 <span class="tag">18 lectures</span></a>
       <a href="#/comp1531" role="menuitem">COMP1531 <span class="tag">15 lectures</span></a>
-      <a href="#/comp2521" role="menuitem">COMP2521 <span class="tag">16 lectures</span></a>
+      <a href="#/comp2521" role="menuitem">COMP2521 <span class="tag">17 lectures</span></a>
     </div>
   </div>
   <a class="game-nav-link" href="#/game">STACKRAID</a>
@@ -565,6 +565,7 @@
           <a href="#/c25t-hashapps" data-nav="c25t-hashapps">Hash table applications</a>
           <a href="#/c25t-heaps" data-nav="c25t-heaps">Priority queues and heaps</a>
           <a href="#/c25t-tries" data-nav="c25t-tries">Tries</a>
+          <a href="#/c25t-exam" data-nav="c25t-exam">The final exam and revision</a>
           <div class="lvl">Week 1</div>
           <a href="#/c25w1l1" data-nav="c25w1l1">Lecture 1 &mdash; Intro, tools &amp; recursion</a>
           <a href="#/c25w1l2" data-nav="c25w1l2">Lecture 2 &mdash; Analysis &amp; binary search</a>
@@ -589,6 +590,8 @@
           <div class="lvl">Week 9</div>
           <a href="#/c25w9l1" data-nav="c25w9l1">Lecture 1 &mdash; Puzzles solved, priority queues, binary heaps</a>
           <a href="#/c25w9l2" data-nav="c25w9l2">Lecture 2 &mdash; Heaps finished, heap sort, tries</a>
+          <div class="lvl">Week 10</div>
+          <a href="#/c25w10l1" data-nav="c25w10l1">Lecture 1 &mdash; Tries finished, revision quiz, the exam</a>
         </div>
       </details>
       <div class="lvl" style="margin-top:14px">More subjects</div>
@@ -618,7 +621,7 @@
       <a class="subject-card" href="#/comp2521">
         <div class="sc-code">COMP2521</div>
         <div class="sc-name">Data Structures and Algorithms</div>
-        <div class="sc-meta">26T3 &middot; Weeks 1&ndash;9 &middot; 16 lectures</div>
+        <div class="sc-meta">26T3 &middot; Weeks 1&ndash;10 &middot; 17 lectures</div>
       </a>
       <a class="subject-card" href="#/game">
         <div class="sc-code">STACKRAID</div>
@@ -38691,8 +38694,8 @@ submit <span class="sy-t">--list</span></pre>
     </div>
 
     <div class="tp-land">
-      <div class="tp-lh"><b class="tp-lt">Notes by topic</b><a class="tp-chip" href="#/c25topics">All 17 topics &rarr;</a></div>
-      <div class="tp-chips"><a class="tp-chip" href="#/c25t-tools">Course, tools and C hygiene</a><a class="tp-chip" href="#/c25t-recursion">Recursion</a><a class="tp-chip" href="#/c25t-analysis">Algorithm analysis and binary search</a><a class="tp-chip" href="#/c25t-sorting">Sorting</a><a class="tp-chip" href="#/c25t-adts">Abstract data types</a><a class="tp-chip" href="#/c25t-bst">Binary search trees</a><a class="tp-chip" href="#/c25t-balance">Balanced trees and AVL</a><a class="tp-chip" href="#/c25t-graphs">Graph fundamentals and representations</a><a class="tp-chip" href="#/c25t-traversal">Graph traversal: BFS and DFS</a><a class="tp-chip" href="#/c25t-problems">Graph problems</a><a class="tp-chip" href="#/c25t-digraphs">Directed graphs and reachability</a><a class="tp-chip" href="#/c25t-dijkstra">Shortest paths: Dijkstra</a><a class="tp-chip" href="#/c25t-mst">Minimum spanning trees</a><a class="tp-chip" href="#/c25t-hashtables">Hash tables</a><a class="tp-chip" href="#/c25t-hashapps">Hash table applications</a><a class="tp-chip" href="#/c25t-heaps">Priority queues and heaps</a><a class="tp-chip" href="#/c25t-tries">Tries</a></div>
+      <div class="tp-lh"><b class="tp-lt">Notes by topic</b><a class="tp-chip" href="#/c25topics">All 18 topics &rarr;</a></div>
+      <div class="tp-chips"><a class="tp-chip" href="#/c25t-tools">Course, tools and C hygiene</a><a class="tp-chip" href="#/c25t-recursion">Recursion</a><a class="tp-chip" href="#/c25t-analysis">Algorithm analysis and binary search</a><a class="tp-chip" href="#/c25t-sorting">Sorting</a><a class="tp-chip" href="#/c25t-adts">Abstract data types</a><a class="tp-chip" href="#/c25t-bst">Binary search trees</a><a class="tp-chip" href="#/c25t-balance">Balanced trees and AVL</a><a class="tp-chip" href="#/c25t-graphs">Graph fundamentals and representations</a><a class="tp-chip" href="#/c25t-traversal">Graph traversal: BFS and DFS</a><a class="tp-chip" href="#/c25t-problems">Graph problems</a><a class="tp-chip" href="#/c25t-digraphs">Directed graphs and reachability</a><a class="tp-chip" href="#/c25t-dijkstra">Shortest paths: Dijkstra</a><a class="tp-chip" href="#/c25t-mst">Minimum spanning trees</a><a class="tp-chip" href="#/c25t-hashtables">Hash tables</a><a class="tp-chip" href="#/c25t-hashapps">Hash table applications</a><a class="tp-chip" href="#/c25t-heaps">Priority queues and heaps</a><a class="tp-chip" href="#/c25t-tries">Tries</a><a class="tp-chip" href="#/c25t-exam">The final exam and revision</a></div>
     </div>
 
     <div class="lvl2">Week 1</div>
@@ -38814,6 +38817,15 @@ submit <span class="sy-t">--list</span></pre>
         <div class="lc-title">Heaps finished, then tries: fix down, heap sort&rsquo;s properties argued out, and a tree where the path is the key</div>
         <div class="lc-desc">The room finished heaps: <b>fix down</b> with the bigger child, 1- vs 0-based indexing, an AVL tree with a max pointer, <b>heap sort</b> (in place, unstable, non-adaptive, with a counterexample) and why bottom-up heapify is O(n). Then <b>tries</b>: keys as paths and <b>finishing</b> nodes; <b>insertion</b> (sea shell sell shore she), <b>search</b> (&ldquo;apple&rdquo; vs &ldquo;ear&rdquo;), <b>deletion</b> with dead-branch pruning (&ldquo;earth&rdquo;); O(m) time and O(nR) space; linked-list, left-child right-sibling, nybble and compressed variants; word finding, autocomplete and predictive text (4663).</div>
         <div class="lc-widgets">heap insert/delete (1- or 0-based) &middot; trade-off quiz &middot; stability counterexample &middot; adaptivity counts &middot; heapify sum &middot; prefix-query costs &middot; trie builder &middot; insert stepper &middot; search stepper &middot; delete + prune stepper &middot; pointer counter &middot; five representations &middot; keypad predictive text &middot; autocomplete &middot; quiz &middot; flashcards</div>
+      </a>
+    </div>
+    <div class="lvl2">Week 10</div>
+    <div class="lecture-grid">
+      <a class="lec-card" href="#/c25w10l1">
+        <div class="lc-tag">Lecture 1 &middot; Monday lecture + Course Review and Exam</div>
+        <div class="lc-title">The last of the content, and the exam: heap or BST, tries beyond the course, and how the final is run and marked</div>
+        <div class="lc-desc">The revision quiz: a <b>max heap with a hole</b> (not a binary heap), an array matched to its heap, <b>Prim&rsquo;s min heap vs Kruskal&rsquo;s sorted array</b>, and why finding any item in a heap is <b>O(n)</b>. Tries finished (insert, delete with dead branches, costs, variants), then a tangent into shared suffixes and a <b>multiples-of-3 automaton</b> (not examinable). Then the exam: format (<b>50/50</b>, corrected from the slides), environment, hurdles, automarking, rules, ambiguity, fit to sit and how to revise.</div>
+        <div class="lc-widgets">heap/BST classifier &middot; array-to-heap match &middot; edge-store op counts &middot; heap vs BST search &middot; trie insert/delete &middot; shared-suffix counter &middot; mod-3 automaton &middot; tightest-bound sorter &middot; hurdle calculator &middot; allowed-or-not &middot; exam-day sorter &middot; revision checklist &middot; quiz &middot; flashcards</div>
       </a>
     </div>
     <p style="color:var(--ink-faint);margin-top:22px"><span class="tba-badge">TBA</span> &nbsp;Weeks 1&ndash;10 continue here as transcripts and slides arrive. Assignment 1 (trees) is released in week 4 and Assignment 2 (graphs) in week 7.</p>
@@ -59709,6 +59721,928 @@ doTrieDelete(t, key, isRoot):
   </script>
 
 
+  <section class="route c25" data-route="c25w10l1">
+  <style>
+    /* ---------- scoped: COMP2521 W5L1 ---------- */
+    [data-route="c25w10l1"] .room{border-left:3px solid var(--amber); padding:2px 0 2px 14px; margin:14px 0}
+    [data-route="c25w10l1"] .room .rt{font-family:"Space Mono",monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--amber); margin-bottom:4px}
+    [data-route="c25w10l1"] .screen code{background:#15211d; color:#f0dfb4; border:none}
+    [data-route="c25w10l1"] .thu{display:inline-block; font-family:"Space Mono",monospace; font-size:10.5px; padding:2px 8px; border-radius:20px; border:1px solid var(--violet); color:var(--violet); vertical-align:middle; margin-left:6px; font-weight:400; letter-spacing:.02em}
+    [data-route="c25w10l1"] .back{display:inline-block; font-family:"Space Mono",monospace; font-size:10.5px; padding:2px 8px; border-radius:20px; border:1px solid var(--green-dim); color:var(--green-dim); vertical-align:middle; margin-left:6px; font-weight:400; text-decoration:none; letter-spacing:.02em}
+    [data-route="c25w10l1"] .gt-wrap{overflow-x:auto; border:1px solid #1d2b26; border-radius:10px; background:#050807; padding:4px 6px}
+    [data-route="c25w10l1"] .gt{width:100%; border-collapse:collapse; font-family:"Space Mono",monospace; font-size:11.5px; color:#cfe8d8; margin:0}
+    [data-route="c25w10l1"] .gt th,[data-route="c25w10l1"] .gt td{padding:5px 7px; border-bottom:1px solid #1d2b26; text-align:right; white-space:nowrap}
+    [data-route="c25w10l1"] .gt th{color:#6f9a85; font-weight:400; font-size:10.5px}
+    [data-route="c25w10l1"] .gt td:first-child,[data-route="c25w10l1"] .gt th:first-child{text-align:left}
+    [data-route="c25w10l1"] .gt .ok{color:var(--green-bright)} [data-route="c25w10l1"] .gt .bad{color:var(--coral)} [data-route="c25w10l1"] .gt .hl{color:var(--amber)} [data-route="c25w10l1"] .gt .dim{color:#5e8472}
+    [data-route="c25w10l1"] .gt .barc{width:30%; text-align:left}
+    [data-route="c25w10l1"] .gt .barc span{display:block; height:9px; border-radius:4px; background:var(--amber); min-width:2px}
+    [data-route="c25w10l1"] .gt .barc span.g{background:var(--green-dim)} [data-route="c25w10l1"] .gt .barc span.b{background:var(--coral)}
+    [data-route="c25w10l1"] .impl{display:grid; gap:12px; grid-template-columns:minmax(0,1fr)}
+    @media(min-width:860px){ [data-route="c25w10l1"] .impl{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} [data-route="c25w10l1"] .impl.three{grid-template-columns:repeat(3,minmax(0,1fr))} [data-route="c25w10l1"] .impl.wide{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)} }
+    [data-route="c25w10l1"] .ipanel{background:#0a100e; border:1px solid #233530; border-radius:12px; padding:10px 12px; min-width:0}
+    [data-route="c25w10l1"] .ipanel .ih{font-family:"Space Mono",monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:#8fb6a3; margin-bottom:8px}
+    [data-route="c25w10l1"] .ipanel .ih span{color:#5e8472; text-transform:none; letter-spacing:0}
+    [data-route="c25w10l1"] .ipanel .res{font-family:"Space Mono",monospace; font-size:12px; color:#a8ccb7; margin-top:8px; line-height:1.6; word-break:break-word}
+    [data-route="c25w10l1"] .ipanel .res b{color:var(--green-bright)} [data-route="c25w10l1"] .ipanel .res i{font-style:normal; color:var(--coral)} [data-route="c25w10l1"] .ipanel .res em{font-style:normal; color:var(--amber)}
+    [data-route="c25w10l1"] .seq{display:flex; flex-wrap:wrap; gap:4px; min-height:32px; padding:6px; background:#050807; border:1px solid #1d2b26; border-radius:10px; margin:6px 0}
+    [data-route="c25w10l1"] .seq span{font-family:"Space Mono",monospace; font-size:12.5px; font-weight:700; padding:3px 8px; border-radius:6px; background:#123020; border:1px solid var(--green-dim); color:var(--green-bright)}
+    [data-route="c25w10l1"] .seq span.last{background:#3b2d0c; border-color:var(--amber); color:#f6e2b4}
+    [data-route="c25w10l1"] .seq span.alt{background:#1c1730; border-color:var(--violet); color:#d9cffb}
+    [data-route="c25w10l1"] .seq .none{font-family:"Space Mono",monospace; font-size:11px; color:#3f5e52; background:none; border:none; font-weight:400}
+    [data-route="c25w10l1"] .d-svg.tr svg{max-width:760px; margin:0 auto}
+    [data-route="c25w10l1"] .ipanel .d-svg{border:none; padding:0; background:none}
+    [data-route="c25w10l1"] svg .nd.warn{stroke:var(--amber); stroke-width:3; stroke-dasharray:4 3; fill:#241d0e}
+    [data-route="c25w10l1"] svg .nd.sel{stroke:#eaf6ee; stroke-width:3.4; fill:#1f2d28}
+    [data-route="c25w10l1"] svg .nd.ghost{opacity:.3}
+    [data-route="c25w10l1"] svg .nd.slot{fill:none; stroke:#4f6b60; stroke-dasharray:3 3; cursor:pointer}
+    [data-route="c25w10l1"] svg .nd.slot.ok{stroke:var(--green-bright); stroke-dasharray:none; fill:#123020}
+    [data-route="c25w10l1"] svg .nd.slot.no{stroke:var(--coral); fill:#2c140e}
+    [data-route="c25w10l1"] svg .nd.op{fill:#15202a; stroke:#6aa0c0}
+    [data-route="c25w10l1"] .layers{display:grid; gap:8px; grid-template-columns:minmax(0,1fr); margin:12px 0}
+    @media(min-width:760px){ [data-route="c25w10l1"] .layers{grid-template-columns:repeat(4,minmax(0,1fr))} }
+    [data-route="c25w10l1"] .layers > div{background:var(--paper-2); border:1px solid var(--line); border-radius:12px; padding:11px 13px; position:relative}
+    [data-route="c25w10l1"] .layers > div b{font-family:"Space Grotesk",sans-serif; display:block; font-size:15px}
+    [data-route="c25w10l1"] .layers > div .sw{font-family:"Space Mono",monospace; font-size:11.5px; color:var(--amber-dim); margin:3px 0 5px}
+    [data-route="c25w10l1"] .layers > div span{font-size:14px; color:var(--ink-soft)}
+    [data-route="c25w10l1"] .layers > div.k{background:#15110b; color:#e9e2cf; border-color:#15110b} [data-route="c25w10l1"] .layers > div.k span{color:#cdbfa3}
+    [data-route="c25w10l1"] .game{font-family:"Space Grotesk",sans-serif; font-size:18px; font-weight:700; color:#eaf6ee; margin:2px 0 8px}
+    [data-route="c25w10l1"] .game small{font-size:13px; color:#8fb6a3; font-weight:500; margin-left:8px}
+    [data-route="c25w10l1"] .tmpl td.on{background:rgba(224,163,46,.16); font-weight:700}
+    [data-route="c25w10l1"] details.sol{background:var(--paper-2); border:1px solid var(--line); border-radius:11px; padding:0 14px; margin:10px 0}
+    [data-route="c25w10l1"] details.sol>summary{cursor:pointer; padding:11px 0; font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:15px}
+    [data-route="c25w10l1"] .bag{display:flex; flex-wrap:wrap; gap:4px; min-height:36px; align-content:flex-start}
+    [data-route="c25w10l1"] .bag span{font-family:"Space Mono",monospace; font-size:12.5px; font-weight:700; padding:5px 8px; border-radius:7px; background:#15211d; border:1.5px solid #2c4239; color:#eaf6ee}
+    [data-route="c25w10l1"] .bag span.hot{border-color:var(--amber); background:#3b2d0c}
+    [data-route="c25w10l1"] .bag .none{font-family:"Space Mono",monospace; font-size:11px; color:#3f5e52; background:none; border:none; font-weight:400}
+  </style>
+  <style>
+    /* ---------- scoped: COMP2521 W5L1 extras ---------- */
+    [data-route="c25w10l1"] .mx{border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; margin:0 auto}
+    [data-route="c25w10l1"] .mx td,[data-route="c25w10l1"] .mx th{width:26px; height:26px; text-align:center; border:1px solid #1d2b26; padding:0}
+    [data-route="c25w10l1"] .mx th{color:#6f9a85; font-weight:400; font-size:10.5px; border:none}
+    [data-route="c25w10l1"] .mx td{color:#3f5e52; cursor:pointer; background:#0a100e}
+    [data-route="c25w10l1"] .mx td.on{color:#06120c; background:var(--green-dim); font-weight:700}
+    [data-route="c25w10l1"] .mx td.diag{background:#050807; cursor:default}
+    [data-route="c25w10l1"] .mx td.hit{outline:2px solid var(--amber); outline-offset:-2px}
+    [data-route="c25w10l1"] .alist{font-family:"Space Mono",monospace; font-size:12px; line-height:1.9; color:#cfe8d8}
+    [data-route="c25w10l1"] .alist b{display:inline-block; width:30px; color:#6f9a85; font-weight:400}
+    [data-route="c25w10l1"] .alist span{display:inline-block; padding:0 6px; margin-right:3px; border:1px solid #2c4239; border-radius:5px; background:#101a17}
+    [data-route="c25w10l1"] .alist span.hit{border-color:var(--amber); background:#3b2d0c}
+    [data-route="c25w10l1"] .alist span.walk{border-color:var(--blue)}
+    [data-route="c25w10l1"] .flow{display:grid; gap:6px; font-family:"Space Mono",monospace; font-size:12px}
+    [data-route="c25w10l1"] .flow div{padding:7px 10px; border:1px solid #2c4239; border-radius:9px; color:#6f9a85; background:#0a100e}
+    [data-route="c25w10l1"] .flow div.on{border-color:var(--amber); color:#f6e2b4; background:#241d0e}
+    [data-route="c25w10l1"] .flow div.act{border-color:var(--green-dim); color:var(--green-bright); background:#0f2219}
+    [data-route="c25w10l1"] .flow div.off{opacity:.35}
+    [data-route="c25w10l1"] .cases{display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 10px}
+    [data-route="c25w10l1"] svg .ndh{font-family:"Space Mono",monospace; font-size:9.5px}
+    [data-route="c25w10l1"] .comp{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:5px; vertical-align:middle}
+  </style>
+  <style>
+    /* ---------- scoped: COMP2521 W10L1 extras ---------- */
+    [data-route="c25w10l1"] .arrs{width:100%; border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8}
+    [data-route="c25w10l1"] .arrs th,[data-route="c25w10l1"] .arrs td{padding:4px 5px; border:1px solid #1d2b26; text-align:center; min-width:22px}
+    [data-route="c25w10l1"] .arrs th{color:#6f9a85; font-weight:400; font-size:10.5px; background:#050807}
+    [data-route="c25w10l1"] .arrs td.lab{text-align:left; color:#8fb6a3}
+    [data-route="c25w10l1"] .arrs td.on{background:#123020; color:var(--green-bright); font-weight:700}
+    [data-route="c25w10l1"] .arrs td.ch{background:#3b2d0c; color:#f6e2b4; font-weight:700}
+    [data-route="c25w10l1"] .arrs td.c0{background:#123020; color:#b9f5c4} [data-route="c25w10l1"] .arrs td.c1{background:#2c140e; color:#f5c2b5} [data-route="c25w10l1"] .arrs td.c2{background:#0f1c26; color:#bcd4ff} [data-route="c25w10l1"] .arrs td.c3{background:#241d0e; color:#f6e2b4}
+    [data-route="c25w10l1"] .mx{border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; margin:0 auto}
+    [data-route="c25w10l1"] .mx td,[data-route="c25w10l1"] .mx th{min-width:28px; height:26px; text-align:center; border:1px solid #1d2b26; padding:0 3px}
+    [data-route="c25w10l1"] .mx th{color:#6f9a85; font-weight:400; font-size:10.5px; border:none}
+    [data-route="c25w10l1"] .mx td{color:#3f5e52; cursor:pointer; background:#0a100e}
+    [data-route="c25w10l1"] .mx td.on{color:#06120c; background:var(--green-dim); font-weight:700}
+    [data-route="c25w10l1"] .mx td.hit{outline:2px solid var(--amber); outline-offset:-2px}
+    [data-route="c25w10l1"] .mx td.amb{color:#f6e2b4; background:#3b2d0c; font-weight:700}
+    [data-route="c25w10l1"] .alist{font-family:"Space Mono",monospace; font-size:12px; line-height:1.95; color:#cfe8d8}
+    [data-route="c25w10l1"] .alist b{display:inline-block; width:34px; color:#6f9a85; font-weight:400}
+    [data-route="c25w10l1"] .alist span{display:inline-block; padding:0 6px; margin-right:3px; border:1px solid #2c4239; border-radius:5px; background:#101a17}
+    [data-route="c25w10l1"] .alist span.hit{border-color:var(--amber); background:#3b2d0c}
+    [data-route="c25w10l1"] .alist span.walk{border-color:var(--blue); background:#0f1c26}
+    [data-route="c25w10l1"] .alist i{font-style:normal; color:#3f5e52}
+    [data-route="c25w10l1"] .cost{font-family:"Space Mono",monospace; font-size:11.5px; color:#8fb6a3; margin-top:8px; line-height:1.6}
+    [data-route="c25w10l1"] .cost b{color:var(--amber)}
+    [data-route="c25w10l1"] .mem{display:flex; flex-wrap:wrap; gap:14px; align-items:flex-start; margin:8px 0}
+    [data-route="c25w10l1"] .mem .box{font-family:"Space Mono",monospace; font-size:12px; border:1.5px solid #2c4239; border-radius:9px; background:#101a17; padding:8px 10px; min-width:150px; color:#cfe8d8}
+    [data-route="c25w10l1"] .mem .box .ad{font-size:10.5px; color:#6f9a85; margin-bottom:4px}
+    [data-route="c25w10l1"] .mem .box.a{border-color:var(--blue)} [data-route="c25w10l1"] .mem .box.b{border-color:var(--violet)}
+    [data-route="c25w10l1"] .cmpr{width:100%; border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8; margin-top:6px}
+    [data-route="c25w10l1"] .cmpr td{padding:6px 8px; border-bottom:1px solid #1d2b26; vertical-align:top}
+    [data-route="c25w10l1"] .cmpr td.t{color:var(--green-bright); font-weight:700} [data-route="c25w10l1"] .cmpr td.f{color:var(--coral); font-weight:700}
+    [data-route="c25w10l1"] .cave{display:grid; gap:3px; margin:0 auto; width:max-content}
+    [data-route="c25w10l1"] .cave div{width:44px; height:44px; border-radius:6px; background:#191512; position:relative; font-family:"Space Mono",monospace; font-size:10.5px; color:#6f9a85; display:flex; align-items:center; justify-content:center; user-select:none}
+    [data-route="c25w10l1"] .cave div.o{background:#0f1714; border:1px solid #2c4239; cursor:pointer}
+    [data-route="c25w10l1"] .cave div.seen{background:#123020; border-color:var(--green-dim); color:#b9f5c4}
+    [data-route="c25w10l1"] .cave div.front{background:#0f1c26; border-color:var(--blue); color:#bcd4ff}
+    [data-route="c25w10l1"] .cave div.cur{background:#3b2d0c; border-color:var(--amber); color:#f6e2b4; font-weight:700}
+    [data-route="c25w10l1"] .cave div.route{box-shadow:inset 0 0 0 3px var(--amber)}
+    [data-route="c25w10l1"] .cave div.tie{outline:2px dashed var(--violet); outline-offset:-5px}
+    [data-route="c25w10l1"] .cave div .ic{position:absolute; top:1px; left:3px; font-size:13px}
+    [data-route="c25w10l1"] .cave div .ar{position:absolute; bottom:0; right:3px; font-size:13px; color:var(--green-bright)}
+    [data-route="c25w10l1"] .cave div .nm{font-size:11px}
+    [data-route="c25w10l1"] .legend{display:flex; flex-wrap:wrap; gap:12px; font-family:"Space Mono",monospace; font-size:11px; color:#8fb6a3; margin:8px 0 2px}
+    [data-route="c25w10l1"] .legend i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:5px; vertical-align:-2px}
+    [data-route="c25w10l1"] .bars{display:grid; gap:7px; margin:8px 0}
+    [data-route="c25w10l1"] .bars .br{display:grid; grid-template-columns:150px minmax(0,1fr) 120px; gap:10px; align-items:center; font-family:"Space Mono",monospace; font-size:11.5px; color:#cfe8d8}
+    [data-route="c25w10l1"] .bars .br .tr{background:#050807; border:1px solid #1d2b26; border-radius:5px; height:14px; overflow:hidden}
+    [data-route="c25w10l1"] .bars .br .tr span{display:block; height:100%; background:var(--green-dim)}
+    [data-route="c25w10l1"] .bars .br .tr span.w{background:var(--coral)} [data-route="c25w10l1"] .bars .br .tr span.m{background:var(--amber)}
+    [data-route="c25w10l1"] .bars .br .v{text-align:right; color:#eaf6ee}
+    [data-route="c25w10l1"] .sorter{display:grid; gap:7px; grid-template-columns:minmax(0,1fr)}
+    @media(min-width:760px){ [data-route="c25w10l1"] .sorter{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} }
+    [data-route="c25w10l1"] .sorter .it{display:flex; gap:8px; align-items:center; justify-content:space-between; padding:8px 10px; background:#0a100e; border:1px solid #233530; border-radius:10px; color:#cfe8d8; font-size:14px}
+    [data-route="c25w10l1"] .sorter .it .d-btns{margin:0; flex:none}
+    [data-route="c25w10l1"] .sorter .it.ok{border-color:var(--green-dim)} [data-route="c25w10l1"] .sorter .it.no{border-color:var(--coral)}
+    [data-route="c25w10l1"] .sorter .it .why{display:block; font-size:12.5px; color:#8fb6a3; margin-top:4px}
+    [data-route="c25w10l1"] .isomap{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0}
+    [data-route="c25w10l1"] .isomap label{font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8; display:flex; align-items:center; gap:4px}
+    [data-route="c25w10l1"] .isomap select{background:#0a100e; color:#eaf6ee; border:1px solid #2c4239; border-radius:6px; font-family:"Space Mono",monospace; padding:3px}
+    [data-route="c25w10l1"] svg .ed.out{stroke:var(--green-bright); stroke-width:3}
+    [data-route="c25w10l1"] svg .ed.in{stroke:var(--amber); stroke-width:3}
+    [data-route="c25w10l1"] svg .ed.off{stroke:#24332e; stroke-dasharray:3 4}
+    [data-route="c25w10l1"] svg .nd.c0{fill:#123020; stroke:#7ee787; stroke-width:3}
+    [data-route="c25w10l1"] svg .nd.c1{fill:#2c140e; stroke:#e0654a; stroke-width:3}
+    [data-route="c25w10l1"] svg .nd.c2{fill:#0f1c26; stroke:#6aa0ff; stroke-width:3}
+    [data-route="c25w10l1"] svg .nd.c3{fill:#241d0e; stroke:#e0a32e; stroke-width:3}
+    [data-route="c25w10l1"] svg .nd.c4{fill:#1c1730; stroke:#b59cff; stroke-width:3}
+    [data-route="c25w10l1"] svg .nd.sel{stroke:#eaf6ee; stroke-width:3.4; fill:#1f2d28}
+    [data-route="c25w10l1"] svg .nd.dim{opacity:.35}
+    [data-route="c25w10l1"] svg text.lb{font-family:"Space Mono",monospace; font-size:13px; fill:#eaf6ee; text-anchor:middle; dominant-baseline:central; font-weight:700; pointer-events:none}
+    [data-route="c25w10l1"] .verdict{font-family:"Space Mono",monospace; font-size:12.5px; padding:8px 11px; border-radius:9px; margin:8px 0; border:1px solid #2c4239; background:#0c1512; color:#cfe8d8}
+    [data-route="c25w10l1"] .verdict.ok{border-color:var(--green-dim); color:var(--green-bright)} [data-route="c25w10l1"] .verdict.no{border-color:var(--coral); color:#f5c2b5}
+  </style>
+  <style>
+    [data-route="c25w10l1"] .maze{display:grid; gap:0; margin:0 auto; width:max-content; border:2px solid #4d6a5f}
+    [data-route="c25w10l1"] .maze div{width:22px; height:22px; box-sizing:border-box; background:#0f1714; font-family:"Space Mono",monospace; font-size:9px; color:#6f9a85; display:flex; align-items:center; justify-content:center}
+    [data-route="c25w10l1"] .maze div.seen{background:#123020} [data-route="c25w10l1"] .maze div.route{background:#3b2d0c} [data-route="c25w10l1"] .maze div.cur{background:var(--amber)}
+    [data-route="c25w10l1"] .maze div.st{background:#0f1c26; color:#bcd4ff; font-weight:700} [data-route="c25w10l1"] .maze div.ex{background:#2c140e; color:#f5c2b5; font-weight:700}
+    [data-route="c25w10l1"] .relax{display:grid; gap:10px; grid-template-columns:minmax(0,1fr)}
+    @media(min-width:760px){ [data-route="c25w10l1"] .relax{grid-template-columns:repeat(3,minmax(0,1fr))} }
+    [data-route="c25w10l1"] .relax label{font-family:"Space Mono",monospace; font-size:12px; color:#8fb6a3; display:flex; gap:6px; align-items:center}
+    [data-route="c25w10l1"] .relax input{width:70px}
+  </style>
+  <style>
+    [data-route="c25w10l1"] .mx td.miss{color:#f5c2b5; background:#2c140e; outline:2px dashed var(--coral); outline-offset:-3px}
+    [data-route="c25w10l1"] svg .ed.aa{stroke:var(--blue); stroke-width:3.2}
+    [data-route="c25w10l1"] .mx td.diag{box-shadow:inset 0 0 0 1px #2c4239}
+    [data-route="c25w10l1"] .mxrow{display:flex; flex-wrap:wrap; gap:18px; justify-content:center; align-items:flex-start}
+    [data-route="c25w10l1"] .mxrow .cap{font-family:"Space Mono",monospace; font-size:11px; color:#8fb6a3; text-align:center; margin-bottom:4px}
+    [data-route="c25w10l1"] .elist{width:100%; border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8}
+    [data-route="c25w10l1"] .elist td,[data-route="c25w10l1"] .elist th{padding:3px 7px; border-bottom:1px solid #1d2b26; text-align:left}
+    [data-route="c25w10l1"] .elist th{color:#6f9a85; font-weight:400; font-size:10.5px}
+    [data-route="c25w10l1"] .elist tr.cur td{background:#3b2d0c; color:#f6e2b4}
+    [data-route="c25w10l1"] .elist td.add{color:var(--green-bright); font-weight:700} [data-route="c25w10l1"] .elist td.rej{color:var(--coral)} [data-route="c25w10l1"] .elist td.nn{color:#3f5e52}
+    [data-route="c25w10l1"] .stk{display:flex; flex-direction:column-reverse; gap:4px; font-family:"Space Mono",monospace; font-size:12px}
+    [data-route="c25w10l1"] .stk div{border:1px solid #2c4239; border-radius:6px; background:#101a17; padding:4px 8px; color:#cfe8d8}
+    [data-route="c25w10l1"] .stk div.top{border-color:var(--amber); background:#3b2d0c; color:#f6e2b4}
+    [data-route="c25w10l1"] .stk div i{font-style:normal; color:#6f9a85}
+    [data-route="c25w10l1"] .stk .none{border:none; background:none; color:#3f5e52}
+    [data-route="c25w10l1"] .echips{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0}
+    [data-route="c25w10l1"] .echips button{font-family:"Space Mono",monospace; font-size:12px; background:#0a100e; color:#cfe8d8; border:1px solid #2c4239; border-radius:7px; padding:4px 8px; cursor:pointer}
+    [data-route="c25w10l1"] .echips button.on{background:#123020; border-color:var(--green-bright); color:var(--green-bright); font-weight:700}
+    [data-route="c25w10l1"] .xg{border-collapse:collapse; font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8; margin:6px 0}
+    [data-route="c25w10l1"] .xg td{padding:3px 6px; border:1px solid #1d2b26; text-align:center; min-width:34px}
+    [data-route="c25w10l1"] .xg td.lab{text-align:left; color:#8fb6a3; border:none}
+    [data-route="c25w10l1"] .xg td.k{background:#123020; color:var(--green-bright)} [data-route="c25w10l1"] .xg td.a{background:#0f1c26; color:#bcd4ff}
+    [data-route="c25w10l1"] .xg td.e{outline:2px solid var(--amber); outline-offset:-2px} [data-route="c25w10l1"] .xg td.x{background:#2c140e; color:#f5c2b5; text-decoration:line-through}
+    [data-route="c25w10l1"] .two{display:grid; gap:14px; grid-template-columns:minmax(0,1fr)}
+    @media(min-width:760px){ [data-route="c25w10l1"] .two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} }
+    [data-route="c25w10l1"] .two .cap{font-family:"Space Mono",monospace; font-size:12px; color:#8fb6a3; margin-bottom:4px}
+  </style>
+  <style>
+    [data-route="c25w10l1"] .ht{display:flex; flex-wrap:wrap; gap:4px; margin:8px 0}
+    [data-route="c25w10l1"] .ht .sl{min-width:46px; border:1px solid #2c4239; border-radius:7px; background:#0a100e; font-family:"Space Mono",monospace; font-size:12px; color:#cfe8d8; text-align:center; overflow:hidden}
+    [data-route="c25w10l1"] .ht .sl .ix{font-size:10px; color:#6f9a85; background:#050807; padding:2px 0; border-bottom:1px solid #1d2b26}
+    [data-route="c25w10l1"] .ht .sl .v{padding:6px 4px; min-height:18px}
+    [data-route="c25w10l1"] .ht .sl .v.e{color:#3f5e52}
+    [data-route="c25w10l1"] .ht .sl .v.del{color:#f5c2b5; background:#2c140e}
+    [data-route="c25w10l1"] .ht .sl .ch{display:block; margin:3px 4px; padding:2px 3px; border:1px solid #2c4239; border-radius:5px; background:#101a17}
+    [data-route="c25w10l1"] .ht .sl.pr{border-color:var(--amber); box-shadow:0 0 0 1px var(--amber)} [data-route="c25w10l1"] .ht .sl.pr .ix{color:var(--amber)}
+    [data-route="c25w10l1"] .ht .sl.hit{border-color:var(--green-bright); box-shadow:0 0 0 2px var(--green-bright)}
+    [data-route="c25w10l1"] .ht .sl.miss{border-color:var(--coral); box-shadow:0 0 0 2px var(--coral)}
+    [data-route="c25w10l1"] .ht .ch.hit{border-color:var(--green-bright); color:var(--green-bright)} [data-route="c25w10l1"] .ht .ch.pr{border-color:var(--amber)}
+    [data-route="c25w10l1"] .ht .sl .pn{font-size:10px; color:var(--amber)}
+    [data-route="c25w10l1"] .mapv{display:flex; flex-wrap:wrap; gap:4px; margin:8px 0; font-family:"Space Mono",monospace; font-size:12px}
+    [data-route="c25w10l1"] .mapv .c{border:1px solid #2c4239; border-radius:7px; background:#0a100e; padding:4px 7px; color:#cfe8d8; text-align:center; min-width:58px}
+    [data-route="c25w10l1"] .mapv .c i{display:block; font-style:normal; font-size:10.5px; color:#6f9a85}
+    [data-route="c25w10l1"] .mapv .c.pr{border-color:var(--amber)} [data-route="c25w10l1"] .mapv .c.hit{border-color:var(--green-bright); box-shadow:0 0 0 1px var(--green-bright)} [data-route="c25w10l1"] .mapv .c.mv{border-color:var(--violet)}
+    [data-route="c25w10l1"] .mapv .lvl{width:100%; display:flex; justify-content:center; gap:6px}
+    [data-route="c25w10l1"] .hx{font-family:"Space Mono",monospace; font-size:12.5px; color:#cfe8d8; word-break:break-all}
+    [data-route="c25w10l1"] .hx b.d{color:var(--coral)}
+    [data-route="c25w10l1"] .inp{background:#0a100e; color:#eaf6ee; border:1px solid #2c4239; border-radius:6px; font-family:"Space Mono",monospace; padding:4px 6px; font-size:12px}
+    [data-route="c25w10l1"] textarea.inp{width:100%; min-height:54px}
+    [data-route="c25w10l1"] .logl{font-family:"Space Mono",monospace; font-size:11.5px; color:#8fb6a3; max-height:120px; overflow:auto; margin-top:6px; line-height:1.6}
+  </style>
+  <style>
+    [data-route="c25w10l1"] .harr{display:flex; flex-wrap:wrap; gap:3px; margin:8px 0; font-family:"Space Mono",monospace; font-size:12px}
+    [data-route="c25w10l1"] .harr div{min-width:40px; border:1px solid #2c4239; border-radius:6px; background:#0a100e; text-align:center; color:#cfe8d8; overflow:hidden}
+    [data-route="c25w10l1"] .harr div i{display:block; font-style:normal; font-size:10px; color:#6f9a85; background:#050807; border-bottom:1px solid #1d2b26; padding:1px 0}
+    [data-route="c25w10l1"] .harr div b{display:block; padding:5px 3px; font-weight:400}
+    [data-route="c25w10l1"] .harr div.cur{border-color:var(--amber); box-shadow:0 0 0 1px var(--amber)} [data-route="c25w10l1"] .harr div.cur b{color:#f6e2b4; font-weight:700}
+    [data-route="c25w10l1"] .harr div.par{border-color:var(--blue)} [data-route="c25w10l1"] .harr div.kid{border-color:var(--violet)}
+    [data-route="c25w10l1"] .harr div.done{background:#123020; border-color:var(--green-dim)} [data-route="c25w10l1"] .harr div.off{opacity:.35}
+    [data-route="c25w10l1"] .harr div.bad{border-color:var(--coral); box-shadow:0 0 0 1px var(--coral)}
+    [data-route="c25w10l1"] .bits{font-family:"Space Mono",monospace; font-size:13px; color:#cfe8d8; line-height:1.9}
+    [data-route="c25w10l1"] .bits b{color:var(--amber)} [data-route="c25w10l1"] .bits em{font-style:normal; color:var(--green-bright)}
+    [data-route="c25w10l1"] svg .nd.bad{stroke:var(--coral); stroke-width:3.2; fill:#2c140e}
+    [data-route="c25w10l1"] svg .ed.bad{stroke:var(--coral); stroke-width:3}
+    [data-route="c25w10l1"] svg .ed.kb{stroke:var(--blue); stroke-width:3.2}
+    [data-route="c25w10l1"] svg .ed.pr{stroke:var(--coral); stroke-width:3.2}
+    [data-route="c25w10l1"] svg .ed.kbn{stroke:#bcd4ff; stroke-width:4.5}
+    [data-route="c25w10l1"] svg .ed.prn{stroke:#f5c2b5; stroke-width:4.5}
+  </style>
+
+  <style>
+    [data-route="c25w10l1"] .fsm{font-family:"Space Mono",monospace; font-size:13px; color:#cfe8d8}
+    [data-route="c25w10l1"] .chk{display:grid; gap:6px; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); margin:8px 0}
+    [data-route="c25w10l1"] .chk label{display:flex; gap:8px; align-items:flex-start; padding:8px 10px; border:1px solid #233530; border-radius:9px; background:#0a100e; color:#cfe8d8; font-size:14px; cursor:pointer}
+    [data-route="c25w10l1"] .chk label.done{border-color:var(--green-dim); background:#0f2219}
+    [data-route="c25w10l1"] .chk a{color:var(--amber); text-decoration:none}
+    [data-route="c25w10l1"] .rule{display:flex; gap:8px; justify-content:space-between; align-items:center; padding:8px 10px; border:1px solid #233530; border-radius:9px; background:#0a100e; color:#cfe8d8; font-size:14px; margin:5px 0}
+    [data-route="c25w10l1"] .rule.ok{border-color:var(--green-dim)} [data-route="c25w10l1"] .rule.no{border-color:var(--coral)}
+    [data-route="c25w10l1"] .rule .why{display:block; font-size:12.5px; color:#8fb6a3}
+  </style>
+  <style>
+    [data-route="c25w10l1"] .d-row > button{font-family:"Space Mono",monospace; font-size:12px; padding:6px 11px; border-radius:9px; border:1px solid #2c4239; background:#132019; color:#a8ccb7; cursor:pointer}
+    [data-route="c25w10l1"] .d-row > button:hover{border-color:var(--amber-dim); color:#eaf6ee}
+    [data-route="c25w10l1"] .d-row > button.go,[data-route="c25w10l1"] .two button.go{background:var(--green-dim); color:#03120b; border-color:var(--green-dim); font-weight:700}
+    [data-route="c25w10l1"] .two > div > button{font-family:"Space Mono",monospace; font-size:12px; padding:6px 11px; border-radius:9px; border:1px solid #2c4239; background:#132019; color:#a8ccb7; cursor:pointer; margin-top:6px}
+    [data-route="c25w10l1"] .two > div > button.on{background:var(--amber); color:#06120c; border-color:var(--amber); font-weight:700}
+    [data-route="c25w10l1"] svg .nd.fin{stroke:var(--green-bright); stroke-width:3; fill:#123020}
+    [data-route="c25w10l1"] svg .nd.acc{stroke:var(--green-bright); stroke-width:2; fill:none}
+    [data-route="c25w10l1"] svg .ed.arr{marker-end:url(#c25w10l1-ar)}
+    [data-route="c25w10l1"] svg .ed.arr.path{marker-end:url(#c25w10l1-arp)}
+    [data-route="c25w10l1"] .rule .opts{display:flex; flex-wrap:wrap; gap:5px; flex:0 0 auto}
+    [data-route="c25w10l1"] .rule .opts button{font-family:"Space Mono",monospace; font-size:11.5px; padding:4px 9px; border-radius:8px; border:1px solid #2c4239; background:#132019; color:#a8ccb7; cursor:pointer}
+    [data-route="c25w10l1"] .rule .opts button.on{background:var(--amber); color:#06120c; border-color:var(--amber); font-weight:700}
+    [data-route="c25w10l1"] .rule .opts button:disabled{cursor:default}
+    [data-route="c25w10l1"] .rule .tx{flex:1 1 auto; min-width:0}
+    @media(max-width:620px){ [data-route="c25w10l1"] .rule{flex-direction:column; align-items:stretch} [data-route="c25w10l1"] .bars .br{grid-template-columns:100px minmax(0,1fr) 84px} }
+    [data-route="c25w10l1"] .fsm b{color:var(--amber)} [data-route="c25w10l1"] .fsm .ok{color:var(--green-bright)} [data-route="c25w10l1"] .fsm .bad{color:var(--coral)}
+    [data-route="c25w10l1"] .elist td.y{color:var(--green-bright)} [data-route="c25w10l1"] .elist td.n{color:var(--coral)}
+    [data-route="c25w10l1"] .elist a{color:var(--amber); text-decoration:none}
+    [data-route="c25w10l1"] .screen .cap{font-family:"Space Mono",monospace; font-size:12px; color:#8fb6a3; margin-bottom:4px}
+    [data-route="c25w10l1"] .two .bars .br{grid-template-columns:118px minmax(40px,1fr) 58px}
+  </style>
+
+  <header>
+    <div class="wrap hero">
+      <div class="eyebrow">COMP2521 &middot; 26T3 &middot; Data Structures and Algorithms &middot; Week 10 &mdash; Lecture 1</div>
+      <h1>The last of the content, and the exam: <span class="thin">heap or BST, tries beyond the course, and how the final is run and marked</span></h1>
+      <p class="lede">&ldquo;The exam is straightforward if you&rsquo;ve put the work in.&rdquo; The Monday lecture of week 10 opened with a revision quiz on heaps and BSTs, Prim&rsquo;s and Kruskal&rsquo;s edge stores, and the cost of finding an arbitrary item in a heap. It finished tries, including a tangent into binary decision diagrams and finite automata that is <b>outside the course</b>. Then it walked through the final exam: format, environment, rules, marking, hurdles, special consideration and how to revise. The course review itself was moved to Thursday.</p>
+      <div class="chips">
+        <span class="chip">heap, BST or neither?</span>
+        <span class="chip">Prim: min heap</span>
+        <span class="chip">Kruskal: sorted array</span>
+        <span class="chip">find in a heap: O(n)</span>
+        <span class="chip">tries, finished</span>
+        <span class="chip">shared suffixes &amp; automata</span>
+        <span class="chip">the most informative bound</span>
+        <span class="chip">50 / 50 practical / theory</span>
+        <span class="chip">hurdles</span>
+        <span class="chip">state your assumptions</span>
+        <span class="chip">fit to sit</span>
+        <span class="chip">how to revise</span>
+        <span class="chip alt">transcript &middot; 1 deck (Course Review and Exam, 42 slides, 25T3 edition)</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <nav class="map" aria-label="Lecture sections">
+      <a href="#c25w10l1-open"><span class="n">01</span><span class="t">What this page covers</span></a>
+      <a href="#c25w10l1-hq"><span class="n">02</span><span class="t">Heap, BST or neither?</span></a>
+      <a href="#c25w10l1-edges"><span class="n">03</span><span class="t">Where should the edges live?</span></a>
+      <a href="#c25w10l1-find"><span class="n">04</span><span class="t">Finding any item in a heap</span></a>
+      <a href="#c25w10l1-trie"><span class="n">05</span><span class="t">Tries, finished</span></a>
+      <a href="#c25w10l1-beyond"><span class="n">06</span><span class="t">Beyond the course: DAGs and automata</span></a>
+      <a href="#c25w10l1-bounds"><span class="n">07</span><span class="t">The most informative bound</span></a>
+      <a href="#c25w10l1-exam"><span class="n">08</span><span class="t">The exam: format and marks</span></a>
+      <a href="#c25w10l1-rules"><span class="n">09</span><span class="t">Programming answers: what counts</span></a>
+      <a href="#c25w10l1-ambig"><span class="n">10</span><span class="t">Ambiguity, partial marks, scaling</span></a>
+      <a href="#c25w10l1-day"><span class="n">11</span><span class="t">Rules, fit to sit, special consideration</span></a>
+      <a href="#c25w10l1-plan"><span class="n">12</span><span class="t">How to revise</span></a>
+      <a href="#c25w10l1-syll"><span class="n">13</span><span class="t">What the course covered</span></a>
+      <a href="#c25w10l1-chk"><span class="n">14</span><span class="t">Check yourself</span></a>
+    </nav>
+
+    <!-- 01 -->
+    <section class="sec" id="c25w10l1-open">
+      <div class="sec-eyebrow">Sources</div>
+      <h2>A quiz, the end of tries, and the exam briefing <span class="block-tag">(how this page is assembled)</span></h2>
+      <p class="sec-lead">The transcript is the <b>Monday lecture of week 10</b>. &ldquo;Today is largely gonna be about finishing up the content, and just talking through the exam.&rdquo; The tries material builds on the <a href="#/c25w9l2">Week 9 Lecture 2 page</a>, which has the insert, search and delete steppers. The deck is <b>Course Review and Exam</b>; the copy on WebCMS is the <b>25T3</b> edition, so its dates and some details are last year&rsquo;s. The room said so itself: &ldquo;Anything I say in the slides, if it contradicts [the course website], go with this. The slides could be out of date.&rdquo; Where the room corrected the slides, this page follows the room and says so.</p>
+      <div class="d-props">
+        <div class="d-prop"><div class="pt">Monday &middot; quiz</div><div class="pc">transcript &middot; &sect;02&ndash;&sect;04</div><div class="pd">Four trees: max heap, binary max heap, BST or none; an array matched to its heap; how Prim and Kruskal should store edges; finding an arbitrary element in a binary max heap.</div></div>
+        <div class="d-prop"><div class="pt">Monday &middot; tries</div><div class="pc">transcript &middot; &sect;05&ndash;&sect;06</div><div class="pd">Recap; insert &ldquo;easy&rdquo; and &ldquo;ear&rdquo;; delete with dead branches; O(m) time, O(nR) space; left-child right-sibling; nybbles and a 5&times;5 grid; binary decision trees and diagrams; shared suffixes; automata (beyond the course); compressed tries; applications.</div></div>
+        <div class="d-prop"><div class="pt">Monday &middot; break questions</div><div class="pc">transcript &middot; &sect;07</div><div class="pd">Will the exam look like past papers? Is O(V&sup2;) wrong for BFS? O(h) vs O(log n). The exam split, corrected to 50/50. Logging in to the exam environment.</div></div>
+        <div class="d-prop"><div class="pt">Course Review and Exam</div><div class="pc">42 slides (25T3) + transcript &middot; &sect;08&ndash;&sect;13</div><div class="pd">Course goals; syllabus; assessment; exam format, environment, conditions, hurdles, scaling, ELS, fit to sit, special consideration, supplementary exam; revision strategy; on the day; course evaluation.</div></div>
+      </div>
+      <div class="call pit"><b>Where the slides and the room differ.</b> The slides say the practical section is 60 marks and theory 40; the room: &ldquo;It&rsquo;s 60/40. You know, 50/50. Sorry, again, error in the slides. 50/50.&rdquo; The slides offer exam hints for high myExperience response rates; the room: &ldquo;I will not be providing you with hints.&rdquo; The slides&rsquo; exam date (Tuesday 2 December) and supplementary dates are 25T3&rsquo;s; in week 8 the room gave this term&rsquo;s exam as <b>3 December</b>, and said the supplementary exam is &ldquo;I think in January &hellip; or maybe February&rdquo;. Check the course website for the final word.</div>
+    </section>
+
+    <!-- 02 -->
+    <section class="sec" id="c25w10l1-hq">
+      <div class="sec-eyebrow">Revision quiz &middot; questions 1&ndash;4</div>
+      <h2>&ldquo;A max heap, a min heap, a binary search tree, what?&rdquo; <span class="block-tag">(transcript)</span> <a class="back" href="#/c25w9l1">heap checker on W9L1</a></h2>
+      <p class="sec-lead">The hardest question of the quiz was the first: a tree where every parent is bigger than its children, but with a gap in a level. &ldquo;It is a max heap, but it&rsquo;s not a binary max heap&rdquo;: a binary heap must also be <b>complete</b>, filled left to right with no holes. And it isn&rsquo;t a BST either. So the answer was &ldquo;none of those options&rdquo;. A <b>BST</b> needs every key on the left smaller and every key on the right bigger, all the way down; a <b>binary max heap</b> needs parent &ge; children <i>and</i> completeness. Type a tree in level order (with <span class="mono">-</span> for an empty position) and it is classified the same way.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">classify a binary tree</span></div>
+        <div class="body">
+          <div class="d-row"><label>level order</label><input class="inp" id="c25w10l1-hqin" value="20 11 15 7 - 12 9" style="width:260px"><button id="c25w10l1-hqgo" class="go">classify</button><span class="d-btns" id="c25w10l1-hqex" style="margin:0"></span></div>
+          <div class="d-svg tr"><svg id="c25w10l1-hqsvg" style="max-width:420px"></svg></div>
+          <div class="gt-wrap"><table class="elist" id="c25w10l1-hqt"></table></div>
+          <div class="verdict" id="c25w10l1-hqv"></div>
+        </div>
+      </div>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">question 4: which heap is this array?</span></div>
+        <div class="body">
+          <div class="harr" id="c25w10l1-hqarr"></div>
+          <div class="two">
+            <div><div class="cap">heap A</div><div class="d-svg tr"><svg id="c25w10l1-hqa" style="max-width:280px"></svg></div><button class="go" data-h="A" id="c25w10l1-hqpa">this one</button></div>
+            <div><div class="cap">heap B</div><div class="d-svg tr"><svg id="c25w10l1-hqb" style="max-width:280px"></svg></div><button data-h="B" id="c25w10l1-hqpb">this one</button></div>
+          </div>
+          <div class="d-out" id="c25w10l1-hqout">Both are binary max heaps. Only one is the array above, read with children at 2i and 2i + 1.</div>
+        </div>
+      </div>
+      <div class="call note"><b>Reconstructed from the room.</b> The quiz trees weren&rsquo;t read out in full, so the presets above are examples of the same four kinds. Question 4&rsquo;s array is rebuilt from what was said: &ldquo;the children of 19 are 16 and 9 &hellip; the children of 16 should be 4 and 5 [positions]: 4 is 2 and 5 is 12 &hellip; the children of 9 &hellip; should be 5.&rdquo;</div>
+    </section>
+
+    <!-- 03 -->
+    <section class="sec" id="c25w10l1-edges">
+      <div class="sec-eyebrow">Revision quiz &middot; questions 5&ndash;6</div>
+      <h2>Where should Prim and Kruskal keep their edges? <span class="block-tag">(transcript)</span> <a class="back" href="#/c25t-mst">MST topic</a></h2>
+      <p class="sec-lead"><b>Prim</b> keeps discovering edges as the tree grows and always wants the smallest one. An ordered array must shift on every insert (O(n)); a BST supports far more than needed; a <b>binary min heap</b> inserts and removes the minimum in O(log n) with little overhead. <b>Kruskal</b> is different: &ldquo;the first thing we need to do is sort the edges anyway,&rdquo; and it never adds an edge back. So keep them in the <b>sorted (ordered) array</b> and walk it. A min heap also works, and the count below shows it can do less when Kruskal stops early; both are O(E log E) in the worst case. (&ldquo;I wouldn&rsquo;t be too disappointed if you said min heap.&rdquo;) And it&rsquo;s a <i>min</i> heap, not a max heap: we want the smallest edge.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">operation counts on a random graph</span></div>
+        <div class="body">
+          <div class="d-row"><label>V</label><input type="range" id="c25w10l1-edv" min="10" max="400" step="10" value="100"><span class="d-stat" id="c25w10l1-edvv"></span><label>average degree</label><input type="range" id="c25w10l1-edd" min="2" max="40" value="8"><span class="d-stat" id="c25w10l1-eddv"></span><button id="c25w10l1-edgo" class="go">run both</button></div>
+          <div class="two">
+            <div><div class="cap">Prim&rsquo;s edge store</div><div class="bars" id="c25w10l1-edp"></div></div>
+            <div><div class="cap">Kruskal&rsquo;s edge store</div><div class="bars" id="c25w10l1-edk"></div></div>
+          </div>
+          <div class="d-out" id="c25w10l1-edout"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section class="sec" id="c25w10l1-find">
+      <div class="sec-eyebrow">Revision quiz &middot; question 7</div>
+      <h2>Finding an arbitrary item in a heap is O(n), not O(log n) <span class="block-tag">(transcript)</span></h2>
+      <p class="sec-lead">The maximum is at the root, and the second largest must be one of its children. But for any other value a heap can&rsquo;t tell you which way to go: &ldquo;I can&rsquo;t say for sure whether it&rsquo;s in the left subtree or the right subtree.&rdquo; A BST throws away half the tree at each step; a heap only lets you skip a subtree whose root is already <i>smaller</i> than the target. In the worst case you look at every node: <b>O(n)</b>. &ldquo;Heaps are very good for accessing the top element but not so great for finding an arbitrary element.&rdquo; It wasn&rsquo;t taught directly, which was the point: &ldquo;if you understand how a heap works, then you should be able to work it out.&rdquo;</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">search a max heap (with pruning) vs a BST of the same keys</span></div>
+        <div class="body">
+          <div class="d-row"><label>n</label><input type="range" id="c25w10l1-fdn" min="7" max="63" step="8" value="31"><span class="d-stat" id="c25w10l1-fdnv"></span><label>search for</label><select id="c25w10l1-fdt"></select><button id="c25w10l1-fdnew">new keys</button></div>
+          <div class="cap" id="c25w10l1-fdca">max heap</div><div class="d-svg tr"><svg id="c25w10l1-fdsa"></svg></div>
+          <div class="cap" id="c25w10l1-fdcb" style="margin-top:10px">balanced BST</div><div class="d-svg tr"><svg id="c25w10l1-fdsb"></svg></div>
+          <div class="d-out" id="c25w10l1-fdout"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section class="sec" id="c25w10l1-trie">
+      <div class="sec-eyebrow">Tries &middot; the last of the content</div>
+      <h2>Tries, finished: insert, delete with dead branches, and the costs <span class="block-tag">(transcript &middot; Tries slides recapped)</span> <a class="back" href="#/c25w9l2">steppers on W9L2</a></h2>
+      <p class="sec-lead">Each word is a path from the root; a node is marked <b>final</b> where a word ends, so &ldquo;app&rdquo; can be a word and also a prefix of &ldquo;apply&rdquo;. <b>Insert</b>: walk down, add missing children, mark the last node final (adding &ldquo;ear&rdquo; just marks an existing node). <b>Delete</b>: unmark the final node, then remove nodes on the way back up while they&rsquo;re non-final with no children. Stop at a final node or a node with another child, and &ldquo;make sure you don&rsquo;t delete the root node.&rdquo; Time is <b>O(m)</b> for a key of length m. Space is <b>O(nR)</b>, with n the total characters and R the alphabet size; it&rsquo;s much less when keys share prefixes.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">the room&rsquo;s trie: insert and delete, counting nodes</span></div>
+        <div class="body">
+          <div class="d-row"><label>word</label><input class="inp" id="c25w10l1-trw" value="easy" style="width:110px"><span class="d-btns" style="margin:0"><button id="c25w10l1-trins" class="go">insert</button><button id="c25w10l1-trdel">delete</button><button id="c25w10l1-trrs">reset</button></span><span class="d-btns" id="c25w10l1-trex" style="margin:0"></span></div>
+          <div class="d-svg tr"><svg id="c25w10l1-trsvg"></svg></div>
+          <div class="d-btns" id="c25w10l1-trst" style="margin:0"></div>
+          <div class="d-out" id="c25w10l1-trout"></div>
+        </div>
+      </div>
+      <div class="call note"><b>Memory, and the fixes.</b> A node with 26 pointers is 8 &times; 26 = 208 bytes, mostly NULL (&ldquo;you never see X following Z&rdquo;). The fixes trade time for space: <b>left-child right-sibling</b> turns the 26-way tree into a binary one (two pointers per node, but reaching &lsquo;z&rsquo; walks past every sibling); <b>alphabet reduction</b> splits each 8-bit character into two 4-bit nybbles (16-way nodes, twice the depth; the room also sketched a 5&times;5 grid of letters); a <b>compressed trie</b> merges single-child chains into one node, which must be split again when a new word branches off. Applications: finding words in a document (store each word&rsquo;s positions at its final node), autocomplete, predictive text.</div>
+    </section>
+
+    <!-- 06 -->
+    <section class="sec" id="c25w10l1-beyond">
+      <div class="sec-eyebrow">A tangent &middot; beyond this course</div>
+      <h2>&ldquo;Tries are actually much cooler than I thought they were&rdquo;: shared suffixes and automata <span class="block-tag">(transcript &middot; not examinable)</span></h2>
+      <p class="sec-lead">&ldquo;Definitely beyond the scope of this course.&rdquo; Two ideas the room sketched. First, a trie shares <b>prefixes</b>; America, Africa and Antarctica also share the <b>suffix</b> &ldquo;ica&rdquo;, so merging identical tails turns the tree into a directed acyclic graph. Doing that to a trie over bits gives a <b>binary decision diagram</b>, a compact structure for sets of bit strings, used in verification (COMP3153). Second, allow <b>cycles</b> and a small graph can accept infinitely many words: a <b>finite automaton</b>. The room&rsquo;s example accepts exactly the binary numbers divisible by 3; the sets automata can recognise are the regular languages, as in regular expressions (COMP4141).</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">trie vs shared-suffix graph</span></div>
+        <div class="body">
+          <div class="d-row"><label>words</label><input class="inp" id="c25w10l1-bdw" value="america africa antarctica" style="width:340px"><button id="c25w10l1-bdgo" class="go">compare</button></div>
+          <div class="d-out" id="c25w10l1-bdout"></div>
+        </div>
+      </div>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">the room&rsquo;s automaton: multiples of 3 in binary</span></div>
+        <div class="body">
+          <div class="d-row"><label>binary</label><input class="inp" id="c25w10l1-fsin" value="10010" style="width:160px"><span class="d-btns" id="c25w10l1-fsex" style="margin:0"></span></div>
+          <div class="d-svg tr"><svg id="c25w10l1-fssvg" style="max-width:420px"></svg></div>
+          <div class="fsm" id="c25w10l1-fsout"></div>
+        </div>
+      </div>
+      <div class="call note"><b>Why it works.</b> Each state is the remainder so far: reading bit b takes remainder r to (2r + b) mod 3. Start in state 0; the number is a multiple of 3 exactly when you finish in state 0. The room&rsquo;s accepted words included 0, 11 (3), 1001 (9), 10010 (18), 110 (6), 1111 (15) and 1100 (12); 10100 (20) is rejected. The shared-suffix count above is computed by merging nodes with identical futures (finality and labelled children), which is how a minimal acyclic automaton for a finite word list is built.</div>
+    </section>
+
+    <!-- 07 -->
+    <section class="sec" id="c25w10l1-bounds">
+      <div class="sec-eyebrow">A question at the break</div>
+      <h2>&ldquo;Which one&rsquo;s preferred? The one that provides the most information&rdquo; <span class="block-tag">(transcript)</span> <a class="back" href="#/c25t-analysis">analysis topic</a></h2>
+      <p class="sec-lead">BFS is O(V + E). Since E &le; V&sup2;, it is also O(V&sup2;), and O(V&sup3;): &ldquo;Am I wrong? No &hellip; It&rsquo;s not as right.&rdquo; Like saying 3 + 5 is at most 10: true, but less informative than 8. Likewise a BST operation is O(h): that is still a worst-case bound, and it tells you more than O(n), because a balanced tree has h = O(log n). In the exam, an answer like O(V&sup2;) for BFS &ldquo;demonstrates that you have some understanding, but not as much as you could have.&rdquo; Pick each bound below and see whether it is true, and whether it is the tightest.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">true? tightest?</span></div>
+        <div class="body">
+          <div class="d-row"><span class="d-btns" id="c25w10l1-bdk" style="margin:0"><button class="on" data-k="bfs">BFS with adjacency lists</button><button data-k="bst">search in a BST</button><button data-k="avl">search in an AVL tree</button><button data-k="heap">find any item in a binary heap</button></span></div>
+          <div id="c25w10l1-bnrows"></div>
+          <div class="d-out" id="c25w10l1-bnout"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section class="sec" id="c25w10l1-exam">
+      <div class="sec-eyebrow">Course Review and Exam slides 13&ndash;29 &middot; transcript</div>
+      <h2>The final exam: 3 hours, in the CSE labs, two sections of equal weight <span class="block-tag">(slides 13&ndash;29 &middot; transcript)</span></h2>
+      <p class="sec-lead">A 3-hour invigilated exam with 10 minutes&rsquo; reading time, in the CSE labs, in a morning or afternoon session (you can&rsquo;t leave the morning session early; the afternoon session is corralled beforehand). It&rsquo;s <b>closed book</b>, but you get the <b>DSA manual</b> (code and pseudocode for the main data structures and algorithms: &ldquo;Read it &hellip; you need to know where it is and you need to understand it&rdquo;) and a C quick reference. The environment has no internet and none of your files; editors are gedit, VS Code (with clangd) and vim, plus make, clang, gdb, valgrind and a calculator. &ldquo;Go to your labs [this week]. The first hour, you&rsquo;ll experience a practice exam environment.&rdquo; Two sections, a <b>practical</b> one (programming) and a <b>theory</b> one (short answers), each worth <b>half</b> the 100 marks.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">hurdles and course mark calculator</span></div>
+        <div class="body">
+          <div class="d-row"><label>practical (out of 50)</label><input type="range" id="c25w10l1-exp" min="0" max="50" value="30"><span class="d-stat" id="c25w10l1-expv"></span><label>theory (out of 50)</label><input type="range" id="c25w10l1-ext" min="0" max="50" value="25"><span class="d-stat" id="c25w10l1-extv"></span></div>
+          <div class="d-row"><label>labs (/15)</label><input type="range" id="c25w10l1-exl" min="0" max="15" step="0.5" value="12"><span class="d-stat" id="c25w10l1-exlv"></span><label>quizzes (/10)</label><input type="range" id="c25w10l1-exq" min="0" max="10" step="0.5" value="7"><span class="d-stat" id="c25w10l1-exqv"></span><label>assignments (/30)</label><input type="range" id="c25w10l1-exa" min="0" max="30" step="0.5" value="22"><span class="d-stat" id="c25w10l1-exav"></span></div>
+          <div id="c25w10l1-exrows"></div>
+          <div class="d-out" id="c25w10l1-exout"></div>
+        </div>
+      </div>
+      <div class="call note"><b>Time management.</b> &ldquo;The biggest thing I find with people in exams is their time management. Do not waste half the time trying to get 10% of the marks.&rdquo; Marks per question show how long to spend, not how hard it is: 180 minutes for 100 marks is <b>1.8 minutes per mark</b>. Each answer goes in its own file and is submitted with <span class="mono">give</span> as you finish it.</div>
+    </section>
+
+    <!-- 09 -->
+    <section class="sec" id="c25w10l1-rules">
+      <div class="sec-eyebrow">Course Review and Exam slides 20&ndash;23 &middot; transcript</div>
+      <h2>Programming answers: automarked, hidden tests, then read by a human <span class="block-tag">(slides 20&ndash;23 &middot; transcript)</span></h2>
+      <p class="sec-lead">Passing the sample tests &ldquo;does not mean you&rsquo;re gonna get full marks&rdquo;: hidden tests are run afterwards, and every solution is inspected by hand. There are no marks for style, but &ldquo;don&rsquo;t write spaghetti code&rdquo;: a marker has to work out what it does, which matters most when it doesn&rsquo;t work. A solution scoring under 50% from automarking can earn partial marks for substantial progress, up to 50%. Decide for each practice below: allowed, or not?</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">allowed or not?</span></div>
+        <div class="body">
+          <div id="c25w10l1-rlist"></div>
+          <div class="d-out" id="c25w10l1-rout">Pick an answer for each.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="sec" id="c25w10l1-ambig">
+      <div class="sec-eyebrow">Transcript &middot; marking</div>
+      <h2>&ldquo;We are looking for your ability and your understanding&rdquo; <span class="block-tag">(transcript &middot; slides 24&ndash;26)</span></h2>
+      <p class="sec-lead">Theory questions are short answers, not multiple choice (&ldquo;I&rsquo;m a big fan of partial marks&rdquo;); most need a justification, but not proofs. Answer at the length the marks deserve. If a question seems <b>ambiguous</b>, ask during reading time. If it&rsquo;s too late to ask, &ldquo;provide the answer that you think best demonstrates your understanding, and make a note of it: I&rsquo;m assuming the question means this.&rdquo; Don&rsquo;t pick the interpretation that makes the question trivial. Stated assumptions also give you grounds to appeal. The lecturer won&rsquo;t say which questions are coming; when students were told, &ldquo;students actually perform worse&rdquo;, because they studied only those. &ldquo;Everything we&rsquo;ve covered up to today is &hellip; potentially on the exam.&rdquo; Past papers are a good guide to the style, and novel material is unlikely: &ldquo;It&rsquo;s not a good idea to introduce novel material in an exam situation,&rdquo; though variations are fair game. Material discussed only outside the slides &ldquo;is probably not assessable.&rdquo;</p>
+      <div class="d-props">
+        <div class="d-prop"><div class="pt">Hurdles</div><div class="pc">slide 25 &middot; transcript</div><div class="pd">At least 40% on the exam, at least 25% on the practical section and at least 25% on the theory section. Then 50 overall to pass the course.</div></div>
+        <div class="d-prop"><div class="pt">Scaling</div><div class="pc">slide 26 &middot; transcript</div><div class="pd">Not a curve: &ldquo;you can all get HDs.&rdquo; Decided before results come out. Work just below the pass mark is inspected; tutors may be asked whether a borderline student has shown understanding.</div></div>
+        <div class="d-prop"><div class="pt">What a mark means</div><div class="pc">transcript</div><div class="pd">&ldquo;The numbers we give are &hellip; indications for your progression through this degree.&rdquo; Failing means you haven&rsquo;t yet shown the ability later courses rely on: &ldquo;It is OK to fail.&rdquo;</div></div>
+        <div class="d-prop"><div class="pt">ELS</div><div class="pc">slide 27 &middot; transcript</div><div class="pd">Extra time approved by Equitable Learning Services is added to the standard 3 hours; students are contacted separately.</div></div>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="sec" id="c25w10l1-day">
+      <div class="sec-eyebrow">Course Review and Exam slides 15&ndash;19, 27&ndash;36 &middot; transcript</div>
+      <h2>On the day: what to bring, fit to sit, and if you&rsquo;re unwell <span class="block-tag">(slides 15&ndash;36 &middot; transcript)</span></h2>
+      <p class="sec-lead">UNSW on-campus exam rules apply. Bring your <b>student ID card</b> (not expired; without it you&rsquo;re sent to security, which costs time). You may bring a clear water bottle and a clear pencil case. No keyboard, mouse or other hardware; phones, watches and other devices go off and into your bag. &ldquo;Deliberate violation&rdquo; is serious misconduct: &ldquo;penalties include exclusion from your degree.&rdquo; If you become overly distressed, tell a supervisor: &ldquo;there are steps we can take.&rdquo; The exam is covered by the <b>fit-to-sit</b> policy: starting it means you&rsquo;re well enough to finish it. If you&rsquo;re unwell beforehand, don&rsquo;t attend; see a doctor, get a certificate and apply for special consideration (not guaranteed). If it&rsquo;s granted you may be offered a supplementary exam; people &ldquo;tend to perform worse&rdquo; in those. The slides&rsquo; tips: sleep, pack the night before, know your room, arrive early, avoid panic talk, eat something plain.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">bring it, or leave it in your bag?</span></div>
+        <div class="body">
+          <div id="c25w10l1-dlist"></div>
+          <div class="d-out" id="c25w10l1-dout">Sort each item.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section class="sec" id="c25w10l1-plan">
+      <div class="sec-eyebrow">Course Review and Exam slide 30 &middot; transcript</div>
+      <h2>How to revise: &ldquo;Get your hands dirty, practise, practise, practise&rdquo; <span class="block-tag">(slide 30 &middot; transcript)</span></h2>
+      <p class="sec-lead">Rewatch the lectures (&ldquo;there is a lot of this course that goes outside of the lecture slides&rdquo;). Redo labs, tutorials and quizzes <i>without</i> the answers first. Do the practice exercises, and extend them: there are none on hash tables or heaps, so &ldquo;make your own, share it with your friends.&rdquo; Do the sample exam and past papers, saving some to do under time. Study with others: &ldquo;One of the best ways to learn is to explain something to somebody.&rdquo; Tick off each topic as you revise it; the ticks are saved in this browser only.</p>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="ttl">revision checklist, by topic</span></div>
+        <div class="body">
+          <div class="chk" id="c25w10l1-plist"></div>
+          <div class="d-btns" id="c25w10l1-pst" style="margin:6px 0 0"></div>
+        </div>
+      </div>
+      <div class="call tip"><b>Why implement things you&rsquo;ll never write again?</b> &ldquo;You will probably never need to code up a stack ever again after this course. Does that mean you shouldn&rsquo;t code up a stack now? Absolutely you should.&rdquo; Would you rather your car went to a mechanic who has taken one apart, or one who has only read the manuals?</div>
+    </section>
+
+    <!-- 13 -->
+    <section class="sec" id="c25w10l1-syll">
+      <div class="sec-eyebrow">Course Review and Exam slides 2&ndash;12</div>
+      <h2>From thinking like a programmer to thinking like a computer scientist <span class="block-tag">(slides 3&ndash;12 &middot; transcript)</span></h2>
+      <p class="sec-lead">COMP1511 got you thinking like a programmer; COMP2521 aims at thinking like a computer scientist: knowing a set of fundamental structures and techniques, and reasoning about where they apply and how well they work. &ldquo;We&rsquo;re slowly dragging you away from the coding part of things.&rdquo; By the end you should be able to implement solutions to a wider range of problems, analyse algorithms and data structures, and choose between them. For each data type the course covered its C implementation, operations, efficiency and applications. The syllabus, by the slides&rsquo; headings, with this site&rsquo;s topic pages:</p>
+      <div class="gt-wrap"><table class="elist" id="c25w10l1-syt"></table></div>
+      <div class="call note"><b>The full course review is on Thursday.</b> &ldquo;I&rsquo;m pushing back the course review just a little bit because &hellip; I do want to say, oh OK yeah, we covered binary trees. To me, the important things about binary search trees are this, this and this.&rdquo; The questions the exam is really asking: when to use heap sort rather than bubble sort, Prim rather than Kruskal, and what separates an MST from a shortest path.</div>
+    </section>
+
+    <!-- 14 -->
+    <section class="sec" id="c25w10l1-chk">
+      <div class="sec-eyebrow">Check yourself</div>
+      <h2>Quiz: heaps, tries, bounds and the exam <span class="block-tag">(all sources)</span></h2>
+      <div class="d-quiz" id="c25w10l1-qz"></div>
+    </section>
+
+    <!-- FLASHCARDS -->
+    <section class="sec" id="c25w10l1-recall">
+      <div class="sec-eyebrow">Active recall</div>
+      <h2>Test yourself first</h2>
+      <p class="sec-lead">Answer before you flip. <span class="mono">room</span> = said in Monday&rsquo;s lecture, <span class="mono">R n</span> = slide n of Course Review and Exam (25T3 edition).</p>
+      <div class="cards" id="c25w10l1-cards"></div>
+    </section>
+
+    <!-- GLOSSARY -->
+    <section class="sec" id="c25w10l1-keywords">
+      <div class="sec-eyebrow">Glossary</div>
+      <h2>Keywords at a glance</h2>
+      <div class="kw-grid">
+        <div class="kw"><div class="t">Binary max heap</div><div class="d">Parent &ge; children <i>and</i> complete. A max heap with a gap is not a binary heap.</div></div>
+        <div class="kw"><div class="t">Tight bound</div><div class="d">The most informative true bound: O(V + E) rather than O(V&sup2;) for BFS.</div></div>
+        <div class="kw"><div class="t">Dead branch</div><div class="d">Trie nodes below a deleted key with no final node; pruned on delete, never the root.</div></div>
+        <div class="kw"><div class="t">Binary decision diagram</div><div class="d">A trie over bits with identical sub-trees shared: a compact set of bit strings (beyond the course).</div></div>
+        <div class="kw"><div class="t">Finite automaton</div><div class="d">States plus labelled transitions; with cycles it accepts infinitely many words (beyond the course).</div></div>
+        <div class="kw"><div class="t">DSA manual</div><div class="d">Code and pseudocode for the main structures and algorithms, provided in the exam.</div></div>
+        <div class="kw"><div class="t">Exam hurdle</div><div class="d">&ge; 40% on the exam, &ge; 25% on each section.</div></div>
+        <div class="kw"><div class="t">Fit to sit</div><div class="d">Starting an exam declares you well enough to finish it.</div></div>
+        <div class="kw"><div class="t">Special consideration</div><div class="d">Apply if illness or misadventure stops you sitting; may lead to a supplementary exam.</div></div>
+        <div class="kw"><div class="t">Hidden tests</div><div class="d">Extra tests run after the exam; passing the samples doesn&rsquo;t guarantee full marks.</div></div>
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="summary">
+      <h2>One-screen summary</h2>
+      <p>A binary max heap needs parent &ge; children and completeness; a max heap with a hole is neither a binary heap nor (usually) a BST. Prim stores discovered edges in a <b>min heap</b>; Kruskal sorts once and walks a <b>sorted array</b>. Finding an arbitrary item in a heap is <b>O(n)</b>: you can skip only subtrees whose root is smaller than the target. Tries: insert by walking and marking final, delete by unmarking and pruning dead branches (never the root); O(m) time, O(nR) space; save space with left-child right-sibling, nybbles or compression. Sharing suffixes and adding cycles lead to decision diagrams and automata: interesting, not examinable. Give the most informative bound: O(V + E), O(h).</p>
+      <p>The exam: 3 hours plus reading time, CSE labs, closed book but with the DSA manual and a C reference; practical and theory sections of <b>equal weight</b> (the slides&rsquo; 60/40 is wrong); hurdles of 40% overall and 25% per section; automarked with hidden tests, then read by a human; helper functions and #define allowed, no globals or statics, hard-coded answers score 0. State assumptions on ambiguous questions. Fit to sit applies; if unwell, don&rsquo;t attend and apply for special consideration. Revise by doing: redo labs and past papers, timed, with friends, and sleep before the exam.</p>
+      <div class="tldr">TL;DR &middot; binary heap = order + complete &middot; Prim: min heap &middot; Kruskal: sorted array &middot; find in heap: O(n) &middot; tries: O(m), prune dead branches &middot; tightest bound wins &middot; exam 50/50 &middot; hurdles 40 / 25 / 25 &middot; hidden tests &middot; no globals, no hard-coding &middot; state assumptions &middot; fit to sit &middot; practise, timed</div>
+    </section>
+
+    <details class="audit">
+      <summary>Coverage audit &mdash; what maps to which slide</summary>
+      <div class="audit-body">
+        <table>
+          <thead><tr><th>Source</th><th>Topic</th><th>Where on this page</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">transcript &sect;quiz</td><td>Max heap with a hole; BST; binary max heap; array to heap A; Prim&rsquo;s edges in a min heap; Kruskal&rsquo;s in an ordered array; finding an arbitrary heap element O(n); winners</td><td>&sect;02&ndash;&sect;04</td></tr>
+            <tr><td class="mono">transcript &sect;tries</td><td>Recap (app/apply, ear); insert easy and ear; delete shore, shell, ace, apply, earth; O(m); O(nR); 208 bytes; left-child right-sibling; nybbles; 5&times;5 grid; compressed tries; word finding, autocomplete, predictive text</td><td>&sect;05</td></tr>
+            <tr><td class="mono">transcript &sect;beyond</td><td>Bits as a binary decision tree; bit sets; America/Africa/Antarctica sharing suffixes; binary decision diagrams; cycles; multiples of 3 automaton; regular languages; COMP4141, COMP3153</td><td>&sect;06</td></tr>
+            <tr><td class="mono">transcript &sect;break</td><td>Past exam patterns; O(V + E) vs O(V&sup2;); O(h) vs O(log n); 50/50 correction; logging in to the exam environment</td><td>&sect;01 note, &sect;07, &sect;10</td></tr>
+            <tr><td class="mono">transcript &sect;exam</td><td>No hints for myExperience; ability and understanding; ambiguity and assumptions; course goals; course website over slides; sleep and food; sessions; DSA manual; C reference; exam rules; distress; fit to sit; special consideration; supplementary; misconduct; environment; format; time management; automarking; helper functions, #define, no globals or statics; constraints; style; partial marks; theory short answers; hurdles; scaling; ELS; how to revise</td><td>&sect;08&ndash;&sect;12</td></tr>
+            <tr><td class="mono">R 1&ndash;12</td><td>Course review: goals, acquired knowledge and skills, syllabus detail I&ndash;VII</td><td>&sect;13</td></tr>
+            <tr><td class="mono">R 13&ndash;29</td><td>Assessment; exam date, sessions, clashes, conditions, environment, format, programming and short-answer questions, hurdle, scaling, ELS, special consideration, supplementary</td><td>&sect;08&ndash;&sect;11</td></tr>
+            <tr><td class="mono">R 30&ndash;42</td><td>Revision strategy; on the day; course evaluation and incentive (not offered this term, per the room); thanks; good luck</td><td>&sect;01 note, &sect;11, &sect;12</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+  </section>
+  <script>
+  (function(){
+    'use strict';
+    const $=C25.$, R='c25w10l1-';
+    const q=id=>$(R+id);
+    const rng=window.C25w72.rng;
+    const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const fmt=x=>Math.round(x).toLocaleString('en-AU');
+
+    /* ================= 02 · heap, BST or neither ================= */
+    (function(){
+      const EX=[['max heap with a hole','20 11 15 7 - 12 9'],['binary max heap','20 11 15 7 9 12 3'],['BST','8 4 12 2 6 10 14'],['binary min heap','2 5 3 9 7'],['BST and heap?','5 3'],['neither','5 8 2 1 9']];
+      q('hqex').innerHTML=EX.map((e,i)=>'<button data-i="'+i+'">'+e[0]+'</button>').join('');
+      q('hqex').querySelectorAll('button').forEach(b=>b.onclick=()=>{ q('hqin').value=EX[+b.dataset.i][1]; run(); });
+      function run(){
+        const tok=q('hqin').value.trim().split(/[\s,]+/).filter(Boolean).slice(0,31);
+        const A=tok.map(t=>t==='-'||t==='_'?null:(isFinite(+t)?+t:NaN));
+        while(A.length&&A[A.length-1]===null) A.pop();
+        if(!A.length||A.some(v=>Number.isNaN(v))||A[0]===null){ q('hqv').className='verdict no'; q('hqv').innerHTML='Type numbers in level order, with - for an empty position (and a root).'; q('hqt').innerHTML=''; C25.drawBinTree(q('hqsvg'),null,{}); return; }
+        for(let i=1;i<A.length;i++) if(A[i]!==null&&A[(i-1)>>1]===null){ q('hqv').className='verdict no'; q('hqv').innerHTML='Position '+i+' ('+A[i]+') has no parent: position '+((i-1)>>1)+' is empty.'; q('hqt').innerHTML=''; return; }
+        const nodes=A.map((v,i)=>v===null?null:{key:v,i:i});
+        nodes.forEach((n,i)=>{ if(n){ n.left=nodes[2*i+1]||null; n.right=nodes[2*i+2]||null; } });
+        const bad={max:null,min:null,bst:null,comp:null};
+        nodes.forEach((n,i)=>{ if(!n) return; [n.left,n.right].forEach(c=>{ if(!c) return;
+          if(bad.max===null&&c.key>n.key) bad.max=[c.i,c.key+' is below '+n.key];
+          if(bad.min===null&&c.key<n.key) bad.min=[c.i,c.key+' is below '+n.key]; }); });
+        (function chk(n,lo,hi){ if(!n||bad.bst!==null) return; if(n.key<=lo||n.key>=hi){ bad.bst=[n.i,n.key+' should be '+(n.key<=lo?'greater than '+lo:'less than '+hi)]; return; } chk(n.left,lo,n.key); chk(n.right,n.key,hi); })(nodes[0],-Infinity,Infinity);
+        const gap=A.indexOf(null); if(gap>=0) bad.comp=[gap,'position '+gap+' is empty but later positions are used'];
+        const isMax=bad.max===null, isMin=bad.min===null, isBst=bad.bst===null, comp=bad.comp===null;
+        const rows=[['max heap order (parent &ge; children)',isMax,bad.max],['complete (no gaps, filled left to right)',comp,bad.comp],['binary max heap = both of the above',isMax&&comp,null],['binary min heap (parent &le; children, complete)',isMin&&comp,bad.min||bad.comp],['binary search tree (left &lt; node &lt; right, all the way down)',isBst,bad.bst]];
+        q('hqt').innerHTML='<tr><th>property</th><th>holds?</th><th>first problem</th></tr>'+rows.map(r=>'<tr><td>'+r[0]+'</td><td class="'+(r[1]?'y':'n')+'">'+(r[1]?'yes':'no')+'</td><td>'+(r[1]||!r[2]?'':esc(r[2][1]))+'</td></tr>').join('');
+        const hit=new Set([bad.max,bad.bst].filter(Boolean).map(b=>b[0]));
+        C25.drawBinTree(q('hqsvg'),nodes[0],{r:17,gx:42,gy:56,label:n=>String(n.key),sub:n=>'['+n.i+']',cls:n=>hit.has(n.i)?'bad':''});
+        let v, ok=true;
+        if(isMax&&comp) v='A <b>binary max heap</b>'+(isBst?', and also a BST (only tiny trees manage both).':'.');
+        else if(isMin&&comp) v='A <b>binary min heap</b>'+(isBst?', and also a BST.':'.');
+        else if(isBst) v='A <b>binary search tree</b>, not a heap.';
+        else if(isMax&&!comp){ v='A max heap, but <b>not a binary max heap</b>: it isn&rsquo;t complete. Not a BST either, so &ldquo;none of those options&rdquo;. (The room&rsquo;s hardest question.)'; ok=false; }
+        else { v='<b>None of them</b>: not heap-ordered and not a BST.'; ok=false; }
+        q('hqv').className='verdict '+(ok?'ok':'no'); q('hqv').innerHTML=v;
+      }
+      q('hqgo').onclick=run; q('hqin').onkeydown=e=>{ if(e.key==='Enter') run(); };
+      run();
+      /* question 4 */
+      const ARR=[19,16,9,2,12,5], HA=ARR.slice(), HB=[19,12,16,2,9,5];
+      q('hqarr').innerHTML=ARR.map((v,i)=>'<div><i>['+(i+1)+']</i><b>'+v+'</b></div>').join('');
+      const tree=(H,mark)=>{ const ns=H.map((v,i)=>({key:v,i:i+1})); ns.forEach((n,i)=>{ n.left=ns[2*i+1]||null; n.right=ns[2*i+2]||null; }); return [ns[0],mark]; };
+      function draw(which){
+        [['hqa',HA,'A'],['hqb',HB,'B']].forEach(([id,H,k])=>{ const [root]=tree(H);
+          C25.drawBinTree(q(id),root,{r:16,gx:40,gy:52,label:n=>String(n.key),sub:n=>'['+n.i+']',cls:n=>which!==k?'':(H[n.i-1]===ARR[n.i-1]?'hit':'bad')}); });
+        q('hqpa').classList.toggle('on',which==='A'); q('hqpb').classList.toggle('on',which==='B');
+        if(which==='A') q('hqout').innerHTML='<span class="ok">Right: heap A.</span> Index 1 is 19; its children (2, 3) are 16 and 9; 16&rsquo;s children (4, 5) are 2 and 12; 9&rsquo;s child (6) is 5. Every position matches.';
+        else if(which==='B') q('hqout').innerHTML='<span class="bad">Not B.</span> B is a valid max heap of the same keys, but position 2 holds 12, not 16 (red). Reading the array needs the exact positions: children of i at 2i and 2i + 1.';
+      }
+      q('hqpa').onclick=()=>draw('A'); q('hqpb').onclick=()=>draw('B'); draw('');
+    })();
+
+    /* ================= 03 · edge stores for Prim and Kruskal ================= */
+    (function(){
+      function graph(V,deg,seed){ const r=rng(seed), E=[], has=new Set(), key=(a,b)=>a<b?a*1e4+b:b*1e4+a;
+        const add=(a,b)=>{ if(a===b||has.has(key(a,b))) return false; has.add(key(a,b)); E.push([a,b,Math.floor(r()*1e6)]); return true; };
+        for(let i=1;i<V;i++) add(i,Math.floor(r()*i));
+        const target=Math.min(Math.round(V*deg/2),V*(V-1)/2); let guard=0;
+        while(E.length<target&&guard++<target*20) add(Math.floor(r()*V),Math.floor(r()*V));
+        return E; }
+      /* stores count comparisons + moves */
+      function MinHeap(){ const a=[]; let ops=0; const lt=(x,y)=>{ ops++; return x[2]<y[2]; };
+        return { get ops(){ return ops; }, get size(){ return a.length; },
+          push(e){ a.push(e); let i=a.length-1; while(i>0){ const p=(i-1)>>1; if(lt(a[i],a[p])){ [a[i],a[p]]=[a[p],a[i]]; ops++; i=p; } else break; } },
+          pop(){ const top=a[0], last=a.pop(); if(a.length){ a[0]=last; let i=0; for(;;){ const l=2*i+1, rr=l+1; let m=i; if(l<a.length&&lt(a[l],a[m])) m=l; if(rr<a.length&&lt(a[rr],a[m])) m=rr; if(m===i) break; [a[i],a[m]]=[a[m],a[i]]; ops++; i=m; } } return top; },
+          heapify(list){ list.forEach(e=>a.push(e)); for(let s=(a.length>>1)-1;s>=0;s--){ let i=s; for(;;){ const l=2*i+1, rr=l+1; let m=i; if(l<a.length&&lt(a[l],a[m])) m=l; if(rr<a.length&&lt(a[rr],a[m])) m=rr; if(m===i) break; [a[i],a[m]]=[a[m],a[i]]; ops++; i=m; } } } }; }
+      function Ordered(){ const a=[]; let ops=0; /* kept largest-first, so the minimum is popped from the end */
+        return { get ops(){ return ops; }, get size(){ return a.length; },
+          push(e){ let lo=0, hi=a.length; while(lo<hi){ const m=(lo+hi)>>1; ops++; if(a[m][2]>e[2]) lo=m+1; else hi=m; } ops+=a.length-lo; a.splice(lo,0,e); },
+          pop(){ ops++; return a.pop(); } }; }
+      function Unordered(){ const a=[]; let ops=0;
+        return { get ops(){ return ops; }, get size(){ return a.length; },
+          push(e){ ops++; a.push(e); },
+          pop(){ let m=0; for(let i=1;i<a.length;i++){ ops++; if(a[i][2]<a[m][2]) m=i; } const e=a[m]; a[m]=a[a.length-1]; a.pop(); ops++; return e; } }; }
+      function BST(){ let root=null, ops=0, n=0;
+        return { get ops(){ return ops; }, get size(){ return n; },
+          push(e){ n++; const nd={e:e,l:null,r:null}; if(!root){ root=nd; return; } let c=root; for(;;){ ops++; if(e[2]<c.e[2]){ if(c.l) c=c.l; else { c.l=nd; return; } } else { if(c.r) c=c.r; else { c.r=nd; return; } } } },
+          pop(){ n--; if(!root.l){ const e=root.e; root=root.r; ops++; return e; } let p=root, c=root.l; ops++; while(c.l){ p=c; c=c.l; ops++; } p.l=c.r; return c.e; } }; }
+      function prim(V,E,S){ const adj=Array.from({length:V},()=>[]); E.forEach(e=>{ adj[e[0]].push(e); adj[e[1]].push(e); });
+        const inT=new Uint8Array(V); let taken=0, popped=0; inT[0]=1; adj[0].forEach(e=>S.push(e));
+        while(taken<V-1&&S.size){ const e=S.pop(); popped++; const u=inT[e[0]]?e[1]:e[0]; if(inT[e[0]]&&inT[e[1]]) continue; inT[u]=1; taken++; adj[u].forEach(f=>{ if(!(inT[f[0]]&&inT[f[1]])) S.push(f); }); }
+        return {ops:S.ops,popped:popped}; }
+      function examinedByKruskal(V,sorted){ const p=Array.from({length:V},(_,i)=>i); const f=x=>{ while(p[x]!==x){ p[x]=p[p[x]]; x=p[x]; } return x; };
+        let k=0, taken=0; for(const e of sorted){ k++; const a=f(e[0]), b=f(e[1]); if(a!==b){ p[a]=b; if(++taken===V-1) break; } } return k; }
+      function msort(a){ let ops=0; const go=x=>{ if(x.length<2) return x; const m=x.length>>1, L=go(x.slice(0,m)), Rr=go(x.slice(m)), o=[]; let i=0,j=0; while(i<L.length&&j<Rr.length){ ops++; o.push(L[i][2]<=Rr[j][2]?L[i++]:Rr[j++]); } while(i<L.length) o.push(L[i++]); while(j<Rr.length) o.push(Rr[j++]); ops+=x.length; return o; };
+        const s=go(a); return {s:s,ops:ops}; }
+      function bars(host,list){ const mx=Math.max(...list.map(x=>x[1])); const best=Math.min(...list.map(x=>x[1]));
+        host.innerHTML=list.map(x=>'<div class="br"><span>'+x[0]+'</span><div class="tr"><span class="'+(x[1]===best?'':x[1]>best*4?'w':'m')+'" style="width:'+Math.max(1,100*x[1]/mx).toFixed(1)+'%"></span></div><span class="v">'+fmt(x[1])+'</span></div>').join(''); }
+      let seed=5;
+      function run(){ const V=+q('edv').value, d=+q('edd').value; q('edvv').innerHTML='<b>'+V+'</b>'; q('eddv').innerHTML='<b>'+d+'</b>';
+        const E=graph(V,d,seed);
+        const P=[['binary min heap',prim(V,E,MinHeap())],['ordered array',prim(V,E,Ordered())],['BST (unbalanced)',prim(V,E,BST())],['unordered array',prim(V,E,Unordered())]];
+        bars(q('edp'),P.map(x=>[x[0],x[1].ops]));
+        const ms=msort(E.slice()), k=examinedByKruskal(V,ms.s);
+        const h=MinHeap(); h.heapify(E.slice()); for(let i=0;i<k;i++) h.pop();
+        const ua=Unordered(); E.forEach(e=>ua.push(e)); for(let i=0;i<k;i++) ua.pop();
+        const kr=[['sort once, walk the array',ms.ops+k],['binary min heap (heapify, pop)',h.ops],['unordered array (scan each time)',ua.ops]];
+        bars(q('edk'),kr);
+        const pa=P[0][1].ops, po=P[1][1].ops, pb=P[2][1].ops, pu=P[3][1].ops, ka=kr[0][1], kh=kr[1][1];
+        q('edout').innerHTML='V = '+V+', E = '+E.length+'. Prim removed '+P[0][1].popped+' edges while growing the tree; Kruskal looked at '+k+' of the '+E.length+' sorted edges before it had V &minus; 1. Counts are comparisons plus element moves (the BST counts comparisons only).\n'+
+          '<span class="hl">Prim:</span> edges keep arriving and you always take the smallest. The min heap needs '+fmt(pa)+' operations against '+fmt(po)+' for the ordered array (shifting on every insert) and '+fmt(pu)+' for the unordered array (a scan on every removal). '+(pb<=pa?'The unbalanced BST does as well here ('+fmt(pb)+') because random weights keep it bushy, but it has no worst-case guarantee and needs two pointers per edge; a balanced one adds rotations. ':'The unbalanced BST needs '+fmt(pb)+'. ')+'The heap guarantees O(log n) per operation with the least machinery, so it is the answer.\n'+
+          '<span class="hl">Kruskal:</span> nothing arrives later. '+(kh<ka?'Here the heap does fewer operations ('+fmt(kh)+' vs '+fmt(ka)+'): heapify is O(E) and Kruskal stopped after '+k+' of '+E.length+' edges. ':'Sorting once and walking ('+fmt(ka)+') beats the heap ('+fmt(kh)+') here. ')+'Both are O(E log E) in the worst case. The room&rsquo;s answer was the <b>sorted array</b>: sort once, then walk it with no restructuring. &ldquo;I wouldn&rsquo;t be too disappointed if you said min heap.&rdquo;'; }
+      q('edv').oninput=run; q('edd').oninput=run; q('edgo').onclick=()=>{ seed++; run(); };
+      run();
+    })();
+
+    /* ================= 04 · find in a heap vs a BST ================= */
+    (function(){
+      let seed=11, keys=[];
+      function fresh(){ const r=rng(seed++), n=+q('fdn').value, pool=[]; for(let i=1;i<=99;i++) pool.push(i); for(let i=pool.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; } keys=pool.slice(0,n);
+        const s=keys.slice().sort((a,b)=>a-b), opts=[s[0],s[Math.floor(n/4)],s[Math.floor(n/2)],s[Math.floor(3*n/4)],s[n-1]];
+        let miss=50; while(keys.includes(miss)) miss++;
+        q('fdt').innerHTML=opts.map(v=>'<option value="'+v+'">'+v+'</option>').join('')+'<option value="'+miss+'">'+miss+' (not stored)</option>'; q('fdt').value=String(opts[0]); draw(); }
+      function heapOf(a){ a=a.slice(); const n=a.length; for(let s=(n>>1)-1;s>=0;s--){ let i=s; for(;;){ const l=2*i+1, r=l+1; let m=i; if(l<n&&a[l]>a[m]) m=l; if(r<n&&a[r]>a[m]) m=r; if(m===i) break; [a[i],a[m]]=[a[m],a[i]]; i=m; } }
+        const ns=a.map((v,i)=>({key:v,i:i})); ns.forEach((x,i)=>{ x.left=ns[2*i+1]||null; x.right=ns[2*i+2]||null; }); return ns[0]; }
+      function bstOf(s){ const go=(lo,hi)=>{ if(lo>hi) return null; const m=(lo+hi)>>1; return {key:s[m],left:go(lo,m-1),right:go(m+1,hi)}; }; return go(0,s.length-1); }
+      function draw(){ const n=+q('fdn').value, t=+q('fdt').value; q('fdnv').innerHTML='<b>'+n+'</b>';
+        const H=heapOf(keys), B=bstOf(keys.slice().sort((a,b)=>a-b));
+        const vis=new Set(), pruned=new Set(); let hit=null;
+        (function dfs(x){ if(!x||hit) return; vis.add(x); if(x.key===t){ hit=x; return; } if(x.key<t){ [x.left,x.right].forEach(c=>{ if(c) pruned.add(c); }); return; } dfs(x.left); dfs(x.right); })(H);
+        const path=new Set(); let bh=null, b=B; while(b){ path.add(b); if(b.key===t){ bh=b; break; } b=t<b.key?b.left:b.right; }
+        const g=n>40?20:n>20?26:34, r=n>40?9:n>20?11:14;
+        C25.drawBinTree(q('fdsa'),H,{r:r,gx:g,gy:44,label:x=>String(x.key),cls:x=>x===hit?'hit':vis.has(x)?'path':pruned.has(x)?'del':''});
+        C25.drawBinTree(q('fdsb'),B,{r:r,gx:g,gy:44,label:x=>String(x.key),cls:x=>x===bh?'hit':path.has(x)?'path':'',edgeCls:(p,c)=>path.has(p)&&path.has(c)?'path':''});
+        q('fdca').innerHTML='max heap: looked at <b>'+vis.size+'</b> of '+n; q('fdcb').innerHTML='balanced BST: looked at <b>'+path.size+'</b> of '+n;
+        q('fdout').innerHTML=(hit?'Found '+t+' in the heap':t+' is not in the heap')+' after '+vis.size+' nodes; amber nodes were checked, red subtrees were skipped because their root is already smaller than '+t+'.\nThe BST needed '+path.size+' (one path, about log&#8322; n). Try the smallest key: the heap can skip almost nothing, so it touches nearly every node. That worst case is <b>O(n)</b>.'; }
+      q('fdn').oninput=fresh; q('fdt').onchange=draw; q('fdnew').onclick=fresh;
+      fresh();
+    })();
+
+    /* ================= 05 · tries, finished ================= */
+    (function(){
+      const START='ace aces ape apes app apply early earth east sea shell sell shore she';
+      function Trie(){ let id=0; const mk=(p,ch)=>({id:id++,kids:new Map(),fin:false,parent:p,ch:ch}); const root=mk(null,''); return {root:root,mk:mk}; }
+      let T, mark={path:new Set(),neu:new Set()};
+      const each=(n,f)=>{ f(n); n.kids.forEach(k=>each(k,f)); };
+      function reset(){ T=Trie(); START.split(' ').forEach(w=>ins(w,true)); mark={path:new Set(),neu:new Set()}; }
+      function ins(w,quiet){ let n=T.root; const path=new Set([n]), neu=new Set(); let made=0;
+        for(const c of w){ let k=n.kids.get(c); if(!k){ k=T.mk(n,c); n.kids.set(c,k); neu.add(k); made++; } n=k; path.add(n); }
+        const was=n.fin; n.fin=true; if(!quiet) mark={path:path,neu:neu}; return {made:made,was:was}; }
+      function del(w){ let n=T.root; const path=new Set([n]); for(const c of w){ n=n.kids.get(c); if(!n) return {missing:true}; path.add(n); }
+        if(!n.fin) return {missing:true,prefix:true}; n.fin=false; const gone=[]; let stop='';
+        while(n!==T.root&&!n.fin&&n.kids.size===0){ gone.push(n.ch); n.parent.kids.delete(n.ch); path.delete(n); n=n.parent; }
+        stop=n===T.root?'the root (never deleted)':n.fin?'&lsquo;'+key(n)+'&rsquo;, a final node':'&lsquo;'+key(n)+'&rsquo;, which has another child';
+        mark={path:path,neu:new Set()}; return {gone:gone,stop:stop,nochange:gone.length===0}; }
+      const key=n=>{ let s=''; while(n&&n.parent){ s=n.ch+s; n=n.parent; } return s; };
+      const sorted=n=>[...n.kids.entries()].sort((a,b)=>a[0]<b[0]?-1:1);
+      function draw(){ const svg=q('trsvg');
+        C25.drawNTree(svg,T.root,{kids:n=>sorted(n).map(([c,k])=>[c,k]),nodeText:()=>'',cls:n=>mark.neu.has(n)?'new':mark.path.has(n)&&n!==T.root?(n.fin?'hit':'path'):n.fin?'fin':'',edgeCls:(p,c)=>mark.path.has(p)&&mark.path.has(c)?'path':'',gx:26,gy:44,r:8,minW:200}); const vb=svg.viewBox.baseVal; if(vb&&vb.width) svg.style.maxWidth=Math.round(Math.min(720,vb.width*1.5))+'px';
+        let nodes=0, words=0, ptr=0; each(T.root,n=>{ nodes++; if(n.fin) words++; ptr+=n.kids.size; });
+        q('trst').innerHTML='<span class="d-stat">words <b>'+words+'</b></span><span class="d-stat">nodes <b>'+nodes+'</b></span><span class="d-stat">26-pointer nodes: <b>'+fmt(nodes*26*8)+'</b> bytes</span><span class="d-stat">pointers in use <b>'+ptr+'</b> of '+nodes*26+'</span>'; }
+      const EX=[['insert','easy'],['insert','ear'],['delete','shore'],['delete','shell'],['delete','ace'],['delete','apply'],['delete','earth']];
+      q('trex').innerHTML=EX.map((e,i)=>'<button data-i="'+i+'">'+e[0]+' '+e[1]+'</button>').join('');
+      q('trex').querySelectorAll('button').forEach(b=>b.onclick=()=>{ const e=EX[+b.dataset.i]; q('trw').value=e[1]; (e[0]==='insert'?doIns:doDel)(); });
+      const word=()=>q('trw').value.trim().toLowerCase().replace(/[^a-z]/g,'').slice(0,14);
+      function doIns(){ const w=word(); if(!w){ q('trout').innerHTML='Type a word (letters only).'; return; } const r=ins(w,false); draw();
+        q('trout').innerHTML=r.was?'&lsquo;'+w+'&rsquo; is already a word: nothing changes.':r.made?'Inserted &lsquo;'+w+'&rsquo;: walked down while children existed, then added <b>'+r.made+'</b> node'+(r.made===1?'':'s')+' (violet) and marked the last one final. O(m) for m = '+w.length+'.':'Inserted &lsquo;'+w+'&rsquo;: every node already existed, so the last one is just <b>marked final</b>. No new nodes.'; }
+      function doDel(){ const w=word(); if(!w){ q('trout').innerHTML='Type a word (letters only).'; return; } const r=del(w); draw();
+        if(r.missing){ q('trout').innerHTML='&lsquo;'+w+'&rsquo; is not a word in the trie'+(r.prefix?' (it&rsquo;s only a prefix, so no node is final there)':'')+'.'; return; }
+        q('trout').innerHTML='Deleted &lsquo;'+w+'&rsquo;: unmarked its final node, then '+(r.nochange?'kept every node: the node still has children, so there&rsquo;s no dead branch.':'removed the dead branch '+r.gone.map(c=>'&lsquo;'+c+'&rsquo;').join(', ')+' ('+r.gone.length+' node'+(r.gone.length===1?'':'s')+'), stopping at '+r.stop+'.'); }
+      q('trins').onclick=doIns; q('trdel').onclick=doDel; q('trrs').onclick=()=>{ reset(); draw(); q('trout').innerHTML='The words from Tries slides 8 and 14: '+START.split(' ').join(', ')+'. Green = final node.'; };
+      q('trw').onkeydown=e=>{ if(e.key==='Enter') doIns(); };
+      reset(); draw(); q('trout').innerHTML='The words from Tries slides 8 and 14: '+START.split(' ').join(', ')+'. Green = final node. Try the room&rsquo;s examples above.';
+    })();
+
+    /* ================= 06 · shared suffixes and the mod-3 automaton ================= */
+    (function(){
+      function compare(){ const ws=[...new Set(q('bdw').value.toLowerCase().split(/[^a-z]+/).filter(Boolean))].slice(0,30);
+        if(!ws.length){ q('bdout').innerHTML='Type some words.'; return; }
+        const mk=()=>({kids:new Map(),fin:false}), root=mk();
+        ws.forEach(w=>{ let n=root; for(const c of w){ if(!n.kids.has(c)) n.kids.set(c,mk()); n=n.kids.get(c); } n.fin=true; });
+        const sig=new Map(), cls=new Map(); let trie=0;
+        (function go(n){ trie++; const parts=[...n.kids.entries()].sort((a,b)=>a[0]<b[0]?-1:1).map(([c,k])=>c+':'+go(k)); const s=(n.fin?'F':'-')+'('+parts.join(',')+')'; if(!sig.has(s)) sig.set(s,sig.size); const id=sig.get(s); n.cls=id; (cls.get(id)||cls.set(id,[]).get(id)).push(n); return id; })(root);
+        const parentCls=new Map(); (function up(n){ n.kids.forEach(k=>{ parentCls.set(k,n.cls); up(k); }); })(root);
+        const tails=n=>{ const out=[]; (function w(x,s){ if(x.fin) out.push(s||'(end)'); [...x.kids.entries()].sort().forEach(([c,k])=>w(k,s+c)); })(n,''); return out; };
+        const shared=[]; cls.forEach((list,id)=>{ if(list.length<2) return; if(list[0].kids.size===0) return; const pcs=list.map(n=>parentCls.get(n)); if(pcs.every(p=>cls.get(p).length>1)&&new Set(pcs).size===1) return; shared.push([tails(list[0]),list.length]); });
+        shared.sort((a,b)=>b[0].join('').length-a[0].join('').length);
+        const dag=sig.size;
+        q('bdout').innerHTML='<b>'+ws.length+'</b> word'+(ws.length===1?'':'s')+'. Trie: <b>'+trie+'</b> nodes. Sharing identical tails as well as prefixes: <b>'+dag+'</b> nodes (saves '+(trie-dag)+').\n'+(shared.length?'Shared tails: '+shared.slice(0,6).map(s=>'<span class="hl">'+s[0].slice(0,3).join(' / ')+(s[0].length>3?' &hellip;':'')+'</span> &times;'+s[1]).join(', ')+'. All words end at one shared final node.':'No shared tails apart from the final node.')+'\n<span class="dim">The catch the room raised: with shared tails you can&rsquo;t add &ldquo;Antarcticas&rdquo; without also adding &ldquo;Americas&rdquo;, unless you first unshare the nodes. That&rsquo;s why tries don&rsquo;t do this.</span>'; }
+      q('bdgo').onclick=compare; q('bdw').onkeydown=e=>{ if(e.key==='Enter') compare(); }; compare();
+
+      const svg=q('fssvg'), NS='http://www.w3.org/2000/svg';
+      const P=[[80,92],[210,92],[340,92]];
+      const T=[[0,0,'0','M 66 76 C 48 26, 112 26, 94 76',80,34],[0,1,'1','M 98 82 Q 145 52 192 82',145,58],[1,0,'1','M 192 102 Q 145 132 98 102',145,128],[1,2,'0','M 228 82 Q 275 52 322 82',275,58],[2,1,'0','M 322 102 Q 275 132 228 102',275,128],[2,2,'1','M 326 108 C 308 158, 372 158, 354 108',340,152]];
+      function render(used,fin){ while(svg.firstChild) svg.removeChild(svg.firstChild);
+        svg.setAttribute('viewBox','0 0 420 172');
+        const mk=(t,a,p)=>{ const e=document.createElementNS(NS,t); Object.keys(a).forEach(k=>e.setAttribute(k,a[k])); (p||svg).appendChild(e); return e; };
+        const defs=mk('defs',{}); [['ar','#4d6a5f'],['arp','#e0a32e']].forEach(([id,col])=>{ const m=mk('marker',{id:R+id,viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:7,markerHeight:7,orient:'auto-start-reverse'},defs); mk('path',{d:'M0,0 L10,5 L0,10 z',fill:col},m); });
+        mk('path',{d:'M 18 92 L 58 92','class':'ed arr'});
+        T.forEach((t,i)=>{ mk('path',{d:t[3],'class':'ed arr'+(used.has(i)?' path':'')}); const tx=mk('text',{x:t[4],y:t[5],'class':'ew'+(used.has(i)?' path':'')}); tx.textContent=t[2]; });
+        P.forEach((p,i)=>{ mk('circle',{cx:p[0],cy:p[1],r:20,'class':'nd'+(i===fin?(fin===0?' hit':' del'):'')}); if(i===0) mk('circle',{cx:p[0],cy:p[1],r:15,'class':'nd acc'}); const tx=mk('text',{x:p[0],y:p[1],'class':'nt'}); tx.textContent=String(i); }); }
+      function trace(){ const s=q('fsin').value.trim();
+        if(!/^[01]*$/.test(s)||!s.length){ render(new Set(),-1); q('fsout').innerHTML='Type a binary number (0s and 1s).'; return; }
+        let r=0; const used=new Set(), steps=['<b>0</b>']; for(const ch of s.slice(0,40)){ const b=+ch, nr=(2*r+b)%3; used.add(T.findIndex(t=>t[0]===r&&t[1]===nr&&t[2]===ch)); steps.push('&ndash;'+ch+'&rarr; <b>'+nr+'</b>'); r=nr; }
+        render(used,r); const v=parseInt(s.slice(0,40),2);
+        q('fsout').innerHTML=steps.join(' ')+'\n'+s+' in binary is '+(Number.isSafeInteger(v)?v:'a big number')+': '+(r===0?'<span class="ok">accepted</span> (finishes in state 0, a multiple of 3).':'<span class="bad">rejected</span> (finishes in state '+r+', remainder '+r+').'); }
+      const EX=['0','11','110','1001','1100','1111','10010','10100'];
+      q('fsex').innerHTML=EX.map(e=>'<button data-v="'+e+'">'+e+'</button>').join('');
+      q('fsex').querySelectorAll('button').forEach(b=>b.onclick=()=>{ q('fsin').value=b.dataset.v; trace(); });
+      q('fsin').oninput=trace; trace();
+    })();
+
+    /* ================= 07 · the most informative bound ================= */
+    (function(){
+      const K={
+        bfs:['BFS on a graph with V vertices and E edges, adjacency lists (worst case)',[['O(V + E)','best'],['O(V&sup2;)','loose'],['O(V&sup3;)','loose'],['O(E)','false','false when E is much smaller than V: BFS still touches every vertex'],['O(V log V)','false','false for dense graphs, where E can be about V&sup2;']]],
+        bst:['Search in a BST with n nodes and height h (worst case)',[['O(h)','best'],['O(n)','loose'],['O(n&sup2;)','loose'],['O(log n)','false','false for a degenerate (linked-list shaped) tree, where h = n &minus; 1'],['O(1)','false','false: you may have to walk a whole path']]],
+        avl:['Search in an AVL tree with n nodes (worst case)',[['O(log n)','best'],['O(h)','best','equally good: an AVL tree keeps h = O(log n)'],['O(n)','loose'],['O(1)','false','false: a path of about log n nodes']]],
+        heap:['Find an arbitrary item in a binary heap of n items (worst case)',[['O(n)','best'],['O(n log n)','loose'],['O(log n)','false','false: the heap can&rsquo;t say which subtree to search'],['O(1)','false','only the root (the maximum) is O(1)']]]
+      };
+      const LAB={best:'true, most informative',loose:'true, less informative','false':'false'};
+      let cur='bfs', score={r:0,n:0};
+      function show(){ const k=K[cur]; score={r:0,n:0};
+        q('bnrows').innerHTML='<div class="cap" style="font-family:Space Mono,monospace;font-size:12px;color:#8fb6a3;margin:4px 0">'+k[0]+'</div>'+k[1].map((b,i)=>'<div class="rule" data-i="'+i+'"><span class="tx"><b>'+b[0]+'</b><span class="why"></span></span><span class="opts">'+['best','loose','false'].map(o=>'<button data-o="'+o+'">'+LAB[o]+'</button>').join('')+'</span></div>').join('');
+        q('bnrows').querySelectorAll('.rule').forEach(row=>row.querySelectorAll('button').forEach(btn=>btn.onclick=()=>{ if(row.dataset.done) return; row.dataset.done='1'; const b=k[1][+row.dataset.i], ok=btn.dataset.o===b[1];
+          score.n++; if(ok) score.r++; btn.classList.add('on'); row.classList.add(ok?'ok':'no'); row.querySelectorAll('button').forEach(x=>x.disabled=true);
+          row.querySelector('.why').innerHTML=(ok?'Right: ':'It&rsquo;s '+LAB[b[1]]+': ')+(b[2]||(b[1]==='best'?'the tightest true bound.':'true, since it is at least as big, but it says less.'));
+          q('bnout').innerHTML=score.r+' / '+score.n+' right. '+(score.n===k[1].length?'&ldquo;They&rsquo;re all correct technically &hellip; which one&rsquo;s preferred? The one that provides the most information.&rdquo;':''); }));
+        q('bnout').innerHTML='Classify each bound.'; }
+      q('bdk').querySelectorAll('button').forEach(b=>b.onclick=()=>{ q('bdk').querySelectorAll('button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); cur=b.dataset.k; show(); });
+      show();
+    })();
+
+    /* ================= 08 · hurdles and course mark ================= */
+    (function(){
+      const ids=['exp','ext','exl','exq','exa'];
+      function upd(){ const p=+q('exp').value, t=+q('ext').value, l=+q('exl').value, z=+q('exq').value, a=+q('exa').value;
+        q('expv').innerHTML='<b>'+p+'</b>'; q('extv').innerHTML='<b>'+t+'</b>'; q('exlv').innerHTML='<b>'+l+'</b>'; q('exqv').innerHTML='<b>'+z+'</b>'; q('exav').innerHTML='<b>'+a+'</b>';
+        const ex=p+t, h1=ex>=40, h2=p>=12.5, h3=t>=12.5, course=l+z+a+ex*0.45, pass=h1&&h2&&h3&&course>=50;
+        const row=(lab,ok,txt)=>'<div class="rule '+(ok?'ok':'no')+'"><span class="tx">'+lab+'<span class="why">'+txt+'</span></span><b>'+(ok?'met':'not met')+'</b></div>';
+        q('exrows').innerHTML=row('Exam &ge; 40%',h1,'you have '+ex+' / 100')+row('Practical section &ge; 25%',h2,p+' / 50 (needs 12.5)')+row('Theory section &ge; 25%',h3,t+' / 50 (needs 12.5)')+row('Course mark &ge; 50',course>=50,'labs + quizzes + assignments + 45% &times; exam = '+course.toFixed(1));
+        q('exout').innerHTML=(pass?'<span class="ok">Pass.</span>':'<span class="bad">Not a pass</span>'+(course>=50&&!(h1&&h2&&h3)?': the course mark is enough, but an exam hurdle isn&rsquo;t met, so the result is a fail regardless.':'.'))+'\nTime: 180 minutes for 100 marks is 1.8 minutes a mark, so a 10-mark question deserves about 18 minutes.\n<span class="dim">Weights (labs 15, quizzes 10, assignments 15 + 15, exam 45) and the hurdles are from the 25T3 slides; the 50/50 split is from the room. Check this term&rsquo;s course outline for the final word.</span>'; }
+      ids.forEach(id=>q(id).oninput=upd); upd();
+    })();
+
+    /* ================= 09 & 11 · sorters ================= */
+    function sorter(listId,outId,opts,items){
+      const host=q(listId); let score={r:0,n:0};
+      host.innerHTML=items.map((it,i)=>'<div class="rule" data-i="'+i+'"><span class="tx">'+it[0]+'<span class="why"></span></span><span class="opts">'+opts.map((o,j)=>'<button data-o="'+j+'">'+o+'</button>').join('')+'</span></div>').join('');
+      host.querySelectorAll('.rule').forEach(row=>row.querySelectorAll('button').forEach(btn=>btn.onclick=()=>{ if(row.dataset.done) return; row.dataset.done='1'; const it=items[+row.dataset.i], ok=+btn.dataset.o===it[1];
+        score.n++; if(ok) score.r++; btn.classList.add('on'); row.classList.add(ok?'ok':'no'); row.querySelectorAll('button').forEach(x=>x.disabled=true);
+        row.querySelector('.why').innerHTML=(ok?'':'Answer: '+opts[it[1]]+'. ')+it[2];
+        q(outId).innerHTML=score.r+' / '+score.n+' right'+(score.n===items.length?' &middot; all done.':'.'); }));
+    }
+    sorter('rlist','rout',['allowed','not allowed'],[
+      ['Writing helper functions',0,'&ldquo;You can write helper functions.&rdquo;'],
+      ['#define for constants',0,'Fine, like any C program.'],
+      ['Global variables',1,'Not allowed in your solution.'],
+      ['Static variables inside a function',1,'Also out: they&rsquo;re global state in disguise.'],
+      ['Hard-coding the outputs of the sample tests',1,'Hidden tests catch it, and the code is read by hand: it scores 0.'],
+      ['Explaining your idea in English or pseudocode instead of code',1,'&ldquo;Marks awarded for code only.&rdquo;'],
+      ['Ignoring a stated constraint (say, a required time complexity) if the tests pass',1,'Solutions are inspected to check constraints were followed.'],
+      ['Submitting each answer with give as soon as it&rsquo;s done',0,'Recommended: submit as you go, and check what you&rsquo;ve submitted.']
+    ]);
+    sorter('dlist','dout',['bring','not allowed / in your bag'],[
+      ['Your UNSW student ID card (not expired)',0,'Without it you&rsquo;re sent to security, which costs exam time.'],
+      ['A clear water bottle',0,'Allowed.'],
+      ['A clear pencil case or plastic sleeve with pens',0,'Allowed.'],
+      ['Your own keyboard or mouse',1,'No hardware of your own.'],
+      ['Your phone, switched off',1,'Off and in your bag, along with smart watches and other devices.'],
+      ['A page of your own notes',1,'Closed book; the DSA manual and a C quick reference are provided on screen.']
+    ]);
+
+    /* ================= 12 · revision checklist ================= */
+    (function(){
+      const TP=[['tools','Course, tools and C hygiene'],['recursion','Recursion'],['analysis','Algorithm analysis and binary search'],['sorting','Sorting'],['adts','Abstract data types'],['bst','Binary search trees'],['balance','Balanced trees and AVL'],['graphs','Graph fundamentals and representations'],['traversal','Graph traversal: BFS and DFS'],['problems','Graph problems'],['digraphs','Directed graphs and reachability'],['dijkstra','Shortest paths: Dijkstra'],['mst','Minimum spanning trees'],['hashtables','Hash tables'],['hashapps','Hash table applications'],['heaps','Priority queues and heaps'],['tries','Tries']];
+      const KEY='c25w10l1-revised'; let done={};
+      try{ done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ done={}; }
+      const save=()=>{ try{ localStorage.setItem(KEY,JSON.stringify(done)); }catch(e){} };
+      function draw(){ q('plist').innerHTML=TP.map(t=>'<label class="'+(done[t[0]]?'done':'')+'"><input type="checkbox" data-s="'+t[0]+'"'+(done[t[0]]?' checked':'')+'><span>'+t[1]+' &middot; <a href="#/c25t-'+t[0]+'">notes</a></span></label>').join('');
+        q('plist').querySelectorAll('input').forEach(c=>c.onchange=()=>{ if(c.checked) done[c.dataset.s]=1; else delete done[c.dataset.s]; save(); draw(); });
+        const n=TP.filter(t=>done[t[0]]).length;
+        q('pst').innerHTML='<span class="d-stat">revised <b>'+n+'</b> / '+TP.length+'</span><button id="'+R+'pclr">clear ticks</button>';
+        q('pclr').onclick=()=>{ done={}; save(); draw(); }; }
+      draw();
+    })();
+
+    /* ================= 13 · syllabus ================= */
+    q('syt').innerHTML='<tr><th>slide</th><th>syllabus heading</th><th>topic page</th></tr>'+[
+      ['R 7','Recursion','recursion','Recursion'],['R 7','Analysis of algorithms: empirical, theoretical, big-O','analysis','Algorithm analysis'],
+      ['R 8','Sorting: properties, elementary, divide and conquer, radix','sorting','Sorting'],
+      ['R 9','ADTs: interface vs implementation, stacks, queues, sets','adts','Abstract data types'],['R 9','Trees: terminology, BSTs','bst','Binary search trees'],['R 9','Balancing BSTs, AVL trees','balance','Balanced trees and AVL'],
+      ['R 10','Graph terminology, properties, representations','graphs','Graph fundamentals'],['R 10','Graph traversal: BFS and DFS','traversal','BFS and DFS'],['R 10','Cycle checking, components, Hamilton and Euler','problems','Graph problems'],['R 10','Warshall&rsquo;s algorithm','digraphs','Directed graphs'],['R 10','Dijkstra&rsquo;s algorithm','dijkstra','Dijkstra'],['R 10','Minimum spanning trees: Kruskal, Prim','mst','MSTs'],
+      ['R 11','Hash functions, collision resolution','hashtables','Hash tables'],['R 11','Hash table applications','hashapps','Hash table applications'],
+      ['R 12','Priority queues, binary heaps, heap sort','heaps','Priority queues and heaps'],['R 12','Tries: implementations, applications','tries','Tries']
+    ].map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td><a href="#/c25t-'+r[2]+'">'+r[3]+' &rarr;</a></td></tr>').join('');
+  })();
+  </script>
+  <script>
+  (function(){
+    'use strict';
+    const R='c25w10l1-';
+    function mix(items){ return items.map((it,k)=>{ const n=it.opts.length, s=(k*2+1)%n; const opts=it.opts.slice(s).concat(it.opts.slice(0,s)); return Object.assign({},it,{opts:opts,a:(n-s)%n}); }); }
+    C25.quiz(R+'qz',mix([
+      {q:'Every parent is larger than its children, but one level has a gap in the middle. The tree is&hellip;',opts:['a max heap, but not a binary max heap','a binary max heap','a binary search tree','a binary min heap'],why:'A binary heap must also be complete: no gaps, filled left to right.'},
+      {q:'Which store suits Prim&rsquo;s algorithm best?',opts:['binary min heap','binary max heap','ordered array','unordered array'],why:'Edges keep arriving and you always want the smallest: insert and remove-min are both O(log n).'},
+      {q:'Which store did the room prefer for Kruskal&rsquo;s algorithm?',opts:['an ordered (sorted) array','a binary max heap','an unordered array','a hash table'],why:'Kruskal sorts the edges first and never adds any later, so walk the sorted array.'},
+      {q:'Worst-case cost to find an arbitrary item in a binary max heap of n items?',opts:['O(n)','O(log n)','O(1)','O(n log n)'],why:'The heap can&rsquo;t tell you which subtree holds it; you can only skip subtrees whose root is smaller.'},
+      {q:'1-based array [19, 16, 9, 2, 12, 5]: the children of 16 are&hellip;',opts:['2 and 12','9 and 2','12 and 5','19 and 9'],why:'16 is at index 2; its children are at 4 and 5.'},
+      {q:'Inserting &ldquo;ear&rdquo; into a trie that already holds &ldquo;early&rdquo; and &ldquo;earth&rdquo;&hellip;',opts:['adds no nodes; marks r as final','adds one node','adds three nodes','is impossible'],why:'The path e-a-r already exists; only the final flag changes.'},
+      {q:'Deleting &ldquo;shell&rdquo; when &ldquo;she&rdquo; is a word removes&hellip;',opts:['the two l nodes','only the last l','every node of shell','nothing'],why:'Prune while non-final with no children: stop at e, a final node.'},
+      {q:'Trie search for a key of length m costs&hellip;',opts:['O(m)','O(n)','O(log n)','O(nR)'],why:'One step per character, independent of how many keys are stored.'},
+      {q:'A 26-pointer trie node uses about&hellip;',opts:['208 bytes','26 bytes','64 bytes','8 bytes'],why:'26 pointers &times; 8 bytes, most of them NULL.'},
+      {q:'Splitting each 8-bit character into two 4-bit nybbles makes trie nodes&hellip;',opts:['16-way, with paths twice as long','256-way','binary','unchanged'],why:'Fewer pointers per node, more levels: a time-for-space trade.'},
+      {q:'BFS with adjacency lists is O(V&sup2;). This statement is&hellip;',opts:['true, but less informative than O(V + E)','false','the tightest bound','true only for dense graphs'],why:'Since E &le; V&sup2;, it&rsquo;s a valid upper bound, just not the most informative.'},
+      {q:'In this term&rsquo;s exam, practical and theory are weighted&hellip;',opts:['50 / 50','60 / 40','40 / 60','70 / 30'],why:'The room corrected the slides&rsquo; 60/40.'},
+      {q:'The exam hurdle requires at least&hellip;',opts:['40% overall and 25% in each section','50% overall','25% overall','40% in each section'],why:'Then 50 overall in the course to pass.'},
+      {q:'Which is <b>not</b> allowed in an exam programming answer?',opts:['a global variable','a helper function','a #define constant','a while loop'],why:'No globals and no static variables.'},
+      {q:'A question seems ambiguous and reading time is over. Best move?',opts:['answer the interpretation that best shows understanding, and state your assumption','pick the reading that makes it trivial','skip it','write two answers and let the marker choose'],why:'&ldquo;Make a note of it: I&rsquo;m assuming the question means this.&rdquo;'},
+      {q:'You feel unwell on exam morning. Under fit to sit you should&hellip;',opts:['not attend, see a doctor, apply for special consideration','start the exam and leave if it gets worse','sit it and appeal afterwards','email the lecturer during the exam'],why:'Starting the exam declares you fit to sit it.'}
+    ]));
+    C25.cards(R+'cards',[
+      ['room','Max heap with a hole: binary max heap?','No: a binary heap must be complete as well as heap-ordered.'],
+      ['room','Prim&rsquo;s edges belong in&hellip;','A binary min heap: O(log n) insert and remove-min.'],
+      ['room','Kruskal&rsquo;s edges belong in&hellip;','A sorted array: sort once, then walk it; nothing is added later.'],
+      ['room','Find an arbitrary item in a heap?','O(n): only subtrees whose root is smaller than the target can be skipped.'],
+      ['room','Trie insert?','Walk down; add missing nodes; mark the last node final. O(m).'],
+      ['room','Trie delete?','Unmark final; prune non-final childless nodes upward; never the root.'],
+      ['room','Trie space?','O(nR): n total characters, R pointers per node (26 &times; 8 = 208 bytes).'],
+      ['room','Left-child right-sibling?','Two pointers per node; slower to reach later siblings.'],
+      ['room','Compressed trie?','Merge single-child chains into one node; split when a word branches off.'],
+      ['room','Sharing suffixes too gives&hellip;','A DAG / minimal automaton (BDDs over bits). Not examinable.'],
+      ['room','Multiples of 3 in binary?','States are remainders; bit b sends r to (2r + b) mod 3; accept in 0.'],
+      ['room','Which bound to give?','The tightest true one: O(V + E) for BFS, O(h) for BST search.'],
+      ['room','Exam weighting?','Practical 50, theory 50 (the slides&rsquo; 60/40 is wrong).'],
+      ['R 25','Exam hurdle?','&ge; 40% on the exam and &ge; 25% on each section.'],
+      ['R 13','Course weights (25T3 slide)?','Labs 15, quizzes 10, assignments 15 + 15, exam 45.'],
+      ['R 21','Partial marks for code?','Under 50% from automarking may get up to 50% for substantial progress.'],
+      ['room','Allowed in code answers?','Helper functions and #define; no globals or statics; never hard-code.'],
+      ['R 15','Provided in the exam?','DSA manual (code and pseudocode) and a C quick reference.'],
+      ['R 18','What to bring?','Unexpired student ID; clear water bottle; clear pencil case.'],
+      ['room','Fit to sit?','Starting the exam means you&rsquo;re fit; if unwell, don&rsquo;t attend.']
+    ]);
+  })();
+  </script>
+
+
   <style>
     /* ---------- COMP2521 notes by topic ---------- */
     .c25-topic .tp-chips{display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:10px 0 4px}
@@ -59774,8 +60708,8 @@ doTrieDelete(t, key, isRoot):
         <div class="lc-title">Recursion</div>
         <div class="lc-desc">Solve a problem through a smaller instance of itself: a base case first, then a recursive case that assumes the smaller call works. Lists, trees and divide-and-conquer sorts all lean on it.</div>
       </a>
-      <a class="lec-card tp-card" href="#/c25t-analysis" data-search="algorithm analysis and binary search count, drop constants, keep the dominant term what a program costs worst case &amp; big-o growth &amp; crossovers timing with clock() counting operations big-o, mechanically what “better” means algorithm, data structure pseudocode counting operations worst case the growth hierarchy big-o rules logs &amp; halving what’s feasible two inputs: n and m four loops analysis, wrapped up ω, θ and the omega story when a line isn’t o(1) lazy upper bounds log₂ &amp; real sizes binary search best worst case binary search, again questions at the break the box: pen and paper timing is not robust; count primitive operations (linear search: 4n + 3) and keep the dominant term. growth order: exponential &gt; polynomial &gt; n log n &gt; n &gt; log n &gt; 1. n log n is nearly linear. o is an upper bound, ω a lower bound, θ both. big-o is not “worst case”. check each line is really o(1) (strlen in a loop condition isn’t). n copies of o(n) are o(n²). log base doesn’t matter; the exponential base does. two inputs give costs like o(nm). binary search halves hi − lo each step: o(log n), but only on sorted data. guessing the middle gives the best worst case.">
-        <div class="lc-tag">27 sections &middot; W1 L1, W1 L2, W2 L1</div>
+      <a class="lec-card tp-card" href="#/c25t-analysis" data-search="algorithm analysis and binary search count, drop constants, keep the dominant term what a program costs worst case &amp; big-o growth &amp; crossovers timing with clock() counting operations big-o, mechanically what “better” means algorithm, data structure pseudocode counting operations worst case the growth hierarchy big-o rules logs &amp; halving what’s feasible two inputs: n and m four loops analysis, wrapped up ω, θ and the omega story when a line isn’t o(1) lazy upper bounds log₂ &amp; real sizes the most informative bound binary search best worst case binary search, again questions at the break the box: pen and paper timing is not robust; count primitive operations (linear search: 4n + 3) and keep the dominant term. growth order: exponential &gt; polynomial &gt; n log n &gt; n &gt; log n &gt; 1. n log n is nearly linear. o is an upper bound, ω a lower bound, θ both. big-o is not “worst case”. check each line is really o(1) (strlen in a loop condition isn’t). n copies of o(n) are o(n²). log base doesn’t matter; the exponential base does. two inputs give costs like o(nm). binary search halves hi − lo each step: o(log n), but only on sorted data. guessing the middle gives the best worst case.">
+        <div class="lc-tag">28 sections &middot; W1 L1, W1 L2, W2 L1, W10 L1</div>
         <div class="lc-title">Algorithm analysis and binary search</div>
         <div class="lc-desc">Measure an algorithm by how its cost scales: count primitive operations in the worst case, keep the dominant term, and express it with O, &Omega; and &Theta;. Binary search is the first O(log n) algorithm.</div>
       </a>
@@ -59833,8 +60767,8 @@ doTrieDelete(t, key, isRoot):
         <div class="lc-title">Shortest paths: Dijkstra</div>
         <div class="lc-desc">Dijkstra&rsquo;s algorithm grows a frontier of vertices whose distance is final, always taking the closest unexplored vertex and relaxing its edges. It needs non-negative weights.</div>
       </a>
-      <a class="lec-card tp-card" href="#/c25t-mst" data-search="minimum spanning trees kruskal grows a forest, prim grows a tree spanning trees why the mst is the mst kruskal’s algorithm kruskal: shrink the forest prim’s algorithm prim with in and out prim vs dijkstra which algorithm made this tree? global vs local the revision quiz hub: mst or dijkstra? why kruskal is optimal costs and other algorithms add a constant to every weight? every spanning tree has exactly v − 1 edges, so both algorithms take v − 1 steps. each non-tree edge is the heaviest on the cycle it closes; with distinct weights the mst is unique. kruskal: sort edges, skip any that join an already-connected pair. o(e log e + ev) with dfs checks, o(e log v) with union-find. better on sparse graphs. prim: start anywhere, add the cheapest edge leaving the tree. o(ve) naive, o(e + v log v) with a fibonacci heap. better on dense graphs. kruskal is global (whole graph); prim is local (around its tree). prim is dijkstra with the edge weight as the key. adding a constant to every weight keeps the mst but can change shortest paths.">
-        <div class="lc-tag">14 sections &middot; W7 L2, W8 L1, W9 L1</div>
+      <a class="lec-card tp-card" href="#/c25t-mst" data-search="minimum spanning trees kruskal grows a forest, prim grows a tree spanning trees why the mst is the mst kruskal’s algorithm kruskal: shrink the forest prim’s algorithm prim with in and out prim vs dijkstra which algorithm made this tree? global vs local the revision quiz hub: mst or dijkstra? where should the edges live? why kruskal is optimal costs and other algorithms add a constant to every weight? every spanning tree has exactly v − 1 edges, so both algorithms take v − 1 steps. each non-tree edge is the heaviest on the cycle it closes; with distinct weights the mst is unique. kruskal: sort edges, skip any that join an already-connected pair. o(e log e + ev) with dfs checks, o(e log v) with union-find. better on sparse graphs. prim: start anywhere, add the cheapest edge leaving the tree. o(ve) naive, o(e + v log v) with a fibonacci heap. better on dense graphs. kruskal is global (whole graph); prim is local (around its tree). prim is dijkstra with the edge weight as the key. adding a constant to every weight keeps the mst but can change shortest paths.">
+        <div class="lc-tag">15 sections &middot; W7 L2, W8 L1, W9 L1, W10 L1</div>
         <div class="lc-title">Minimum spanning trees</div>
         <div class="lc-desc">A spanning tree connects every vertex with V &minus; 1 edges; a minimum one has the least total weight. Kruskal takes the cheapest edges anywhere that don&rsquo;t form a cycle; Prim grows one tree by its cheapest crossing edge.</div>
       </a>
@@ -59854,15 +60788,23 @@ doTrieDelete(t, key, isRoot):
     </div></div>
     <div class="tp-part" data-part="pq"><div class="lvl2">Priority queues and tries <small>Heaps, heap sort, and tries for sets of strings.</small></div>
     <div class="lecture-grid">
-      <a class="lec-card tp-card" href="#/c25t-heaps" data-search="priority queues and heaps highest priority out first from queue to priority queue five ways to build one why a heap, not an avl tree? heap property, completeness a tree in an array insertion: fix up deletion: fix down heaps: insert, delete, indexing heap sort heap sort, argued out heapify in o(n): the sum arrays and lists leave an o(n) in insert or delete; a balanced bst is o(log n) for all; a heap matches it with o(1) peek and simpler code. max heap: every node ≥ its children. complete: every level full except the last, filled from the left: ⌊log₂ n⌋ + 1 levels. array storage (1-based): children 2i and 2i + 1, parent ⌊i / 2⌋ (0-based: 2i + 1, 2i + 2, (i − 1)/2). insert: add at the end, fix up. delete: move the last item to the root, fix down by swapping with the bigger child. heapify: o(n log n) by fix up, o(n) by fixing down the first half from right to left. heap sort: heapify, then repeatedly swap the root to the end: o(n log n), in place, unstable, non-adaptive.">
-        <div class="lc-tag">11 sections &middot; W9 L1, W9 L2</div>
+      <a class="lec-card tp-card" href="#/c25t-heaps" data-search="priority queues and heaps highest priority out first from queue to priority queue five ways to build one why a heap, not an avl tree? heap property, completeness a tree in an array insertion: fix up deletion: fix down heaps: insert, delete, indexing heap sort heap sort, argued out heapify in o(n): the sum heap, bst or neither? finding any item in a heap arrays and lists leave an o(n) in insert or delete; a balanced bst is o(log n) for all; a heap matches it with o(1) peek and simpler code. max heap: every node ≥ its children. complete: every level full except the last, filled from the left: ⌊log₂ n⌋ + 1 levels. array storage (1-based): children 2i and 2i + 1, parent ⌊i / 2⌋ (0-based: 2i + 1, 2i + 2, (i − 1)/2). insert: add at the end, fix up. delete: move the last item to the root, fix down by swapping with the bigger child. heapify: o(n log n) by fix up, o(n) by fixing down the first half from right to left. heap sort: heapify, then repeatedly swap the root to the end: o(n log n), in place, unstable, non-adaptive.">
+        <div class="lc-tag">13 sections &middot; W9 L1, W9 L2, W10 L1</div>
         <div class="lc-title">Priority queues and heaps</div>
         <div class="lc-desc">A priority queue returns the highest-priority item first. A binary heap (heap property plus completeness, stored in an array) gives O(log n) insert and delete and O(1) peek; heap sort follows directly.</div>
       </a>
-      <a class="lec-card tp-card" href="#/c25t-tries" data-search="tries the path is the key why tries? what a trie is insertion search deletion and dead branches o(m) time, o(nr) space variants that save memory applications keys are implicit in position; nodes don’t store their key. search fails two ways: a missing child, or ending on a non-finishing node. delete: unmark the finishing flag, then prune non-finishing, childless nodes on the way back up, never the root. space o(nr): with 26 children per node that’s 208 bytes of pointers per node, mostly null. variants trade time for space: linked-list children, left-child right-sibling, nybble alphabet reduction, compressed tries. applications: word finding, autocomplete (walk the prefix, then the subtree) and predictive text.">
-        <div class="lc-tag">8 sections &middot; W9 L2</div>
+      <a class="lec-card tp-card" href="#/c25t-tries" data-search="tries the path is the key why tries? what a trie is insertion search deletion and dead branches o(m) time, o(nr) space variants that save memory applications tries, finished beyond the course: dags and automata keys are implicit in position; nodes don’t store their key. search fails two ways: a missing child, or ending on a non-finishing node. delete: unmark the finishing flag, then prune non-finishing, childless nodes on the way back up, never the root. space o(nr): with 26 children per node that’s 208 bytes of pointers per node, mostly null. variants trade time for space: linked-list children, left-child right-sibling, nybble alphabet reduction, compressed tries. applications: word finding, autocomplete (walk the prefix, then the subtree) and predictive text.">
+        <div class="lc-tag">10 sections &middot; W9 L2, W10 L1</div>
         <div class="lc-title">Tries</div>
         <div class="lc-desc">A trie stores a set of strings as paths from the root, one character per link, with a finishing flag where a key ends. Insert, search and delete cost O(m) for a key of length m, however many keys there are.</div>
+      </a>
+    </div></div>
+    <div class="tp-part" data-part="exam"><div class="lvl2">The exam <small>How the final exam is run and marked, and how to revise for it.</small></div>
+    <div class="lecture-grid">
+      <a class="lec-card tp-card" href="#/c25t-exam" data-search="the final exam and revision how it is run, how it is marked, how to prepare the exam: format and marks programming answers: what counts ambiguity, partial marks, scaling rules, fit to sit, special consideration how to revise what the course covered 3 hours plus 10 minutes’ reading, in the cse labs; closed book, with the dsa manual and a c quick reference provided. practical (programming) and theory (short answer) are 50 marks each: the slides’ 60/40 was corrected in the room. hurdles: at least 40% on the exam and 25% on each section, then 50 overall in the course. code is automarked with hidden tests and then read: helper functions and #define are fine; no globals or statics; hard-coding scores 0; up to 50% for substantial progress. marks show time, not difficulty: about 1.8 minutes a mark. state your assumptions on ambiguous questions. fit to sit: starting the exam means you are well enough; if unwell, don’t attend and apply for special consideration. revise by doing: redo labs and past papers, timed, explain things to friends, and sleep.">
+        <div class="lc-tag">6 sections &middot; W10 L1</div>
+        <div class="lc-title">The final exam and revision</div>
+        <div class="lc-desc">The briefing from week 10: a 3-hour exam in the CSE labs with practical and theory sections of <b>equal weight</b>, hurdles on each, automarked code read by a human, and a revision plan built on doing rather than rereading.</div>
       </a>
     </div></div>
   </div></section>
@@ -59952,12 +60894,12 @@ doTrieDelete(t, key, isRoot):
       <div class="eyebrow">COMP2521 &middot; Notes by topic &middot; Foundations</div>
       <h1>Algorithm analysis and binary search <span class="thin">&mdash; count, drop constants, keep the dominant term</span></h1>
       <p class="lede">Measure an algorithm by how its cost scales: count primitive operations in the worst case, keep the dominant term, and express it with O, &Omega; and &Theta;. Binary search is the first O(log n) algorithm.</p>
-      <div class="tp-chips"><span class="tp-meta">27 sections from 3 lectures:</span><a class="tp-chip" href="#/c25w1l1">W1 L1 &middot; Intro, tools &amp; recursion</a><a class="tp-chip" href="#/c25w1l2">W1 L2 &middot; Analysis &amp; binary search</a><a class="tp-chip" href="#/c25w2l1">W2 L1 &middot; Big-O wrap-up &amp; sorting</a></div>
+      <div class="tp-chips"><span class="tp-meta">28 sections from 4 lectures:</span><a class="tp-chip" href="#/c25w1l1">W1 L1 &middot; Intro, tools &amp; recursion</a><a class="tp-chip" href="#/c25w1l2">W1 L2 &middot; Analysis &amp; binary search</a><a class="tp-chip" href="#/c25w2l1">W2 L1 &middot; Big-O wrap-up &amp; sorting</a><a class="tp-chip" href="#/c25w10l1">W10 L1 &middot; Tries finished, revision quiz, the exam</a></div>
     </div>
   </header>
   <div class="wrap">
     <div class="tp-key"><div class="tp-kh">Key ideas</div><ul><li>Timing is not robust; count primitive operations (linear search: 4n + 3) and keep the dominant term.</li><li>Growth order: exponential &gt; polynomial &gt; n log n &gt; n &gt; log n &gt; 1. n log n is nearly linear.</li><li>O is an upper bound, &Omega; a lower bound, &Theta; both. Big-O is <i>not</i> &ldquo;worst case&rdquo;.</li><li>Check each line is really O(1) (strlen in a loop condition isn&rsquo;t). n copies of O(n) are O(n&sup2;).</li><li>Log base doesn&rsquo;t matter; the exponential base does. Two inputs give costs like O(nm).</li><li>Binary search halves hi &minus; lo each step: O(log n), but only on sorted data. Guessing the middle gives the best worst case.</li></ul></div>
-    <nav class="tp-toc" aria-label="Sections in this topic"><a href="#/c25t-analysis/c25w1l1-cost"><span class="n">01</span><span class="t">What a program costs</span></a><a href="#/c25t-analysis/c25w1l1-cases"><span class="n">02</span><span class="t">Worst case &amp; big-O</span></a><a href="#/c25t-analysis/c25w1l1-growth"><span class="n">03</span><span class="t">Growth &amp; crossovers</span></a><a href="#/c25t-analysis/c25w1l1-empirical"><span class="n">04</span><span class="t">Timing with clock()</span></a><a href="#/c25t-analysis/c25w1l1-theory"><span class="n">05</span><span class="t">Counting operations</span></a><a href="#/c25t-analysis/c25w1l1-bigo"><span class="n">06</span><span class="t">Big-O, mechanically</span></a><a href="#/c25t-analysis/c25w1l2-better"><span class="n">07</span><span class="t">What &ldquo;better&rdquo; means</span></a><a href="#/c25t-analysis/c25w1l2-algds"><span class="n">08</span><span class="t">Algorithm, data structure</span></a><a href="#/c25t-analysis/c25w1l2-pseudo"><span class="n">09</span><span class="t">Pseudocode</span></a><a href="#/c25t-analysis/c25w1l2-ops"><span class="n">10</span><span class="t">Counting operations</span></a><a href="#/c25t-analysis/c25w1l2-worst"><span class="n">11</span><span class="t">Worst case</span></a><a href="#/c25t-analysis/c25w1l2-hier"><span class="n">12</span><span class="t">The growth hierarchy</span></a><a href="#/c25t-analysis/c25w1l2-bigo"><span class="n">13</span><span class="t">Big-O rules</span></a><a href="#/c25t-analysis/c25w1l2-logs"><span class="n">14</span><span class="t">Logs &amp; halving</span></a><a href="#/c25t-analysis/c25w1l2-feas"><span class="n">15</span><span class="t">What&rsquo;s feasible</span></a><a href="#/c25t-analysis/c25w1l2-multi"><span class="n">16</span><span class="t">Two inputs: n and m</span></a><a href="#/c25t-analysis/c25w1l2-loops"><span class="n">17</span><span class="t">Four loops</span></a><a href="#/c25t-analysis/c25w2l1-wrap"><span class="n">18</span><span class="t">Analysis, wrapped up</span></a><a href="#/c25t-analysis/c25w2l1-omega"><span class="n">19</span><span class="t">&Omega;, &Theta; and the omega story</span></a><a href="#/c25t-analysis/c25w2l1-lines"><span class="n">20</span><span class="t">When a line isn&rsquo;t O(1)</span></a><a href="#/c25t-analysis/c25w2l1-lazy"><span class="n">21</span><span class="t">Lazy upper bounds</span></a><a href="#/c25t-analysis/c25w2l1-log2"><span class="n">22</span><span class="t">log&#8322; &amp; real sizes</span></a><a href="#/c25t-analysis/c25w1l2-bs"><span class="n">23</span><span class="t">Binary search</span></a><a href="#/c25t-analysis/c25w2l1-bwc"><span class="n">24</span><span class="t">Best worst case</span></a><a href="#/c25t-analysis/c25w2l1-bs"><span class="n">25</span><span class="t">Binary search, again</span></a><a href="#/c25t-analysis/c25w2l1-qa"><span class="n">26</span><span class="t">Questions at the break</span></a><a href="#/c25t-analysis/c25w2l1-box"><span class="n">27</span><span class="t">The box: pen and paper</span></a></nav>
+    <nav class="tp-toc" aria-label="Sections in this topic"><a href="#/c25t-analysis/c25w1l1-cost"><span class="n">01</span><span class="t">What a program costs</span></a><a href="#/c25t-analysis/c25w1l1-cases"><span class="n">02</span><span class="t">Worst case &amp; big-O</span></a><a href="#/c25t-analysis/c25w1l1-growth"><span class="n">03</span><span class="t">Growth &amp; crossovers</span></a><a href="#/c25t-analysis/c25w1l1-empirical"><span class="n">04</span><span class="t">Timing with clock()</span></a><a href="#/c25t-analysis/c25w1l1-theory"><span class="n">05</span><span class="t">Counting operations</span></a><a href="#/c25t-analysis/c25w1l1-bigo"><span class="n">06</span><span class="t">Big-O, mechanically</span></a><a href="#/c25t-analysis/c25w1l2-better"><span class="n">07</span><span class="t">What &ldquo;better&rdquo; means</span></a><a href="#/c25t-analysis/c25w1l2-algds"><span class="n">08</span><span class="t">Algorithm, data structure</span></a><a href="#/c25t-analysis/c25w1l2-pseudo"><span class="n">09</span><span class="t">Pseudocode</span></a><a href="#/c25t-analysis/c25w1l2-ops"><span class="n">10</span><span class="t">Counting operations</span></a><a href="#/c25t-analysis/c25w1l2-worst"><span class="n">11</span><span class="t">Worst case</span></a><a href="#/c25t-analysis/c25w1l2-hier"><span class="n">12</span><span class="t">The growth hierarchy</span></a><a href="#/c25t-analysis/c25w1l2-bigo"><span class="n">13</span><span class="t">Big-O rules</span></a><a href="#/c25t-analysis/c25w1l2-logs"><span class="n">14</span><span class="t">Logs &amp; halving</span></a><a href="#/c25t-analysis/c25w1l2-feas"><span class="n">15</span><span class="t">What&rsquo;s feasible</span></a><a href="#/c25t-analysis/c25w1l2-multi"><span class="n">16</span><span class="t">Two inputs: n and m</span></a><a href="#/c25t-analysis/c25w1l2-loops"><span class="n">17</span><span class="t">Four loops</span></a><a href="#/c25t-analysis/c25w2l1-wrap"><span class="n">18</span><span class="t">Analysis, wrapped up</span></a><a href="#/c25t-analysis/c25w2l1-omega"><span class="n">19</span><span class="t">&Omega;, &Theta; and the omega story</span></a><a href="#/c25t-analysis/c25w2l1-lines"><span class="n">20</span><span class="t">When a line isn&rsquo;t O(1)</span></a><a href="#/c25t-analysis/c25w2l1-lazy"><span class="n">21</span><span class="t">Lazy upper bounds</span></a><a href="#/c25t-analysis/c25w2l1-log2"><span class="n">22</span><span class="t">log&#8322; &amp; real sizes</span></a><a href="#/c25t-analysis/c25w10l1-bounds"><span class="n">23</span><span class="t">The most informative bound</span></a><a href="#/c25t-analysis/c25w1l2-bs"><span class="n">24</span><span class="t">Binary search</span></a><a href="#/c25t-analysis/c25w2l1-bwc"><span class="n">25</span><span class="t">Best worst case</span></a><a href="#/c25t-analysis/c25w2l1-bs"><span class="n">26</span><span class="t">Binary search, again</span></a><a href="#/c25t-analysis/c25w2l1-qa"><span class="n">27</span><span class="t">Questions at the break</span></a><a href="#/c25t-analysis/c25w2l1-box"><span class="n">28</span><span class="t">The box: pen and paper</span></a></nav>
     <div class="tp-gh"><span class="tp-gn">Part 1</span> Counting and big-O</div>
     <div class="tp-src" data-route="c25w1l1"><div class="tp-from"><span>From W1 L1 &middot; &sect;25 &middot; Intro, tools &amp; recursion</span><a href="#/c25w1l1/c25w1l1-cost">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w1l1-cost"><p class="tp-wait">Loading this section from W1 L1&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w1l1"><div class="tp-from"><span>From W1 L1 &middot; &sect;26 &middot; Intro, tools &amp; recursion</span><a href="#/c25w1l1/c25w1l1-cases">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w1l1-cases"><p class="tp-wait">Loading this section from W1 L1&hellip;</p></div></div>
@@ -59982,6 +60924,7 @@ doTrieDelete(t, key, isRoot):
     <div class="tp-src" data-route="c25w2l1"><div class="tp-from"><span>From W2 L1 &middot; &sect;05 &middot; Big-O wrap-up &amp; sorting</span><a href="#/c25w2l1/c25w2l1-lines">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w2l1-lines"><p class="tp-wait">Loading this section from W2 L1&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w2l1"><div class="tp-from"><span>From W2 L1 &middot; &sect;06 &middot; Big-O wrap-up &amp; sorting</span><a href="#/c25w2l1/c25w2l1-lazy">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w2l1-lazy"><p class="tp-wait">Loading this section from W2 L1&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w2l1"><div class="tp-from"><span>From W2 L1 &middot; &sect;07 &middot; Big-O wrap-up &amp; sorting</span><a href="#/c25w2l1/c25w2l1-log2">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w2l1-log2"><p class="tp-wait">Loading this section from W2 L1&hellip;</p></div></div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;07 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-bounds">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-bounds"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
     <div class="tp-gh"><span class="tp-gn">Part 3</span> Binary search</div>
     <div class="tp-src" data-route="c25w1l2"><div class="tp-from"><span>From W1 L2 &middot; &sect;16 &middot; Analysis &amp; binary search</span><a href="#/c25w1l2/c25w1l2-bs">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w1l2-bs"><p class="tp-wait">Loading this section from W1 L2&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w2l1"><div class="tp-from"><span>From W2 L1 &middot; &sect;08 &middot; Big-O wrap-up &amp; sorting</span><a href="#/c25w2l1/c25w2l1-bwc">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w2l1-bwc"><p class="tp-wait">Loading this section from W2 L1&hellip;</p></div></div>
@@ -59993,7 +60936,7 @@ doTrieDelete(t, key, isRoot):
       <div class="sec-eyebrow">Check yourself</div>
       <h2>Quick check: Algorithm analysis and binary search</h2>
       <div class="d-quiz" id="c25t-analysis-qz"></div>
-      
+      <h3 class="tp-h3">Each lecture&rsquo;s full quiz</h3><div class="tp-list"><a class="tp-item" href="#/c25w10l1/c25w10l1-chk"><span class="tp-lec">W10 L1</span><span class="tp-t">Check yourself: Tries finished, revision quiz, the exam</span></a></div>
     </section>
     <div class="tp-nav"><a class="tp-navb" href="#/c25t-recursion">&larr; Recursion</a><a class="tp-navb tp-all" href="#/c25topics">All topics</a><a class="tp-navb" href="#/c25t-sorting">Sorting &rarr;</a></div>
   </div>
@@ -60402,12 +61345,12 @@ doTrieDelete(t, key, isRoot):
       <div class="eyebrow">COMP2521 &middot; Notes by topic &middot; Graphs</div>
       <h1>Minimum spanning trees <span class="thin">&mdash; Kruskal grows a forest, Prim grows a tree</span></h1>
       <p class="lede">A spanning tree connects every vertex with V &minus; 1 edges; a minimum one has the least total weight. Kruskal takes the cheapest edges anywhere that don&rsquo;t form a cycle; Prim grows one tree by its cheapest crossing edge.</p>
-      <div class="tp-chips"><span class="tp-meta">14 sections from 3 lectures:</span><a class="tp-chip" href="#/c25w7l2">W7 L2 &middot; Cycles, closure, Dijkstra recap, minimum spanning trees</a><a class="tp-chip" href="#/c25w8l1">W8 L1 &middot; MSTs finished, the Map ADT, hash tables</a><a class="tp-chip" href="#/c25w9l1">W9 L1 &middot; Puzzles solved, priority queues, binary heaps</a></div>
+      <div class="tp-chips"><span class="tp-meta">15 sections from 4 lectures:</span><a class="tp-chip" href="#/c25w7l2">W7 L2 &middot; Cycles, closure, Dijkstra recap, minimum spanning trees</a><a class="tp-chip" href="#/c25w8l1">W8 L1 &middot; MSTs finished, the Map ADT, hash tables</a><a class="tp-chip" href="#/c25w9l1">W9 L1 &middot; Puzzles solved, priority queues, binary heaps</a><a class="tp-chip" href="#/c25w10l1">W10 L1 &middot; Tries finished, revision quiz, the exam</a></div>
     </div>
   </header>
   <div class="wrap">
     <div class="tp-key"><div class="tp-kh">Key ideas</div><ul><li>Every spanning tree has exactly V &minus; 1 edges, so both algorithms take V &minus; 1 steps.</li><li>Each non-tree edge is the heaviest on the cycle it closes; with distinct weights the MST is unique.</li><li>Kruskal: sort edges, skip any that join an already-connected pair. O(E log E + EV) with DFS checks, O(E log V) with union-find. Better on sparse graphs.</li><li>Prim: start anywhere, add the cheapest edge leaving the tree. O(VE) naive, O(E + V log V) with a Fibonacci heap. Better on dense graphs.</li><li>Kruskal is global (whole graph); Prim is local (around its tree). Prim is Dijkstra with the edge weight as the key.</li><li>Adding a constant to every weight keeps the MST but can change shortest paths.</li></ul></div>
-    <nav class="tp-toc" aria-label="Sections in this topic"><a href="#/c25t-mst/c25w7l2-mst"><span class="n">01</span><span class="t">Spanning trees</span></a><a href="#/c25t-mst/c25w8l1-cyc"><span class="n">02</span><span class="t">Why the MST is the MST</span></a><a href="#/c25t-mst/c25w7l2-krus"><span class="n">03</span><span class="t">Kruskal&rsquo;s algorithm</span></a><a href="#/c25t-mst/c25w8l1-krus"><span class="n">04</span><span class="t">Kruskal: shrink the forest</span></a><a href="#/c25t-mst/c25w7l2-prim"><span class="n">05</span><span class="t">Prim&rsquo;s algorithm</span></a><a href="#/c25t-mst/c25w8l1-prim"><span class="n">06</span><span class="t">Prim with in and out</span></a><a href="#/c25t-mst/c25w7l2-pvd"><span class="n">07</span><span class="t">Prim vs Dijkstra</span></a><a href="#/c25t-mst/c25w8l1-which"><span class="n">08</span><span class="t">Which algorithm made this tree?</span></a><a href="#/c25t-mst/c25w8l1-glob"><span class="n">09</span><span class="t">Global vs local</span></a><a href="#/c25t-mst/c25w9l1-quiz"><span class="n">10</span><span class="t">The revision quiz</span></a><a href="#/c25t-mst/c25w9l1-hub"><span class="n">11</span><span class="t">Hub: MST or Dijkstra?</span></a><a href="#/c25t-mst/c25w7l2-proof"><span class="n">12</span><span class="t">Why Kruskal is optimal</span></a><a href="#/c25t-mst/c25w7l2-cost"><span class="n">13</span><span class="t">Costs and other algorithms</span></a><a href="#/c25t-mst/c25w7l2-plus"><span class="n">14</span><span class="t">Add a constant to every weight?</span></a></nav>
+    <nav class="tp-toc" aria-label="Sections in this topic"><a href="#/c25t-mst/c25w7l2-mst"><span class="n">01</span><span class="t">Spanning trees</span></a><a href="#/c25t-mst/c25w8l1-cyc"><span class="n">02</span><span class="t">Why the MST is the MST</span></a><a href="#/c25t-mst/c25w7l2-krus"><span class="n">03</span><span class="t">Kruskal&rsquo;s algorithm</span></a><a href="#/c25t-mst/c25w8l1-krus"><span class="n">04</span><span class="t">Kruskal: shrink the forest</span></a><a href="#/c25t-mst/c25w7l2-prim"><span class="n">05</span><span class="t">Prim&rsquo;s algorithm</span></a><a href="#/c25t-mst/c25w8l1-prim"><span class="n">06</span><span class="t">Prim with in and out</span></a><a href="#/c25t-mst/c25w7l2-pvd"><span class="n">07</span><span class="t">Prim vs Dijkstra</span></a><a href="#/c25t-mst/c25w8l1-which"><span class="n">08</span><span class="t">Which algorithm made this tree?</span></a><a href="#/c25t-mst/c25w8l1-glob"><span class="n">09</span><span class="t">Global vs local</span></a><a href="#/c25t-mst/c25w9l1-quiz"><span class="n">10</span><span class="t">The revision quiz</span></a><a href="#/c25t-mst/c25w9l1-hub"><span class="n">11</span><span class="t">Hub: MST or Dijkstra?</span></a><a href="#/c25t-mst/c25w10l1-edges"><span class="n">12</span><span class="t">Where should the edges live?</span></a><a href="#/c25t-mst/c25w7l2-proof"><span class="n">13</span><span class="t">Why Kruskal is optimal</span></a><a href="#/c25t-mst/c25w7l2-cost"><span class="n">14</span><span class="t">Costs and other algorithms</span></a><a href="#/c25t-mst/c25w7l2-plus"><span class="n">15</span><span class="t">Add a constant to every weight?</span></a></nav>
     <div class="tp-gh"><span class="tp-gn">Part 1</span> Spanning trees</div>
     <div class="tp-src" data-route="c25w7l2"><div class="tp-from"><span>From W7 L2 &middot; &sect;08 &middot; Cycles, closure, Dijkstra recap, minimum spanning trees</span><a href="#/c25w7l2/c25w7l2-mst">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w7l2-mst"><p class="tp-wait">Loading this section from W7 L2&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w8l1"><div class="tp-from"><span>From W8 L1 &middot; &sect;04 &middot; MSTs finished, the Map ADT, hash tables</span><a href="#/c25w8l1/c25w8l1-cyc">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w8l1-cyc"><p class="tp-wait">Loading this section from W8 L1&hellip;</p></div></div>
@@ -60423,6 +61366,7 @@ doTrieDelete(t, key, isRoot):
     <div class="tp-src" data-route="c25w8l1"><div class="tp-from"><span>From W8 L1 &middot; &sect;07 &middot; MSTs finished, the Map ADT, hash tables</span><a href="#/c25w8l1/c25w8l1-glob">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w8l1-glob"><p class="tp-wait">Loading this section from W8 L1&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w9l1"><div class="tp-from"><span>From W9 L1 &middot; &sect;02 &middot; Puzzles solved, priority queues, binary heaps</span><a href="#/c25w9l1/c25w9l1-quiz">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w9l1-quiz"><p class="tp-wait">Loading this section from W9 L1&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w9l1"><div class="tp-from"><span>From W9 L1 &middot; &sect;03 &middot; Puzzles solved, priority queues, binary heaps</span><a href="#/c25w9l1/c25w9l1-hub">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w9l1-hub"><p class="tp-wait">Loading this section from W9 L1&hellip;</p></div></div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;03 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-edges">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-edges"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
     <div class="tp-gh"><span class="tp-gn">Part 5</span> Proof, costs and variations</div>
     <div class="tp-src" data-route="c25w7l2"><div class="tp-from"><span>From W7 L2 &middot; &sect;12 &middot; Cycles, closure, Dijkstra recap, minimum spanning trees</span><a href="#/c25w7l2/c25w7l2-proof">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w7l2-proof"><p class="tp-wait">Loading this section from W7 L2&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w7l2"><div class="tp-from"><span>From W7 L2 &middot; &sect;13 &middot; Cycles, closure, Dijkstra recap, minimum spanning trees</span><a href="#/c25w7l2/c25w7l2-cost">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w7l2-cost"><p class="tp-wait">Loading this section from W7 L2&hellip;</p></div></div>
@@ -60432,7 +61376,7 @@ doTrieDelete(t, key, isRoot):
       <div class="sec-eyebrow">Check yourself</div>
       <h2>Quick check: Minimum spanning trees</h2>
       <div class="d-quiz" id="c25t-mst-qz"></div>
-      <h3 class="tp-h3">Each lecture&rsquo;s full quiz</h3><div class="tp-list"><a class="tp-item" href="#/c25w7l2/c25w7l2-chk"><span class="tp-lec">W7 L2</span><span class="tp-t">Check yourself: Cycles, closure, Dijkstra recap, minimum spanning trees</span></a><a class="tp-item" href="#/c25w8l1/c25w8l1-chk"><span class="tp-lec">W8 L1</span><span class="tp-t">Check yourself: MSTs finished, the Map ADT, hash tables</span></a><a class="tp-item" href="#/c25w9l1/c25w9l1-chk"><span class="tp-lec">W9 L1</span><span class="tp-t">Check yourself: Puzzles solved, priority queues, binary heaps</span></a></div>
+      <h3 class="tp-h3">Each lecture&rsquo;s full quiz</h3><div class="tp-list"><a class="tp-item" href="#/c25w7l2/c25w7l2-chk"><span class="tp-lec">W7 L2</span><span class="tp-t">Check yourself: Cycles, closure, Dijkstra recap, minimum spanning trees</span></a><a class="tp-item" href="#/c25w8l1/c25w8l1-chk"><span class="tp-lec">W8 L1</span><span class="tp-t">Check yourself: MSTs finished, the Map ADT, hash tables</span></a><a class="tp-item" href="#/c25w9l1/c25w9l1-chk"><span class="tp-lec">W9 L1</span><span class="tp-t">Check yourself: Puzzles solved, priority queues, binary heaps</span></a><a class="tp-item" href="#/c25w10l1/c25w10l1-chk"><span class="tp-lec">W10 L1</span><span class="tp-t">Check yourself: Tries finished, revision quiz, the exam</span></a></div>
     </section>
     <div class="tp-nav"><a class="tp-navb" href="#/c25t-dijkstra">&larr; Shortest paths: Dijkstra</a><a class="tp-navb tp-all" href="#/c25topics">All topics</a><a class="tp-navb" href="#/c25t-hashtables">Hash tables &rarr;</a></div>
   </div>
@@ -60511,12 +61455,12 @@ doTrieDelete(t, key, isRoot):
       <div class="eyebrow">COMP2521 &middot; Notes by topic &middot; Priority queues and tries</div>
       <h1>Priority queues and heaps <span class="thin">&mdash; highest priority out first</span></h1>
       <p class="lede">A priority queue returns the highest-priority item first. A binary heap (heap property plus completeness, stored in an array) gives O(log n) insert and delete and O(1) peek; heap sort follows directly.</p>
-      <div class="tp-chips"><span class="tp-meta">11 sections from 2 lectures:</span><a class="tp-chip" href="#/c25w9l1">W9 L1 &middot; Puzzles solved, priority queues, binary heaps</a><a class="tp-chip" href="#/c25w9l2">W9 L2 &middot; Heaps finished, heap sort, tries</a></div>
+      <div class="tp-chips"><span class="tp-meta">13 sections from 3 lectures:</span><a class="tp-chip" href="#/c25w9l1">W9 L1 &middot; Puzzles solved, priority queues, binary heaps</a><a class="tp-chip" href="#/c25w9l2">W9 L2 &middot; Heaps finished, heap sort, tries</a><a class="tp-chip" href="#/c25w10l1">W10 L1 &middot; Tries finished, revision quiz, the exam</a></div>
     </div>
   </header>
   <div class="wrap">
     <div class="tp-key"><div class="tp-kh">Key ideas</div><ul><li>Arrays and lists leave an O(n) in insert or delete; a balanced BST is O(log n) for all; a heap matches it with O(1) peek and simpler code.</li><li>Max heap: every node &ge; its children. Complete: every level full except the last, filled from the left: &lfloor;log&#8322; n&rfloor; + 1 levels.</li><li>Array storage (1-based): children 2i and 2i + 1, parent &lfloor;i / 2&rfloor; (0-based: 2i + 1, 2i + 2, (i &minus; 1)/2).</li><li>Insert: add at the end, fix up. Delete: move the last item to the root, fix down by swapping with the bigger child.</li><li>Heapify: O(n log n) by fix up, O(n) by fixing down the first half from right to left.</li><li>Heap sort: heapify, then repeatedly swap the root to the end: O(n log n), in place, unstable, non-adaptive.</li></ul></div>
-    <nav class="tp-toc" aria-label="Sections in this topic"><a href="#/c25t-heaps/c25w9l1-pq"><span class="n">01</span><span class="t">From queue to priority queue</span></a><a href="#/c25t-heaps/c25w9l1-impl"><span class="n">02</span><span class="t">Five ways to build one</span></a><a href="#/c25t-heaps/c25w9l2-avl"><span class="n">03</span><span class="t">Why a heap, not an AVL tree?</span></a><a href="#/c25t-heaps/c25w9l1-heap"><span class="n">04</span><span class="t">Heap property, completeness</span></a><a href="#/c25t-heaps/c25w9l1-arr"><span class="n">05</span><span class="t">A tree in an array</span></a><a href="#/c25t-heaps/c25w9l1-ins"><span class="n">06</span><span class="t">Insertion: fix up</span></a><a href="#/c25t-heaps/c25w9l1-del"><span class="n">07</span><span class="t">Deletion: fix down</span></a><a href="#/c25t-heaps/c25w9l2-hdel"><span class="n">08</span><span class="t">Heaps: insert, delete, indexing</span></a><a href="#/c25t-heaps/c25w9l1-sort"><span class="n">09</span><span class="t">Heap sort</span></a><a href="#/c25t-heaps/c25w9l2-hsort"><span class="n">10</span><span class="t">Heap sort, argued out</span></a><a href="#/c25t-heaps/c25w9l2-hfy"><span class="n">11</span><span class="t">Heapify in O(n): the sum</span></a></nav>
+    <nav class="tp-toc" aria-label="Sections in this topic"><a href="#/c25t-heaps/c25w9l1-pq"><span class="n">01</span><span class="t">From queue to priority queue</span></a><a href="#/c25t-heaps/c25w9l1-impl"><span class="n">02</span><span class="t">Five ways to build one</span></a><a href="#/c25t-heaps/c25w9l2-avl"><span class="n">03</span><span class="t">Why a heap, not an AVL tree?</span></a><a href="#/c25t-heaps/c25w9l1-heap"><span class="n">04</span><span class="t">Heap property, completeness</span></a><a href="#/c25t-heaps/c25w9l1-arr"><span class="n">05</span><span class="t">A tree in an array</span></a><a href="#/c25t-heaps/c25w9l1-ins"><span class="n">06</span><span class="t">Insertion: fix up</span></a><a href="#/c25t-heaps/c25w9l1-del"><span class="n">07</span><span class="t">Deletion: fix down</span></a><a href="#/c25t-heaps/c25w9l2-hdel"><span class="n">08</span><span class="t">Heaps: insert, delete, indexing</span></a><a href="#/c25t-heaps/c25w9l1-sort"><span class="n">09</span><span class="t">Heap sort</span></a><a href="#/c25t-heaps/c25w9l2-hsort"><span class="n">10</span><span class="t">Heap sort, argued out</span></a><a href="#/c25t-heaps/c25w9l2-hfy"><span class="n">11</span><span class="t">Heapify in O(n): the sum</span></a><a href="#/c25t-heaps/c25w10l1-hq"><span class="n">12</span><span class="t">Heap, BST or neither?</span></a><a href="#/c25t-heaps/c25w10l1-find"><span class="n">13</span><span class="t">Finding any item in a heap</span></a></nav>
     <div class="tp-gh"><span class="tp-gn">Part 1</span> Priority queues</div>
     <div class="tp-src" data-route="c25w9l1"><div class="tp-from"><span>From W9 L1 &middot; &sect;05 &middot; Puzzles solved, priority queues, binary heaps</span><a href="#/c25w9l1/c25w9l1-pq">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w9l1-pq"><p class="tp-wait">Loading this section from W9 L1&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w9l1"><div class="tp-from"><span>From W9 L1 &middot; &sect;06 &middot; Puzzles solved, priority queues, binary heaps</span><a href="#/c25w9l1/c25w9l1-impl">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w9l1-impl"><p class="tp-wait">Loading this section from W9 L1&hellip;</p></div></div>
@@ -60531,12 +61475,15 @@ doTrieDelete(t, key, isRoot):
     <div class="tp-src" data-route="c25w9l1"><div class="tp-from"><span>From W9 L1 &middot; &sect;11 &middot; Puzzles solved, priority queues, binary heaps</span><a href="#/c25w9l1/c25w9l1-sort">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w9l1-sort"><p class="tp-wait">Loading this section from W9 L1&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w9l2"><div class="tp-from"><span>From W9 L2 &middot; &sect;04 &middot; Heaps finished, heap sort, tries</span><a href="#/c25w9l2/c25w9l2-hsort">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w9l2-hsort"><p class="tp-wait">Loading this section from W9 L2&hellip;</p></div></div>
     <div class="tp-src" data-route="c25w9l2"><div class="tp-from"><span>From W9 L2 &middot; &sect;05 &middot; Heaps finished, heap sort, tries</span><a href="#/c25w9l2/c25w9l2-hfy">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w9l2-hfy"><p class="tp-wait">Loading this section from W9 L2&hellip;</p></div></div>
+    <div class="tp-gh"><span class="tp-gn">Part 4</span> Revision: heap, BST or neither</div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;02 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-hq">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-hq"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;04 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-find">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-find"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
 
     <section class="sec tp-end">
       <div class="sec-eyebrow">Check yourself</div>
       <h2>Quick check: Priority queues and heaps</h2>
       <div class="d-quiz" id="c25t-heaps-qz"></div>
-      <h3 class="tp-h3">Each lecture&rsquo;s full quiz</h3><div class="tp-list"><a class="tp-item" href="#/c25w9l1/c25w9l1-chk"><span class="tp-lec">W9 L1</span><span class="tp-t">Check yourself: Puzzles solved, priority queues, binary heaps</span></a><a class="tp-item" href="#/c25w9l2/c25w9l2-chk"><span class="tp-lec">W9 L2</span><span class="tp-t">Check yourself: Heaps finished, heap sort, tries</span></a></div>
+      <h3 class="tp-h3">Each lecture&rsquo;s full quiz</h3><div class="tp-list"><a class="tp-item" href="#/c25w9l1/c25w9l1-chk"><span class="tp-lec">W9 L1</span><span class="tp-t">Check yourself: Puzzles solved, priority queues, binary heaps</span></a><a class="tp-item" href="#/c25w9l2/c25w9l2-chk"><span class="tp-lec">W9 L2</span><span class="tp-t">Check yourself: Heaps finished, heap sort, tries</span></a><a class="tp-item" href="#/c25w10l1/c25w10l1-chk"><span class="tp-lec">W10 L1</span><span class="tp-t">Check yourself: Tries finished, revision quiz, the exam</span></a></div>
     </section>
     <div class="tp-nav"><a class="tp-navb" href="#/c25t-hashapps">&larr; Hash table applications</a><a class="tp-navb tp-all" href="#/c25topics">All topics</a><a class="tp-navb" href="#/c25t-tries">Tries &rarr;</a></div>
   </div>
@@ -60547,12 +61494,12 @@ doTrieDelete(t, key, isRoot):
       <div class="eyebrow">COMP2521 &middot; Notes by topic &middot; Priority queues and tries</div>
       <h1>Tries <span class="thin">&mdash; the path is the key</span></h1>
       <p class="lede">A trie stores a set of strings as paths from the root, one character per link, with a finishing flag where a key ends. Insert, search and delete cost O(m) for a key of length m, however many keys there are.</p>
-      <div class="tp-chips"><span class="tp-meta">8 sections from 1 lecture:</span><a class="tp-chip" href="#/c25w9l2">W9 L2 &middot; Heaps finished, heap sort, tries</a></div>
+      <div class="tp-chips"><span class="tp-meta">10 sections from 2 lectures:</span><a class="tp-chip" href="#/c25w9l2">W9 L2 &middot; Heaps finished, heap sort, tries</a><a class="tp-chip" href="#/c25w10l1">W10 L1 &middot; Tries finished, revision quiz, the exam</a></div>
     </div>
   </header>
   <div class="wrap">
     <div class="tp-key"><div class="tp-kh">Key ideas</div><ul><li>Keys are implicit in position; nodes don&rsquo;t store their key.</li><li>Search fails two ways: a missing child, or ending on a non-finishing node.</li><li>Delete: unmark the finishing flag, then prune non-finishing, childless nodes on the way back up, never the root.</li><li>Space O(nR): with 26 children per node that&rsquo;s 208 bytes of pointers per node, mostly NULL.</li><li>Variants trade time for space: linked-list children, left-child right-sibling, nybble alphabet reduction, compressed tries.</li><li>Applications: word finding, autocomplete (walk the prefix, then the subtree) and predictive text.</li></ul></div>
-    <nav class="tp-toc" aria-label="Sections in this topic"><a href="#/c25t-tries/c25w9l2-why"><span class="n">01</span><span class="t">Why tries?</span></a><a href="#/c25t-tries/c25w9l2-rep"><span class="n">02</span><span class="t">What a trie is</span></a><a href="#/c25t-tries/c25w9l2-ins"><span class="n">03</span><span class="t">Insertion</span></a><a href="#/c25t-tries/c25w9l2-srch"><span class="n">04</span><span class="t">Search</span></a><a href="#/c25t-tries/c25w9l2-del"><span class="n">05</span><span class="t">Deletion and dead branches</span></a><a href="#/c25t-tries/c25w9l2-cost"><span class="n">06</span><span class="t">O(m) time, O(nR) space</span></a><a href="#/c25t-tries/c25w9l2-var"><span class="n">07</span><span class="t">Variants that save memory</span></a><a href="#/c25t-tries/c25w9l2-app"><span class="n">08</span><span class="t">Applications</span></a></nav>
+    <nav class="tp-toc" aria-label="Sections in this topic"><a href="#/c25t-tries/c25w9l2-why"><span class="n">01</span><span class="t">Why tries?</span></a><a href="#/c25t-tries/c25w9l2-rep"><span class="n">02</span><span class="t">What a trie is</span></a><a href="#/c25t-tries/c25w9l2-ins"><span class="n">03</span><span class="t">Insertion</span></a><a href="#/c25t-tries/c25w9l2-srch"><span class="n">04</span><span class="t">Search</span></a><a href="#/c25t-tries/c25w9l2-del"><span class="n">05</span><span class="t">Deletion and dead branches</span></a><a href="#/c25t-tries/c25w9l2-cost"><span class="n">06</span><span class="t">O(m) time, O(nR) space</span></a><a href="#/c25t-tries/c25w9l2-var"><span class="n">07</span><span class="t">Variants that save memory</span></a><a href="#/c25t-tries/c25w9l2-app"><span class="n">08</span><span class="t">Applications</span></a><a href="#/c25t-tries/c25w10l1-trie"><span class="n">09</span><span class="t">Tries, finished</span></a><a href="#/c25t-tries/c25w10l1-beyond"><span class="n">10</span><span class="t">Beyond the course: DAGs and automata</span></a></nav>
     <div class="tp-gh"><span class="tp-gn">Part 1</span> Why tries</div>
     <div class="tp-src" data-route="c25w9l2"><div class="tp-from"><span>From W9 L2 &middot; &sect;06 &middot; Heaps finished, heap sort, tries</span><a href="#/c25w9l2/c25w9l2-why">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w9l2-why"><p class="tp-wait">Loading this section from W9 L2&hellip;</p></div></div>
     <div class="tp-gh"><span class="tp-gn">Part 2</span> Structure and operations</div>
@@ -60565,14 +61512,48 @@ doTrieDelete(t, key, isRoot):
     <div class="tp-src" data-route="c25w9l2"><div class="tp-from"><span>From W9 L2 &middot; &sect;12 &middot; Heaps finished, heap sort, tries</span><a href="#/c25w9l2/c25w9l2-var">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w9l2-var"><p class="tp-wait">Loading this section from W9 L2&hellip;</p></div></div>
     <div class="tp-gh"><span class="tp-gn">Part 4</span> Applications</div>
     <div class="tp-src" data-route="c25w9l2"><div class="tp-from"><span>From W9 L2 &middot; &sect;13 &middot; Heaps finished, heap sort, tries</span><a href="#/c25w9l2/c25w9l2-app">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w9l2-app"><p class="tp-wait">Loading this section from W9 L2&hellip;</p></div></div>
+    <div class="tp-gh"><span class="tp-gn">Part 5</span> Tries, finished</div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;05 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-trie">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-trie"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;06 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-beyond">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-beyond"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
 
     <section class="sec tp-end">
       <div class="sec-eyebrow">Check yourself</div>
       <h2>Quick check: Tries</h2>
       <div class="d-quiz" id="c25t-tries-qz"></div>
-      <h3 class="tp-h3">Each lecture&rsquo;s full quiz</h3><div class="tp-list"><a class="tp-item" href="#/c25w9l2/c25w9l2-chk"><span class="tp-lec">W9 L2</span><span class="tp-t">Check yourself: Heaps finished, heap sort, tries</span></a></div>
+      <h3 class="tp-h3">Each lecture&rsquo;s full quiz</h3><div class="tp-list"><a class="tp-item" href="#/c25w9l2/c25w9l2-chk"><span class="tp-lec">W9 L2</span><span class="tp-t">Check yourself: Heaps finished, heap sort, tries</span></a><a class="tp-item" href="#/c25w10l1/c25w10l1-chk"><span class="tp-lec">W10 L1</span><span class="tp-t">Check yourself: Tries finished, revision quiz, the exam</span></a></div>
     </section>
-    <div class="tp-nav"><a class="tp-navb" href="#/c25t-heaps">&larr; Priority queues and heaps</a><a class="tp-navb tp-all" href="#/c25topics">All topics</a><span></span></div>
+    <div class="tp-nav"><a class="tp-navb" href="#/c25t-heaps">&larr; Priority queues and heaps</a><a class="tp-navb tp-all" href="#/c25topics">All topics</a><a class="tp-navb" href="#/c25t-exam">The final exam and revision &rarr;</a></div>
+  </div>
+  </section>
+  <section class="route c25 c25-topic" data-route="c25t-exam">
+  <header>
+    <div class="wrap hero">
+      <div class="eyebrow">COMP2521 &middot; Notes by topic &middot; The exam</div>
+      <h1>The final exam and revision <span class="thin">&mdash; how it is run, how it is marked, how to prepare</span></h1>
+      <p class="lede">The briefing from week 10: a 3-hour exam in the CSE labs with practical and theory sections of <b>equal weight</b>, hurdles on each, automarked code read by a human, and a revision plan built on doing rather than rereading.</p>
+      <div class="tp-chips"><span class="tp-meta">6 sections from 1 lecture:</span><a class="tp-chip" href="#/c25w10l1">W10 L1 &middot; Tries finished, revision quiz, the exam</a></div>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="tp-key"><div class="tp-kh">Key ideas</div><ul><li>3 hours plus 10 minutes&rsquo; reading, in the CSE labs; closed book, with the DSA manual and a C quick reference provided.</li><li>Practical (programming) and theory (short answer) are 50 marks each: the slides&rsquo; 60/40 was corrected in the room.</li><li>Hurdles: at least 40% on the exam and 25% on each section, then 50 overall in the course.</li><li>Code is automarked with hidden tests and then read: helper functions and #define are fine; no globals or statics; hard-coding scores 0; up to 50% for substantial progress.</li><li>Marks show time, not difficulty: about 1.8 minutes a mark. State your assumptions on ambiguous questions.</li><li>Fit to sit: starting the exam means you are well enough; if unwell, don&rsquo;t attend and apply for special consideration.</li><li>Revise by doing: redo labs and past papers, timed, explain things to friends, and sleep.</li></ul></div>
+    <nav class="tp-toc" aria-label="Sections in this topic"><a href="#/c25t-exam/c25w10l1-exam"><span class="n">01</span><span class="t">The exam: format and marks</span></a><a href="#/c25t-exam/c25w10l1-rules"><span class="n">02</span><span class="t">Programming answers: what counts</span></a><a href="#/c25t-exam/c25w10l1-ambig"><span class="n">03</span><span class="t">Ambiguity, partial marks, scaling</span></a><a href="#/c25t-exam/c25w10l1-day"><span class="n">04</span><span class="t">Rules, fit to sit, special consideration</span></a><a href="#/c25t-exam/c25w10l1-plan"><span class="n">05</span><span class="t">How to revise</span></a><a href="#/c25t-exam/c25w10l1-syll"><span class="n">06</span><span class="t">What the course covered</span></a></nav>
+    <div class="tp-gh"><span class="tp-gn">Part 1</span> Format and marking</div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;08 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-exam">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-exam"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;09 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-rules">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-rules"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;10 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-ambig">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-ambig"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
+    <div class="tp-gh"><span class="tp-gn">Part 2</span> On the day</div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;11 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-day">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-day"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
+    <div class="tp-gh"><span class="tp-gn">Part 3</span> Revising</div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;12 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-plan">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-plan"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
+    <div class="tp-src" data-route="c25w10l1"><div class="tp-from"><span>From W10 L1 &middot; &sect;13 &middot; Tries finished, revision quiz, the exam</span><a href="#/c25w10l1/c25w10l1-syll">open in the lecture &rarr;</a></div><div class="tp-slot" data-sec="c25w10l1-syll"><p class="tp-wait">Loading this section from W10 L1&hellip;</p></div></div>
+
+    <section class="sec tp-end">
+      <div class="sec-eyebrow">Check yourself</div>
+      <h2>Quick check: The final exam and revision</h2>
+      <div class="d-quiz" id="c25t-exam-qz"></div>
+      <h3 class="tp-h3">Each lecture&rsquo;s full quiz</h3><div class="tp-list"><a class="tp-item" href="#/c25w10l1/c25w10l1-chk"><span class="tp-lec">W10 L1</span><span class="tp-t">Check yourself: Tries finished, revision quiz, the exam</span></a></div>
+    </section>
+    <div class="tp-nav"><a class="tp-navb" href="#/c25t-tries">&larr; Tries</a><a class="tp-navb tp-all" href="#/c25topics">All topics</a><span></span></div>
   </div>
   </section>
 <script>
@@ -60664,6 +61645,11 @@ doTrieDelete(t, key, isRoot):
       {q:"Searching a trie for a key of length m costs&hellip;",opts:["O(m)", "O(log n)", "O(n)", "O(m log n)"],a:0,why:"At most m links, independent of the number of keys."},
       {q:"A search walks every character of &ldquo;ear&rdquo; but the node isn&rsquo;t finishing. The result is&hellip;",opts:["not found", "found", "an error", "found if it has children"],a:0,why:"&ldquo;ear&rdquo; is only a prefix of stored keys."},
       {q:"Trie deletion removes nodes that are&hellip;",opts:["non-finishing and childless, on the way back up", "all nodes on the path", "only the last node", "finishing"],a:0,why:"Never the root."}
+    ]);
+    C25.quiz('c25t-exam-qz',[
+      {q:"This term&rsquo;s practical/theory split is&hellip;",opts:["50 / 50", "60 / 40", "40 / 60", "100 / 0"],a:0,why:"Corrected in the room; the 25T3 slides say 60/40."},
+      {q:"Which is <b>not</b> allowed in a programming answer?",opts:["a static variable", "a helper function", "a #define", "a recursive function"],a:0,why:"No globals and no statics."},
+      {q:"You are unwell on the morning of the exam. You should&hellip;",opts:["not attend, and apply for special consideration", "start it and leave early", "sit it and appeal later", "ask for extra time at the door"],a:0,why:"Starting the exam declares you fit to sit."}
     ]);
   const inp=document.getElementById('c25topics-q'), cnt=document.getElementById('c25topics-n');
   const cards=[...document.querySelectorAll('[data-route="c25topics"] .tp-card')];
@@ -62345,7 +63331,7 @@ main:
 
 /* ============ SITE ROUTER + NAV ============ */
 (function(){
-  const ROUTES=['home','game','comp1521','comp1531','w1l1','w1l2','w2l1','w2l2','w3l1','w3l2','w4l1','w4l2','w5l1','w5l2','w7l1','w7l2','w8l1','w8l2','w9l1','w9l2','w10l1','w10l2','c31w1l1','c31w1l2','c31w2tw','c31w2l1','c31w2l2','c31w3l1','c31w3l2','c31it1','c31w4l1','c31w4l2','c31w5l1','c31w5l2','c31w7l1','c31w7l2','c31w8l1','c31w8l2','c31w9l1','c31w10l1','comp2521','c25w1l1','c25w1l2','c25w2l1','c25w2l2','c25w3l1','c25w3l2','c25w4l1','c25w4l2','c25w5l1','c25w5l2','c25w7l1','c25w7l2','c25w8l1','c25w8l2','c25w9l1','c25w9l2','c25topics','c25t-tools','c25t-recursion','c25t-analysis','c25t-sorting','c25t-adts','c25t-bst','c25t-balance','c25t-graphs','c25t-traversal','c25t-problems','c25t-digraphs','c25t-dijkstra','c25t-mst','c25t-hashtables','c25t-hashapps','c25t-heaps','c25t-tries'];
+  const ROUTES=['home','game','comp1521','comp1531','w1l1','w1l2','w2l1','w2l2','w3l1','w3l2','w4l1','w4l2','w5l1','w5l2','w7l1','w7l2','w8l1','w8l2','w9l1','w9l2','w10l1','w10l2','c31w1l1','c31w1l2','c31w2tw','c31w2l1','c31w2l2','c31w3l1','c31w3l2','c31it1','c31w4l1','c31w4l2','c31w5l1','c31w5l2','c31w7l1','c31w7l2','c31w8l1','c31w8l2','c31w9l1','c31w10l1','comp2521','c25w1l1','c25w1l2','c25w2l1','c25w2l2','c25w3l1','c25w3l2','c25w4l1','c25w4l2','c25w5l1','c25w5l2','c25w7l1','c25w7l2','c25w8l1','c25w8l2','c25w9l1','c25w9l2','c25w10l1','c25topics','c25t-tools','c25t-recursion','c25t-analysis','c25t-sorting','c25t-adts','c25t-bst','c25t-balance','c25t-graphs','c25t-traversal','c25t-problems','c25t-digraphs','c25t-dijkstra','c25t-mst','c25t-hashtables','c25t-hashapps','c25t-heaps','c25t-tries','c25t-exam'];
   const CRUMB={home:'Home',game:'StackRaid',comp1521:'COMP1521',comp1531:'COMP1531',
                w1l1:'COMP1521 · Week 1 · Lecture 1',w1l2:'COMP1521 · Week 1 · Lecture 2',
                w2l1:'COMP1521 · Week 2 · Lecture 1',w2l2:'COMP1521 · Week 2 · Lecture 2',
@@ -62398,6 +63384,7 @@ main:
                c25w8l2:'COMP2521 · Week 8 · Lecture 2',
                c25w9l1:'COMP2521 · Week 9 · Lecture 1',
                c25w9l2:'COMP2521 · Week 9 · Lecture 2',
+               c25w10l1:'COMP2521 · Week 10 · Lecture 1',
                c25topics:'COMP2521 · Notes by topic',
                'c25t-tools':'COMP2521 · Topic · Course, tools and C hygiene',
                'c25t-recursion':'COMP2521 · Topic · Recursion',
@@ -62415,7 +63402,8 @@ main:
                'c25t-hashtables':'COMP2521 · Topic · Hash tables',
                'c25t-hashapps':'COMP2521 · Topic · Hash table applications',
                'c25t-heaps':'COMP2521 · Topic · Priority queues and heaps',
-               'c25t-tries':'COMP2521 · Topic · Tries'};
+               'c25t-tries':'COMP2521 · Topic · Tries',
+               'c25t-exam':'COMP2521 · Topic · The final exam and revision'};
   const sections=[...document.querySelectorAll('.route')];
   const crumbs=document.getElementById('crumbs');
   const sidebar=document.getElementById('sidebar');
